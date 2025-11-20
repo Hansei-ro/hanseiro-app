@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
-    "eslint": "^9.39.1",
+    "eslint": "8.57.0",
     "eslint-config-universe": "^15.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
