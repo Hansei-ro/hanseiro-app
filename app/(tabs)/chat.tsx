@@ -1,3 +1,3 @@
-import { ChatScreen } from '@features/chat/ui/ChatScreen';
+import { ChatScreen } from '@features/chat/screens/ChatScreen';
 
 export default ChatScreen;

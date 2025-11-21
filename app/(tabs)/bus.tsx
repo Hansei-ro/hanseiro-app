@@ -1,3 +1,3 @@
-import { BusScreen } from '@features/bus/ui/BusScreen';
+import { BusScreen } from '@features/bus/screens/BusScreen';
 
 export default BusScreen;
