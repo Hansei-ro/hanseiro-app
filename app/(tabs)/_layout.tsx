@@ -13,7 +13,8 @@ export default function TabLayout() {
           borderTopWidth: 1,
           borderTopColor: '#E5E5EA',
         },
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{

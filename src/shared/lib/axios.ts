@@ -27,7 +27,7 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // 응답 인터셉터
@@ -54,5 +54,5 @@ axiosInstance.interceptors.response.use(
       console.error('Error:', error.message);
     }
     return Promise.reject(error);
-  }
+  },
 );
