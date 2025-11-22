@@ -9,7 +9,10 @@
     "web": "expo start --web",
     "prepare": "husky",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "build:check": "expo export --platform all --output-dir .expo-test --clear",
+    "test:ci": "yarn type-check && yarn lint"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
