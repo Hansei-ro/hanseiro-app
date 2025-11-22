@@ -13,10 +13,10 @@
 import styled from '@emotion/native';
 import React from 'react';
 
-import { ExampleList } from '../components/ExampleList';
-import { useCreateExampleMutation, useDeleteExampleMutation } from '../hooks/useExampleMutation';
-import { useExampleListQuery } from '../hooks/useExampleQuery';
-import { useExampleStore } from '../store/useExampleStore';
+import { ExampleList } from './components/ExampleList';
+import { useCreateExampleMutation, useDeleteExampleMutation } from './hooks/useExampleMutation';
+import { useExampleListQuery } from './hooks/useExampleQuery';
+import { useExampleStore } from './store/useExampleStore';
 
 export default function ExampleScreen() {
   // 1️⃣ React Query: 서버 데이터 가져오기
