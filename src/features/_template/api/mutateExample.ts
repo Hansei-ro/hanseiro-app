@@ -1,7 +1,7 @@
 // 예제: 새 항목 생성
-import { CreateExampleRequest, Example } from '../types/example';
+import axios from 'axios';
 
-import axios from '@/shared/lib/axios';
+import { CreateExampleRequest, Example } from '../types/example';
 
 /**
  * 새로운 예제를 생성합니다.

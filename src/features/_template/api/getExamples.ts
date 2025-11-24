@@ -1,7 +1,7 @@
 // 예제: 택시 매칭 목록 조회
-import { Example } from '../types/example';
+import axios from 'axios';
 
-import axios from '@/shared/lib/axios';
+import { Example } from '../types/example';
 
 /**
  * 서버에서 예제 목록을 가져옵니다.
