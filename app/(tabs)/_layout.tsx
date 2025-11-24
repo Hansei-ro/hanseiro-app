@@ -1,55 +1,91 @@
+import styled from '@emotion/native';
 import { Tabs } from 'expo-router';
-import { Bus, Home, MessageCircle, User, Users } from 'lucide-react-native';
+import { BusFront, Home, Library, MessageCircle, Users, X } from 'lucide-react-native';
+import React, { useMemo } from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import { theme } from '../../src/shared/theme';
 
 export default function TabLayout() {
+  const insets = useSafeAreaInsets();
+
+  const screenOptions = useMemo(
+    () => ({
+      headerShown: false,
+      tabBarActiveTintColor: theme.colors.primary.default,
+      tabBarInactiveTintColor: theme.colors.neutral.gray400,
+      tabBarStyle: {
+        backgroundColor: theme.colors.neutral.white,
+        borderTopWidth: 1,
+        borderTopColor: theme.colors.border.light,
+        height: 60 + insets.bottom,
+        paddingBottom: insets.bottom + 5,
+      },
+      tabBarLabelStyle: {
+        fontSize: 12,
+        fontWeight: '500' as const,
+      },
+    }),
+    [insets.bottom],
+  );
+
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: '#8E8E93',
-        tabBarStyle: {
-          backgroundColor: '#FFFFFF',
-          borderTopWidth: 1,
-          borderTopColor: '#E5E5EA',
-        },
-      }}
-    >
+    <Tabs screenOptions={screenOptions}>
       <Tabs.Screen
         name="index"
         options={{
           title: '홈',
-          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          tabBarIcon: ({ color }) => <Home color={color} size={25} />,
         }}
       />
       <Tabs.Screen
         name="bus"
         options={{
           title: '버스',
-          tabBarIcon: ({ color, size }) => <Bus color={color} size={size} />,
+          tabBarIcon: ({ color }) => <BusFront color={color} size={25} />,
         }}
       />
       <Tabs.Screen
         name="match"
         options={{
-          title: '매칭',
-          tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
+          tabBarLabel: () => null,
+          tabBarIcon: ({ focused }) => (
+            <MatchButton>
+              {focused ? (
+                <X color={theme.colors.text.inverse} size={25} />
+              ) : (
+                <Users color={theme.colors.text.inverse} size={25} />
+              )}
+            </MatchButton>
+          ),
         }}
       />
       <Tabs.Screen
         name="chat"
         options={{
           title: '채팅',
-          tabBarIcon: ({ color, size }) => <MessageCircle color={color} size={size} />,
+          tabBarIcon: ({ color }) => <MessageCircle color={color} size={25} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: '프로필',
-          tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
+          title: 'MY',
+          tabBarIcon: ({ color }) => <Library color={color} size={25} />,
         }}
       />
     </Tabs>
   );
 }
+
+const MatchButton = styled.View`
+  position: absolute;
+  top: 0px;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background-color: ${theme.colors.primary.default};
+  justify-content: center;
+  align-items: center;
+  shadow-color: ${theme.colors.primary.default};
+`;

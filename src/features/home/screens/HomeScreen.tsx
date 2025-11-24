@@ -1,28 +1,39 @@
-import { StyleSheet, Text, View } from 'react-native';
+import styled from '@emotion/native';
+import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { theme } from '../../../shared/theme';
 
 export function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>홈</Text>
-      <Text style={styles.subtitle}>한세로 메인 화면</Text>
-    </View>
+    <SafeArea edges={['top']}>
+      <Container>
+        <Title>홈</Title>
+        <Subtitle>한세로 메인 화면</Subtitle>
+      </Container>
+    </SafeArea>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#666',
-  },
-});
+const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+  background-color: ${theme.colors.background.screen};
+`;
+
+const Container = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: ${theme.colors.background.screen};
+`;
+
+const Title = styled(Text)`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+`;
+
+const Subtitle = styled(Text)`
+  font-size: 16px;
+  color: ${theme.colors.text.subtitle};
+`;
