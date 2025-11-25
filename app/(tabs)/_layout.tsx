@@ -1,9 +1,10 @@
 import styled from '@emotion/native';
 import { Tabs } from 'expo-router';
-import { BusFront, Home, Library, MessageCircle, Users, X } from 'lucide-react-native';
+import { BusFront, Home, Library, MessageCircle, X } from 'lucide-react-native';
 import React, { useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import MatchIcon from '../../assets/icons/match.svg';
 import { theme } from '../../src/shared/theme';
 
 export default function TabLayout() {
@@ -54,7 +55,7 @@ export default function TabLayout() {
               {focused ? (
                 <X color={theme.colors.text.inverse} size={25} />
               ) : (
-                <Users color={theme.colors.text.inverse} size={25} />
+                <MatchIcon width={25} height={25} />
               )}
             </MatchButton>
           ),
