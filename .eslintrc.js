@@ -37,5 +37,29 @@ module.exports = {
         },
       },
     ],
+
+    // ===== 타입 통일 및 명시 강제 규칙 =====
+
+    // 7. interface 대신 type 사용 강제
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+
+    // 8. 함수 반환 타입 명시 강제
+    '@typescript-eslint/explicit-function-return-type': [
+      'warn',
+      {
+        allowExpressions: true, // JSX 표현식, 화살표 함수는 허용
+        allowTypedFunctionExpressions: true,
+        allowHigherOrderFunctions: true,
+        allowDirectConstAssertionInArrowFunctions: true,
+      },
+    ],
+
+    // 9. export된 함수는 반환 타입 명시 필수
+    '@typescript-eslint/explicit-module-boundary-types': 'warn',
+
+    // ===== 타입 추론 불가능한 경우 감지 =====
+
+    // 10. any 타입 명시적 사용 금지 (타입 추론 실패 시 경고)
+    '@typescript-eslint/no-explicit-any': 'error',
   },
 };

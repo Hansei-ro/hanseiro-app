@@ -10,7 +10,7 @@ import { ExampleFilter } from '../types/example';
  *    - ✅ OK: 선택된 항목, 검색어, 필터 설정, UI 상태
  *    - ❌ NO: 서버에서 가져온 목록, 유저 정보 (React Query 사용!)
  */
-interface ExampleState {
+type ExampleState = {
   // --- 상태 ---
   /** 현재 선택된 예제 ID */
   selectedExampleId: string | null;
@@ -40,7 +40,7 @@ interface ExampleState {
 
   /** 모든 상태 초기화 */
   reset: () => void;
-}
+};
 
 const initialFilter: ExampleFilter = {
   location: 'all',

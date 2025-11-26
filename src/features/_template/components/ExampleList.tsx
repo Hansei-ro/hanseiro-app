@@ -6,7 +6,7 @@ import { Example } from '../types/example';
 
 import { ExampleCard } from './ExampleCard';
 
-interface ExampleListProps {
+type ExampleListProps = {
   /** 표시할 예제 목록 */
   data: Example[];
 
@@ -21,7 +21,7 @@ interface ExampleListProps {
 
   /** 빈 목록 메시지 */
   emptyMessage?: string;
-}
+};
 
 /**
  * 예제 목록을 FlatList로 표시하는 컴포넌트

@@ -3,7 +3,7 @@ import styled from '@emotion/native';
 
 import { Example } from '../types/example';
 
-interface ExampleCardProps {
+type ExampleCardProps = {
   /** 표시할 예제 데이터 */
   data: Example;
 
@@ -12,7 +12,7 @@ interface ExampleCardProps {
 
   /** 선택된 상태 여부 (선택 시 하이라이트 표시) */
   isSelected?: boolean;
-}
+};
 
 /**
  * 예제 정보를 카드 형태로 표시하는 컴포넌트
