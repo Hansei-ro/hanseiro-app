@@ -2,43 +2,68 @@
 
 서버에서 데이터를 가져오는 React Query 훅을 작성합니다.
 
-## 예시
+**중요**: API 호출 로직은 `../api` 폴더에 별도로 정의하고, 여기서는 그 함수를 불러와 사용합니다.
+
+## Query 예시 (데이터 조회)
 
 ```tsx
-// useBusListQuery.ts
+// useExampleListQuery.ts
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { Bus } from '../types/bus';
+import { getExampleList } from '../api/getExamples';
 
-export function useBusListQuery() {
+export function useExampleListQuery() {
   return useQuery({
-    queryKey: ['bus-list'],
-    queryFn: async () => {
-      const response = await axios.get<Bus[]>('/api/bus/list');
-      return response.data;
+    queryKey: ['example-list'],
+    queryFn: getExampleList, // api 폴더의 함수 사용
+  });
+}
+```
+
+```tsx
+// useExampleByIdQuery.ts
+import { useQuery } from '@tanstack/react-query';
+import { getExampleById } from '../api/getExamples';
+
+export function useExampleByIdQuery(id: string) {
+  return useQuery({
+    queryKey: ['example', id],
+    queryFn: () => getExampleById(id), // api 폴더의 함수 사용
+  });
+}
+```
+
+## Mutation 예시 (데이터 생성/수정/삭제)
+
+```tsx
+// useCreateExampleMutation.ts
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { createExample } from '../api/mutateExample';
+
+export function useCreateExampleMutation() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createExample, // api 폴더의 함수 사용
+    onSuccess: () => {
+      // 성공 시 목록 다시 불러오기
+      queryClient.invalidateQueries({ queryKey: ['example-list'] });
     },
   });
 }
 ```
 
-## Mutation 예시 (데이터 수정)
-
 ```tsx
-// useCreateBusMutation.ts
+// useDeleteExampleMutation.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios from 'axios';
+import { deleteExample } from '../api/mutateExample';
 
-export function useCreateBusMutation() {
+export function useDeleteExampleMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: CreateBusRequest) => {
-      const response = await axios.post('/api/bus', data);
-      return response.data;
-    },
+    mutationFn: deleteExample, // api 폴더의 함수 사용
     onSuccess: () => {
-      // 성공 시 목록 다시 불러오기
-      queryClient.invalidateQueries({ queryKey: ['bus-list'] });
+      queryClient.invalidateQueries({ queryKey: ['example-list'] });
     },
   });
 }
