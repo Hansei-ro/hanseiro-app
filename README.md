@@ -233,80 +233,38 @@ export default function NotificationsScreen() {
 
 ## 📐 개발 컨벤션
 
-### 커밋 메시지 규칙
+> 💡 **자세한 개발 컨벤션은 [CONVENTIONS.md](./CONVENTIONS.md)를 참고하세요!**
+> Git 사용법, 브랜치 전략, 커밋 규칙, TypeScript 타입 작성 규칙, 코드 스타일 등 모든 개발 규칙이 정리되어 있습니다.
 
-**Conventional Commits** 스타일을 따릅니다:
+### 커밋 메시지 규칙 (간단 요약)
 
-```
-feat: 새로운 기능 추가
-fix: 버그 수정
-refactor: 코드 리팩토링 (기능 변경 없음)
-chore: 설정 파일 수정, 빌드 관련
-docs: 문서 수정
-design: UI 디자인 변경
-```
+**형식**: `<타입>(<범위>): <제목>`
+
+**타입**:
+
+- `feat` - 새로운 기능 추가
+- `fix` - 버그 수정
+- `style` - UI/디자인 수정
+- `refactor` - 코드 개선 (기능 변경 없음)
+- `docs` - 문서 수정
+- `chore` - 설정 파일, 패키지 설치 등
+
+**범위** (선택사항):
+
+- `auth` - 인증 관련
+- `match` - 매칭 관련
+- `chat` - 채팅 관련
+- `bus` - 버스 관련
 
 **예시:**
 
 ```bash
-git commit -m "feat: 알림 목록 조회 API 연동"
-git commit -m "fix: 매칭 카드 클릭 시 크래시 수정"
-git commit -m "refactor: 버스 API 호출 함수 분리"
+git commit -m "feat(auth): 로그인 페이지 UI 구현"
+git commit -m "fix(match): 매칭 시간 계산 오류 수정"
+git commit -m "style(button): 로그인 버튼 색상 변경"
 ```
 
-### 코드 스타일
-
-#### ✅ 좋은 예시
-
-```typescript
-// 명확한 함수명 (동사 + 명사)
-function calculateTotalPrice(items: Item[]): number { ... }
-
-// Boolean 변수에 is/has 접두사
-const isValid = true;
-const hasPermission = false;
-
-// Early Return (Guard Clause)
-function processUser(user: User) {
-  if (!user) return;           // 빨리 종료
-  if (!user.isActive) return;  // 빨리 종료
-
-  // 핵심 로직은 중첩 없이
-  doSomething(user);
-}
-```
-
-#### ❌ 나쁜 예시
-
-```typescript
-// 의미 없는 변수명
-const data = fetchUsers(); // 무엇에 대한 data인가?
-const temp = 123; // temp는 금지!
-
-// 깊은 중첩
-if (isValid) {
-  if (hasPermission) {
-    if (isActive) {
-      doSomething(); // 너무 깊음!
-    }
-  }
-}
-
-// console.log 남기기
-console.log('유저 정보:', user); // 프로덕션 전에 삭제 필수!
-```
-
-### 린트 및 포맷팅
-
-```bash
-# ESLint 검사
-yarn lint
-
-# Prettier 코드 정렬
-yarn format
-```
-
-> 💡 **팁**: 커밋 전에 Husky가 자동으로 검사합니다!
+> 💡 자세한 커밋 규칙은 [CONVENTIONS.md](./CONVENTIONS.md)를 참고하세요!
 
 ---
 
