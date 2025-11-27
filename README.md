@@ -233,7 +233,7 @@ export default function NotificationsScreen() {
 
 ## 📐 개발 컨벤션
 
-> 💡 **자세한 개발 컨벤션은 [CONVENTIONS.md](./CONVENTIONS.md)를 참고하세요!**
+> 💡 **자세한 개발 컨벤션은 [CONVENTIONS.md](./docs/CONVENTIONS.md)를 참고하세요!**
 > Git 사용법, 브랜치 전략, 커밋 규칙, TypeScript 타입 작성 규칙, 코드 스타일 등 모든 개발 규칙이 정리되어 있습니다.
 
 ### 커밋 메시지 규칙 (간단 요약)
@@ -264,7 +264,7 @@ git commit -m "fix(match): 매칭 시간 계산 오류 수정"
 git commit -m "style(button): 로그인 버튼 색상 변경"
 ```
 
-> 💡 자세한 커밋 규칙은 [CONVENTIONS.md](./CONVENTIONS.md)를 참고하세요!
+> 💡 자세한 커밋 규칙은 [CONVENTIONS.md](./docs/CONVENTIONS.md)를 참고하세요!
 
 ---
 
