@@ -4,8 +4,8 @@ import { BusFront, Home, Library, MessageCircle, X } from 'lucide-react-native';
 import React, { useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import MatchIcon from '../../assets/icons/match.svg';
-import { theme } from '../../src/shared/theme';
+import MatchIcon from '@/shared/icons/match.svg';
+import { theme } from '@/shared/theme';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
