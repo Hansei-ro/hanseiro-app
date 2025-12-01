@@ -2,13 +2,13 @@ import styled from '@emotion/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-type BusArrivalDetail = {
-  id: string; //표시 할 버스노선갯수
-  busNumber: string; //버스번호
-  howLong: string; //소요시간
-  arrivalTime: string; //도착시간
-  isDelay?: boolean; //지연여부
-};
+// type BusArrivalDetail = {
+//   id: string; //표시 할 버스노선갯수
+//   busNumber: string; //버스번호
+//   howLong: string; //소요시간
+//   arrivalTime: string; //도착시간
+//   isDelay?: boolean; //지연여부
+// };
 
 const Container = styled(View)`
   display: flex;
@@ -133,13 +133,15 @@ const IsDelay = styled(Text)`
   font-size: 12px;
 `;
 
-export function BusArrivalDetailBox({
-  id,
-  busNumber,
-  howLong,
-  arrivalTime,
-  isDelay,
-}: BusArrivalDetail) {
+export function BusArrivalDetailBox(
+  {
+    // id,
+    // busNumber,
+    // howLong,
+    // arrivalTime,
+    // isDelay,
+  },
+) {
   const busIconSource = require('/Users/yeram_910/Desktop/hanseiro-app/assets/BusImage.png');
 
   const WarningIconSource = require('/Users/yeram_910/Desktop/hanseiro-app/assets/warnning.png');
@@ -158,17 +160,16 @@ export function BusArrivalDetailBox({
         <Inner>
           <BusImage source={busIconSource} />
           <BusInform>
-            {id}
             <InformLeft>
-              <BusNumber>{busNumber}81번</BusNumber>
-              <HowLong>{howLong}15분 소요</HowLong>
+              <BusNumber>81번</BusNumber>
+              <HowLong>15분 소요</HowLong>
             </InformLeft>
-            <ArrivalTimeSoon>{arrivalTime}곧 도착</ArrivalTimeSoon>
+            <ArrivalTimeSoon>곧 도착</ArrivalTimeSoon>
           </BusInform>
         </Inner>
         <IsDelayBox>
           <WarningImage source={WarningIconSource} />
-          <IsDelay>{isDelay}현재 교통 혼잡으로 인해 평소보다 오래 걸려요</IsDelay>
+          <IsDelay>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</IsDelay>
         </IsDelayBox>
       </Outer>
 
@@ -176,12 +177,11 @@ export function BusArrivalDetailBox({
         <Inner>
           <BusImage source={busIconSource} />
           <BusInform>
-            {id}
             <InformLeft>
-              <BusNumber>{busNumber}10번</BusNumber>
-              <HowLong>{howLong}8분 소요</HowLong>
+              <BusNumber>10번</BusNumber>
+              <HowLong>8분 소요</HowLong>
             </InformLeft>
-            <ArrivalTime>{arrivalTime}5분 뒤 도착</ArrivalTime>
+            <ArrivalTime>5분 뒤 도착</ArrivalTime>
           </BusInform>
         </Inner>
       </Outer>
@@ -190,12 +190,11 @@ export function BusArrivalDetailBox({
         <Inner>
           <BusImage source={busIconSource} />
           <BusInform>
-            {id}
             <InformLeft>
-              <BusNumber>{busNumber}3300번</BusNumber>
-              <HowLong>{howLong}25분 소요</HowLong>
+              <BusNumber>3300번</BusNumber>
+              <HowLong>25분 소요</HowLong>
             </InformLeft>
-            <ArrivalTime>{arrivalTime}10분 뒤 도착</ArrivalTime>
+            <ArrivalTime>10분 뒤 도착</ArrivalTime>
           </BusInform>
         </Inner>
       </Outer>
