@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { theme } from '../../../shared/theme';
+import { BusArrivalDetailBox } from '../components/BusArrivalDetail';
 
 export function HomeScreen() {
   return (
@@ -10,6 +11,7 @@ export function HomeScreen() {
       <Container>
         <Title>홈</Title>
         <Subtitle>한세로 메인 화면</Subtitle>
+        <BusArrivalDetailBox />
       </Container>
     </SafeArea>
   );
