@@ -2,12 +2,11 @@ import styled from '@emotion/native';
 import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { View } from 'react-native';
-import { KeyboardStickyView } from 'react-native-keyboard-controller';
+// import { KeyboardStickyView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { theme } from '../../../shared/theme';
 import { ChatHeader } from '../components/ChatHeader';
-import { ChatInput } from '../components/ChatInput';
 import { ChatList } from '../components/ChatList';
 import { Message } from '../components/ChatMessage';
 
@@ -90,11 +89,11 @@ export function ChatScreen() {
       <ChatHeader title="25.11.24 / 산본역" onBackPress={handleBack} />
       <View style={{ flex: 1 }}>
         <ChatList messages={processedMessages} />
-        <KeyboardStickyView offset={{ closed: 0, opened: 0 }}>
+        {/* <KeyboardStickyView offset={{ closed: 0, opened: 0 }}>
           <InputWrapper bottomInset={insets.bottom}>
             <ChatInput onSend={handleSend} />
           </InputWrapper>
-        </KeyboardStickyView>
+        </KeyboardStickyView> */}
       </View>
     </Container>
   );
