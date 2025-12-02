@@ -1,0 +1,72 @@
+import styled from '@emotion/native';
+import { Send } from 'lucide-react-native';
+import React, { useState } from 'react';
+import { TextInput, TouchableOpacity, View } from 'react-native';
+
+import { theme } from '../../../shared/theme';
+
+interface ChatInputProps {
+  onSend: (text: string) => void;
+}
+
+export function ChatInput({ onSend }: ChatInputProps) {
+  const [text, setText] = useState('');
+
+  const handleSend = () => {
+    if (text.trim()) {
+      onSend(text);
+      setText('');
+    }
+  };
+
+  return (
+    <Container>
+      <InputContainer>
+        <StyledInput
+          value={text}
+          onChangeText={setText}
+          placeholder="메세지를 입력해주세요."
+          placeholderTextColor={theme.colors.text.subtitle}
+          multiline
+        />
+        <SendButton onPress={handleSend} disabled={!text.trim()}>
+          <Send
+            color={text.trim() ? theme.colors.text.primary : theme.colors.text.subtitle}
+            size={24}
+          />
+        </SendButton>
+      </InputContainer>
+    </Container>
+  );
+}
+
+const Container = styled(View)`
+  padding: 16px;
+  background-color: ${theme.colors.background.screen};
+  border-top-width: 1px;
+  border-top-color: ${theme.colors.border.light};
+`;
+
+const InputContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  background-color: ${theme.colors.neutral.gray100};
+  border-radius: 24px;
+  padding-horizontal: 16px;
+  padding-vertical: 8px;
+  min-height: 48px;
+`;
+
+const StyledInput = styled(TextInput)`
+  flex: 1;
+  font-size: 14px;
+  color: ${theme.colors.text.primary};
+  max-height: 100px;
+  padding-top: 0;
+  padding-bottom: 0;
+`;
+
+const SendButton = styled(TouchableOpacity)`
+  margin-left: 8px;
+  padding: 4px;
+`;

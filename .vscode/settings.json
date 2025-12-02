@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit" // 저장할 때 ESLint 규칙대로 고치기
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}
