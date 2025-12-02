@@ -19,7 +19,15 @@
 
 - **Node.js**: v18 이상 ([다운로드](https://nodejs.org/))
 - **Yarn**: 패키지 매니저 (`npm install -g yarn`)
-- **Expo Go** 앱: 모바일 테스트용 ([iOS](https://apps.apple.com/app/expo-go/id982107779) / [Android](https://play.google.com/store/apps/details?id=host.exp.exponent))
+
+> ⚠️ **네이티브 빌드 필수 요구 사항** (Android/iOS 실제 기기 또는 에뮬레이터 테스트 시)
+>
+> 이 프로젝트는 네이티브 모듈을 사용하므로 **Expo Go와 호환되지 않습니다**.
+> 실제 디바이스나 에뮬레이터에서 테스트하려면 아래 환경 설정이 필요합니다:
+>
+> - **Java Development Kit (JDK)**: **17 버전 (권장)** 또는 11 버전
+> - **Android Studio**: Android 빌드용 (macOS/Windows)
+> - **Xcode**: iOS 빌드용 (macOS만 가능)
 
 ### 1단계: 의존성 설치
 
@@ -48,12 +56,303 @@ EXPO_PUBLIC_API_URL=http://localhost:3000
 yarn start
 ```
 
-실행하면 터미널에 **QR 코드**가 나타납니다.
+### 4단계: 실제 기기 또는 에뮬레이터에서 테스트
 
-**📱 스마트폰으로 테스트하기:**
+> ⚠️ **중요**: 이 프로젝트는 네이티브 모듈을 사용하므로 Expo Go와 호환되지 않습니다.
+> 아래 환경 설정을 완료한 후 `npx expo run:android` 또는 `npx expo run:ios` 명령어를 사용해야 합니다.
 
-1. **Android**: Expo Go 앱을 열고 QR 코드 스캔
-2. **iOS**: 카메라 앱으로 QR 코드 스캔 → Expo Go에서 열기
+---
+
+## ☕ Java 버전 안내
+
+> **중요**: React Native는 JDK 17 버전을 권장합니다.
+
+### 지원하는 Java 버전
+
+- ✅ **JDK 17** (권장) - 안정적이고 최신 기능 지원
+- ✅ **JDK 11** (지원) - 작동하지만 17 권장
+- ❌ **JDK 8** - 너무 오래되어 호환성 문제 발생 가능
+- ⚠️ **JDK 21+** - 일부 Gradle 플러그인과 호환성 문제 가능
+
+### Java 버전 확인
+
+```bash
+# macOS/Linux/Windows 공통
+java -version
+```
+
+출력 예시:
+
+```
+openjdk version "17.0.9" 2023-10-17 LTS
+OpenJDK Runtime Environment Zulu17.46+19-CA (build 17.0.9+8-LTS)
+```
+
+> 💡 **Zulu JDK 17을 권장하는 이유**:
+>
+> - 무료 오픈소스 (상업적 사용 가능)
+> - 장기 지원(LTS) 버전
+> - React Native 공식 문서 권장
+> - macOS/Windows 모두 지원
+
+---
+
+## 🍎 macOS 환경 설정
+
+### iOS 빌드 환경 (macOS만 가능)
+
+#### 1. Xcode 설치
+
+- App Store에서 Xcode 다운로드 및 설치
+- 터미널에서 Command Line Tools 설정:
+  ```bash
+  sudo xcode-select --install
+  ```
+
+#### 2. CocoaPods 설치
+
+```bash
+sudo gem install cocoapods
+```
+
+#### 3. iOS 시뮬레이터에서 실행
+
+```bash
+npx expo run:ios
+```
+
+- 자동으로 iOS 시뮬레이터가 실행됩니다
+- 특정 디바이스 선택: `npx expo run:ios --device`
+
+#### 4. 실제 iPhone에서 실행
+
+- iPhone을 USB로 연결
+- Xcode에서 개발자 계정 등록 필요
+
+```bash
+npx expo run:ios --device
+```
+
+### Android 빌드 환경 (macOS)
+
+#### 1. Android Studio 설치
+
+- [Android Studio](https://developer.android.com/studio) 다운로드 및 설치
+
+#### 2. Android SDK 설정
+
+- Android Studio 실행 → More Actions → SDK Manager
+- **SDK Platforms**: Android 13.0 (API 33) 이상 설치
+- **SDK Tools**: Android SDK Build-Tools, Android Emulator 설치
+
+#### 3. 환경 변수 설정
+
+`~/.zshrc` 또는 `~/.bash_profile`에 추가:
+
+```bash
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+```
+
+저장 후 터미널 재실행 또는:
+
+```bash
+source ~/.zshrc
+```
+
+#### 4. Java Development Kit (JDK) 17 설치
+
+**방법 1: Homebrew 사용 (권장)**
+
+```bash
+# Zulu JDK 17 설치
+brew install --cask zulu@17
+```
+
+**방법 2: 직접 다운로드**
+
+- [Zulu JDK 17 다운로드](https://www.azul.com/downloads/?version=java-17-lts&os=macos&package=jdk#zulu)
+- `.dmg` 파일 다운로드 후 설치
+
+**설치 확인**
+
+```bash
+java -version
+# "openjdk version 17.x.x"가 출력되어야 함
+```
+
+**여러 Java 버전이 설치된 경우**
+
+```bash
+# Java 17로 기본 버전 설정
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+
+# ~/.zshrc에 추가하면 영구 적용
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 17)' >> ~/.zshrc
+source ~/.zshrc
+```
+
+#### 5. Android 에뮬레이터에서 실행
+
+- Android Studio에서 AVD(가상 디바이스) 생성
+- 터미널에서 실행:
+
+```bash
+npx expo run:android
+```
+
+#### 6. 실제 Android 기기에서 실행
+
+- 개발자 옵션 활성화 (설정 → 휴대전화 정보 → 빌드 번호 7회 탭)
+- USB 디버깅 활성화
+- USB로 연결 후:
+
+```bash
+npx expo run:android --device
+```
+
+---
+
+## 🪟 Windows 환경 설정
+
+> ⚠️ **iOS 빌드는 Windows에서 불가능합니다**. macOS 또는 Expo EAS Build 서비스를 사용하세요.
+
+### Android 빌드 환경 (Windows)
+
+#### 1. Android Studio 설치
+
+- [Android Studio](https://developer.android.com/studio) 다운로드 및 설치
+
+#### 2. Android SDK 설정
+
+- Android Studio 실행 → More Actions → SDK Manager
+- **SDK Platforms**: Android 13.0 (API 33) 이상 설치
+- **SDK Tools**: Android SDK Build-Tools, Android Emulator 설치
+
+#### 3. 환경 변수 설정 (시스템 환경 변수)
+
+- 제어판 → 시스템 → 고급 시스템 설정 → 환경 변수
+- **시스템 변수에 새로 만들기**:
+  ```
+  변수 이름: ANDROID_HOME
+  변수 값: C:\Users\[사용자명]\AppData\Local\Android\Sdk
+  ```
+- **Path 변수에 추가**:
+  ```
+  %ANDROID_HOME%\platform-tools
+  %ANDROID_HOME%\emulator
+  ```
+
+#### 4. Java Development Kit (JDK) 17 설치
+
+**다운로드 및 설치**
+
+- [Zulu JDK 17 (Windows x64)](https://www.azul.com/downloads/?version=java-17-lts&os=windows&package=jdk#zulu) 다운로드
+- `.msi` 인스톨러 실행
+- ✅ **중요**: 설치 중 "Add to PATH" 옵션 반드시 체크!
+
+**설치 확인 (PowerShell 또는 CMD)**
+
+```bash
+java -version
+# "openjdk version 17.x.x"가 출력되어야 함
+```
+
+**JAVA_HOME 환경 변수 설정** (자동 설정 안 된 경우)
+
+1. 제어판 → 시스템 → 고급 시스템 설정 → 환경 변수
+2. 시스템 변수에서 "새로 만들기":
+   ```
+   변수 이름: JAVA_HOME
+   변수 값: C:\Program Files\Zulu\zulu-17
+   ```
+3. Path 변수에 추가:
+   ```
+   %JAVA_HOME%\bin
+   ```
+4. PowerShell 재시작 후 `java -version` 재확인
+
+**여러 Java 버전이 설치된 경우**
+
+- JAVA_HOME을 JDK 17 경로로 설정
+- Path에서 JDK 17의 bin 경로가 다른 Java 경로보다 위에 있는지 확인
+
+#### 5. Android 에뮬레이터에서 실행
+
+- Android Studio에서 AVD(가상 디바이스) 생성
+- PowerShell 또는 CMD에서 실행:
+
+```bash
+npx expo run:android
+```
+
+#### 6. 실제 Android 기기에서 실행
+
+- 개발자 옵션 활성화 (설정 → 휴대전화 정보 → 빌드 번호 7회 탭)
+- USB 디버깅 활성화
+- USB로 연결 후:
+
+```bash
+npx expo run:android --device
+```
+
+---
+
+## 🔧 자주 발생하는 문제
+
+### Java 버전 충돌 문제
+
+```bash
+# 현재 사용 중인 Java 버전 확인
+java -version
+
+# macOS: JAVA_HOME 확인
+echo $JAVA_HOME
+
+# Windows: JAVA_HOME 확인
+echo %JAVA_HOME%
+```
+
+### Android 빌드 시 "Could not determine java version" 에러
+
+- JDK 17이 제대로 설치되었는지 확인
+- JAVA_HOME 환경 변수가 올바르게 설정되었는지 확인
+- 터미널/PowerShell 재시작 후 재시도
+
+### macOS에서 여러 Java 버전 관리
+
+```bash
+# 설치된 모든 Java 버전 확인
+/usr/libexec/java_home -V
+
+# Java 17 사용
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+```
+
+### iOS 빌드 시 CocoaPods 에러
+
+```bash
+cd ios
+pod install
+cd ..
+npx expo run:ios
+```
+
+### Android 빌드 시 Gradle 에러
+
+```bash
+cd android
+./gradlew clean
+cd ..
+npx expo run:android
+```
+
+### 환경 변수가 인식되지 않을 때
+
+- 터미널/PowerShell을 완전히 종료 후 재실행
+- macOS: `echo $ANDROID_HOME`으로 확인
+- Windows: `echo %ANDROID_HOME%`으로 확인
 
 ---
 
