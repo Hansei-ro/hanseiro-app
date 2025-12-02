@@ -90,11 +90,11 @@ export function ChatScreen() {
       <ChatHeader title="25.11.24 / 산본역" onBackPress={handleBack} />
       <View style={{ flex: 1 }}>
         <ChatList messages={processedMessages} />
-        {/* <KeyboardStickyView offset={{ closed: 0, opened: 0 }}>
-          <InputWrapper bottomInset={insets.bottom}>
-            <ChatInput onSend={handleSend} />
-          </InputWrapper>
-        </KeyboardStickyView> */}
+        {/* <KeyboardStickyView offset={{ closed: 0, opened: 0 }}> */}
+        <InputWrapper bottomInset={insets.bottom}>
+          <ChatInput onSend={handleSend} />
+        </InputWrapper>
+        {/* </KeyboardStickyView> */}
       </View>
     </Container>
   );
