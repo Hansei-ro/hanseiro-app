@@ -101,6 +101,10 @@ OpenJDK Runtime Environment Zulu17.46+19-CA (build 17.0.9+8-LTS)
 
 ### iOS 빌드 환경 (macOS만 가능)
 
+> 💡 **권장**: 개발 단계에서는 **iOS 시뮬레이터** 사용을 권장합니다.  
+> 실제 iPhone은 개발자 계정 등록, 인증서 설정 등 추가 작업이 필요하므로,  
+> 최종 테스트 단계에서만 사용하는 것이 효율적입니다.
+
 #### 1. Xcode 설치
 
 - App Store에서 Xcode 다운로드 및 설치
@@ -115,14 +119,15 @@ OpenJDK Runtime Environment Zulu17.46+19-CA (build 17.0.9+8-LTS)
 sudo gem install cocoapods
 ```
 
-#### 3. iOS 시뮬레이터에서 실행
+#### 3. iOS 시뮬레이터에서 실행 (권장)
 
 ```bash
 npx expo run:ios
 ```
 
 - 자동으로 iOS 시뮬레이터가 실행됩니다
-- 특정 디바이스 선택: `npx expo run:ios --device`
+- 별도의 개발자 계정이나 인증서 설정 없이 바로 테스트 가능합니다
+- 특정 디바이스 선택: `npx expo run:ios --simulator="iPhone 15 Pro"`
 
 #### 4. 실제 iPhone에서 실행
 
