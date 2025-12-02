@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { theme } from '../../../shared/theme';
 import { ChatHeader } from '../components/ChatHeader';
+import { ChatInput } from '../components/ChatInput';
 import { ChatList } from '../components/ChatList';
 import { Message } from '../components/ChatMessage';
 
