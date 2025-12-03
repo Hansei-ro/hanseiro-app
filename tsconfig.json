@@ -23,5 +23,6 @@
 
     // 5. 사용되지 않는 함수 파라미터 경고 (단, _로 시작하면 제외)
     "noUnusedParameters": true
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"]
 }
