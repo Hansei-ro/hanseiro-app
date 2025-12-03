@@ -4,13 +4,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { theme } from '../../../shared/theme';
 import { BusArrivalDetailBox } from '../components/BusArrivalDetail';
+import { MatchingStatus } from '../components/MatchingStatus';
+import { WeatherInform } from '../components/WeatherInform';
 
 export function HomeScreen() {
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Title>홈</Title>
-        <Subtitle>한세로 메인 화면</Subtitle>
+        <WeatherInform />
+        <MatchingStatus />
         <BusArrivalDetailBox />
       </Container>
     </SafeArea>
@@ -19,23 +21,16 @@ export function HomeScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${theme.colors.background.default};
+  background-color: purple;
+  background-color: ${theme.colors.background.screen};
 `;
 
 const Container = styled(View)`
   flex: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.background.default};
-`;
-
-const Title = styled(Text)`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const Subtitle = styled(Text)`
-  font-size: 16px;
-  color: ${theme.colors.text.secondary};
+  padding: 0 20px;
+  gap: 20px;
+  background-color: ${theme.colors.background.screen};
 `;
