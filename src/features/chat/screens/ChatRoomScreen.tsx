@@ -1,10 +1,10 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Keyboard, Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { theme } from '../../../shared/theme';
 import { ChatHeader } from '../components/ChatHeader';
 import { ChatInput } from '../components/ChatInput';
 import { ChatList } from '../components/ChatList';
@@ -87,6 +87,7 @@ const MOCK_MESSAGES: Message[] = [
 
 export function ChatRoomScreen() {
   const router = useRouter();
+  const theme = useTheme();
 
   // 키보드 높이 추적
   const [keyboardHeight, setKeyboardHeight] = useState(0);
@@ -198,5 +199,5 @@ export function ChatRoomScreen() {
 }
 
 const InputWrapper = styled(View)`
-  background-color: ${theme.colors.primary.white};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;

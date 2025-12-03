@@ -1,9 +1,8 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { ChevronLeft } from 'lucide-react-native';
 import React, { ReactNode } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-
-import { theme } from '../../../shared/theme';
 
 interface ChatHeaderProps {
   title: string;
@@ -12,6 +11,7 @@ interface ChatHeaderProps {
 }
 
 export function ChatHeader({ title, onBackPress, rightElement }: ChatHeaderProps) {
+  const theme = useTheme();
   return (
     <Container>
       <LeftButton onPress={onBackPress}>
@@ -29,7 +29,7 @@ const Container = styled(View)`
   justify-content: space-between;
   height: 56px;
   padding-horizontal: 16px;
-  background-color: ${theme.colors.primary.white};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const LeftButton = styled(TouchableOpacity)`
@@ -42,7 +42,7 @@ const LeftButton = styled(TouchableOpacity)`
 const Title = styled(Text)`
   font-size: 18px;
   font-weight: 600;
-  color: ${theme.colors.primary.black};
+  color: ${({ theme }) => theme.colors.primary.black};
   text-align: center;
   flex: 1;
 `;

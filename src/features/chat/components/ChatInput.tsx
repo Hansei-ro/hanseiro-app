@@ -1,9 +1,8 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { Send } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
-
-import { theme } from '../../../shared/theme';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -11,6 +10,7 @@ interface ChatInputProps {
 
 export function ChatInput({ onSend }: ChatInputProps) {
   const [text, setText] = useState('');
+  const theme = useTheme();
 
   const handleSend = () => {
     if (text.trim()) {
@@ -42,13 +42,13 @@ export function ChatInput({ onSend }: ChatInputProps) {
 
 const Container = styled(View)`
   padding: 16px;
-  background-color: ${theme.colors.primary.white};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const InputContainer = styled(View)`
   flex-direction: row;
   align-items: center;
-  background-color: ${theme.colors.background.chat};
+  background-color: ${({ theme }) => theme.colors.background.chat};
   border-radius: 24px;
   padding-horizontal: 16px;
   padding-vertical: 8px;
@@ -58,7 +58,7 @@ const InputContainer = styled(View)`
 const StyledInput = styled(TextInput)`
   flex: 1;
   font-size: 14px;
-  color: ${theme.colors.primary.black};
+  color: ${({ theme }) => theme.colors.primary.black};
   max-height: 100px;
   padding-top: 0;
   padding-bottom: 0;

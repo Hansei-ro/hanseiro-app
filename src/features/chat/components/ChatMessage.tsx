@@ -1,8 +1,5 @@
 import styled from '@emotion/native';
-import React from 'react';
 import { Text, View } from 'react-native';
-
-import { theme } from '../../../shared/theme';
 
 export interface Message {
   id: string;
@@ -69,11 +66,6 @@ const DateSeparatorContainer = styled(View)`
   margin-vertical: 16px;
 `;
 
-const DateText = styled(Text)`
-  font-size: 12px;
-  color: ${theme.colors.text.secondary};
-`;
-
 const MessageContainer = styled(View)<{ isMe: boolean }>`
   flex-direction: row;
   justify-content: ${({ isMe }) => (isMe ? 'flex-end' : 'flex-start')};
@@ -81,23 +73,9 @@ const MessageContainer = styled(View)<{ isMe: boolean }>`
   padding-horizontal: 16px;
 `;
 
-const ProfilePlaceholder = styled(View)`
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background-color: ${theme.colors.background.chat};
-  margin-right: 8px;
-`;
-
 const ContentContainer = styled(View)<{ isMe: boolean }>`
   align-items: ${({ isMe }) => (isMe ? 'flex-end' : 'flex-start')};
   max-width: 70%;
-`;
-
-const SenderName = styled(Text)`
-  font-size: 13px;
-  color: ${theme.colors.text.secondary};
-  margin-bottom: 4px;
 `;
 
 const BubbleRow = styled(View)<{ isMe: boolean }>`
@@ -105,8 +83,34 @@ const BubbleRow = styled(View)<{ isMe: boolean }>`
   align-items: flex-end;
 `;
 
+const TimeText = styled(Text)`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.text.tertiary};
+  margin-horizontal: 4px;
+  margin-bottom: 2px;
+`;
+
+const DateText = styled(Text)`
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.text.secondary};
+`;
+
+const ProfilePlaceholder = styled(View)`
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.background.chat};
+  margin-right: 8px;
+`;
+
+const SenderName = styled(Text)`
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.text.secondary};
+  margin-bottom: 4px;
+`;
+
 const Bubble = styled(View)<{ isMe: boolean }>`
-  background-color: ${({ isMe }) =>
+  background-color: ${({ isMe, theme }) =>
     isMe ? theme.colors.primary.main : theme.colors.background.chat};
   padding: 10px 14px;
   border-radius: 16px;
@@ -115,13 +119,6 @@ const Bubble = styled(View)<{ isMe: boolean }>`
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
   font-size: 14px;
-  color: ${({ isMe }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
+  color: ${({ isMe, theme }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
   line-height: 20px;
-`;
-
-const TimeText = styled(Text)`
-  font-size: 12px;
-  color: #ced4db;
-  margin-horizontal: 4px;
-  margin-bottom: 2px;
 `;

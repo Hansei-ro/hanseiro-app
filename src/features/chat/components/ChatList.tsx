@@ -1,8 +1,5 @@
 import styled from '@emotion/native';
-import React from 'react';
 import { FlatList } from 'react-native';
-
-import { theme } from '../../../shared/theme';
 
 import { ChatMessage, Message } from './ChatMessage';
 
@@ -27,5 +24,5 @@ export function ChatList({ messages, contentContainerStyle, inverted }: ChatList
 
 const StyledFlatList = styled(FlatList)`
   flex: 1;
-  background-color: ${theme.colors.primary.white};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;

@@ -4,8 +4,6 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { theme } from '../../../shared/theme';
-
 export function ChatListScreen() {
   const router = useRouter();
 
@@ -27,7 +25,7 @@ export function ChatListScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${theme.colors.background.default};
+  background-color: ${({ theme }) => theme.colors.background.default};
 `;
 
 const Container = styled(View)`
@@ -39,18 +37,18 @@ const Title = styled(Text)`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 24px;
-  color: ${theme.colors.primary.black};
+  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const ChatRoomButton = styled(TouchableOpacity)`
-  background-color: ${theme.colors.primary.main};
+  background-color: ${({ theme }) => theme.colors.primary.main};
   padding: 16px;
   border-radius: 12px;
   align-items: center;
 `;
 
 const ButtonText = styled(Text)`
-  color: ${theme.colors.text.main};
+  color: ${({ theme }) => theme.colors.text.main};
   font-size: 16px;
   font-weight: 600;
 `;
