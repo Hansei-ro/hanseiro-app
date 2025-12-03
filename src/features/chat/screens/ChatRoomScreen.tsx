@@ -10,6 +10,11 @@ import { ChatInput } from '../components/ChatInput';
 import { ChatList } from '../components/ChatList';
 import { Message } from '../components/ChatMessage';
 
+// iOS 키보드 높이 계산 시 TabBar 높이를 고려한 오프셋 값
+// iOS에서는 TabBar(하단 탭 바)가 키보드 높이에 포함되어 있으므로,
+// 실제 콘텐츠 영역 조정 시 이를 차감해야 올바른 레이아웃을 유지할 수 있음
+const IOS_KEYBOARD_OFFSET = 35;
+
 const MOCK_MESSAGES: Message[] = [
   {
     id: '1',
@@ -179,7 +184,8 @@ export function ChatRoomScreen() {
       <View
         style={{
           flex: 1,
-          paddingBottom: Platform.OS === 'ios' ? keyboardHeight - 35 : keyboardHeight,
+          paddingBottom:
+            Platform.OS === 'ios' ? keyboardHeight - IOS_KEYBOARD_OFFSET : keyboardHeight,
         }}
       >
         <ChatList messages={processedMessages} inverted />
