@@ -2,6 +2,10 @@ import styled from '@emotion/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
+import arrowRight from '@/shared/icons/arrowRight.png';
+import warnning from '@/shared/icons/warnning.png';
+import BusIamge from '@/shared/images/BusImage.png';
+
 // type BusArrivalDetail = {
 //   id: string; //표시 할 버스노선갯수
 //   busNumber: string; //버스번호
@@ -10,10 +14,10 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 //   isDelay?: boolean; //지연여부
 // };
 
-const Container = styled(View)`
+const BusDetailBoxFrame = styled(View)`
   display: flex;
   position: fixed;
-  bottom: 20%;
+  bottom: 18%;
   height: 40%;
   width: 90%;
   border: solid 1px #f2f4f5;
@@ -22,7 +26,7 @@ const Container = styled(View)`
   padding: 15px;
 `;
 
-const Outer = styled(View)`
+const BusDetailOuter = styled(View)`
   height: 25%;
   width: 100%;
   background-color: none;
@@ -31,7 +35,7 @@ const Outer = styled(View)`
   margin-top: 25px;
 `;
 
-const Inner = styled(View)`
+const BusItemWrapper = styled(View)`
   height: 80%;
   width: 100%;
   border: none;
@@ -77,7 +81,7 @@ const MoreInformBox = styled(View)`
   gap: 5px;
 `;
 
-const MoreInform = styled(TouchableOpacity)`
+const MoreInformButton = styled(TouchableOpacity)`
   background-color: none;
   border-radius: 20px;
   display: flex;
@@ -118,7 +122,7 @@ const HowLong = styled(Text)`
   color: #848c95;
 `;
 
-const IsDelayBox = styled(View)`
+const DelayWarningBox = styled(View)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -127,7 +131,7 @@ const IsDelayBox = styled(View)`
   gap: 5px;
 `;
 
-const IsDelay = styled(Text)`
+const DelayWarningText = styled(Text)`
   text-align: center;
   color: #ffbf01;
   font-size: 12px;
@@ -142,23 +146,17 @@ export function BusArrivalDetailBox(
     // isDelay,
   },
 ) {
-  const busIconSource = require('/Users/yeram_910/Desktop/hanseiro-app/assets/BusImage.png');
-
-  const WarningIconSource = require('/Users/yeram_910/Desktop/hanseiro-app/assets/warnning.png');
-
-  const ArrowRightIconSource = require('/Users/yeram_910/Desktop/hanseiro-app/assets/arrowRight.png');
-
   return (
-    <Container>
+    <BusDetailBoxFrame>
       <MoreInformBox>
-        <MoreInform onPress={() => console.log('버튼 클릭')}>
+        <MoreInformButton onPress={() => console.log('버튼 클릭')}>
           <MoreInformText>실시간 버스 정보 </MoreInformText>
-          <ArrowRight source={ArrowRightIconSource} />
-        </MoreInform>
+          <ArrowRight source={arrowRight} />
+        </MoreInformButton>
       </MoreInformBox>
-      <Outer>
-        <Inner>
-          <BusImage source={busIconSource} />
+      <BusDetailOuter>
+        <BusItemWrapper>
+          <BusImage source={BusIamge} />
           <BusInform>
             <InformLeft>
               <BusNumber>81번</BusNumber>
@@ -166,16 +164,16 @@ export function BusArrivalDetailBox(
             </InformLeft>
             <ArrivalTimeSoon>곧 도착</ArrivalTimeSoon>
           </BusInform>
-        </Inner>
-        <IsDelayBox>
-          <WarningImage source={WarningIconSource} />
-          <IsDelay>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</IsDelay>
-        </IsDelayBox>
-      </Outer>
+        </BusItemWrapper>
+        <DelayWarningBox>
+          <WarningImage source={warnning} />
+          <DelayWarningText>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</DelayWarningText>
+        </DelayWarningBox>
+      </BusDetailOuter>
 
-      <Outer>
-        <Inner>
-          <BusImage source={busIconSource} />
+      <BusDetailOuter>
+        <BusItemWrapper>
+          <BusImage source={BusIamge} />
           <BusInform>
             <InformLeft>
               <BusNumber>10번</BusNumber>
@@ -183,12 +181,12 @@ export function BusArrivalDetailBox(
             </InformLeft>
             <ArrivalTime>5분 뒤 도착</ArrivalTime>
           </BusInform>
-        </Inner>
-      </Outer>
+        </BusItemWrapper>
+      </BusDetailOuter>
 
-      <Outer>
-        <Inner>
-          <BusImage source={busIconSource} />
+      <BusDetailOuter>
+        <BusItemWrapper>
+          <BusImage source={BusIamge} />
           <BusInform>
             <InformLeft>
               <BusNumber>3300번</BusNumber>
@@ -196,8 +194,8 @@ export function BusArrivalDetailBox(
             </InformLeft>
             <ArrivalTime>10분 뒤 도착</ArrivalTime>
           </BusInform>
-        </Inner>
-      </Outer>
-    </Container>
+        </BusItemWrapper>
+      </BusDetailOuter>
+    </BusDetailBoxFrame>
   );
 }

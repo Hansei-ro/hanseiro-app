@@ -329,19 +329,37 @@ const count = 0; // number 자동 추론
 const [text, setText] = useState(''); // string 추론
 ```
 
+### 🎯 type vs interface 선택 가이드
+
+**기본 원칙: `type` 우선 사용 권장**
+
+```typescript
+// ✅ 권장: type 사용 (의도치 않은 병합 방지, 더 강력한 표현력)
+type User = { name: string; age: number };
+type Status = 'active' | 'inactive' | 'pending';
+type Coords = [number, number];
+
+// ⚠️ interface는 특수한 경우만 사용
+// - 외부 라이브러리 확장 (Window, Document 등)
+// - 선언 병합이 명시적으로 필요한 경우
+```
+
+**왜 type을 권장하는가?**
+
+- 의도치 않은 선언 병합 방지 (안전성)
+- 유니온, 튜플 등 다양한 타입 표현 가능 (유연성)
+- 일관된 코드베이스 유지 (가독성)
+
+> 💡 **참고**: ESLint는 강제하지 않지만, 프로젝트 컨벤션으로 `type` 우선 사용을 권장합니다.
+
 ### ⚠️ 강제 규칙 (ESLint 자동 검사)
 
 ```typescript
-// ❌ interface 사용 금지
-interface User {
-  name: string;
-} // ESLint 에러
-
-// ✅ type 사용
-type User = { name: string };
-
 // ❌ any 타입 사용 금지
 const data: any = {}; // ESLint 에러
+
+// ✅ 구체적인 타입 사용
+const data: Record<string, unknown> = {};
 ```
 
 ### 💡 판단 기준
