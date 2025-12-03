@@ -15,7 +15,7 @@ export function ChatHeader({ title, onBackPress, rightElement }: ChatHeaderProps
   return (
     <Container>
       <LeftButton onPress={onBackPress}>
-        <ChevronLeft color={theme.colors.text.primary} size={24} />
+        <ChevronLeft color={theme.colors.primary.black} size={24} />
       </LeftButton>
       <Title>{title}</Title>
       <RightContainer>{rightElement}</RightContainer>
@@ -29,7 +29,7 @@ const Container = styled(View)`
   justify-content: space-between;
   height: 56px;
   padding-horizontal: 16px;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.primary.white};
 `;
 
 const LeftButton = styled(TouchableOpacity)`
@@ -42,7 +42,7 @@ const LeftButton = styled(TouchableOpacity)`
 const Title = styled(Text)`
   font-size: 18px;
   font-weight: 600;
-  color: ${theme.colors.text.primary};
+  color: ${theme.colors.primary.black};
   text-align: center;
   flex: 1;
 `;

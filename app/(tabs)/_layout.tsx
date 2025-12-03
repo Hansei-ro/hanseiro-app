@@ -13,12 +13,12 @@ export default function TabLayout() {
   const screenOptions = useMemo(
     () => ({
       headerShown: false,
-      tabBarActiveTintColor: theme.colors.primary.default,
-      tabBarInactiveTintColor: theme.colors.neutral.gray400,
+      tabBarActiveTintColor: theme.colors.primary.main,
+      tabBarInactiveTintColor: theme.colors.semantic.iconNav,
       tabBarStyle: {
-        backgroundColor: theme.colors.neutral.white,
+        backgroundColor: theme.colors.primary.white,
         borderTopWidth: 1,
-        borderTopColor: theme.colors.border.light,
+        borderTopColor: theme.colors.semantic.stroke,
         height: 60 + insets.bottom,
         paddingBottom: insets.bottom + 5,
       },
@@ -53,7 +53,7 @@ export default function TabLayout() {
           tabBarIcon: ({ focused }) => (
             <MatchButton>
               {focused ? (
-                <X color={theme.colors.text.inverse} size={25} />
+                <X color={theme.colors.text.main} size={25} />
               ) : (
                 <MatchIcon width={25} height={25} />
               )}
@@ -85,8 +85,8 @@ const MatchButton = styled.View`
   width: 46px;
   height: 46px;
   border-radius: 23px;
-  background-color: ${theme.colors.primary.default};
+  background-color: ${theme.colors.primary.main};
   justify-content: center;
   align-items: center;
-  shadow-color: ${theme.colors.primary.default};
+  shadow-color: ${theme.colors.primary.main};
 `;

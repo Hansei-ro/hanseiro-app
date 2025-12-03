@@ -177,7 +177,7 @@ export function ChatRoomScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.background.screen }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.primary.white }}>
       <ChatHeader title="25.11.24 / 산본역" onBackPress={handleBack} />
 
       {/* 키보드 높이만큼 paddingBottom 적용 */}
@@ -198,5 +198,5 @@ export function ChatRoomScreen() {
 }
 
 const InputWrapper = styled(View)`
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.primary.white};
 `;

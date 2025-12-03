@@ -27,7 +27,7 @@ export function ChatListScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.background.default};
 `;
 
 const Container = styled(View)`
@@ -39,18 +39,18 @@ const Title = styled(Text)`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 24px;
-  color: ${theme.colors.text.primary};
+  color: ${theme.colors.primary.black};
 `;
 
 const ChatRoomButton = styled(TouchableOpacity)`
-  background-color: ${theme.colors.primary.default};
+  background-color: ${theme.colors.primary.main};
   padding: 16px;
   border-radius: 12px;
   align-items: center;
 `;
 
 const ButtonText = styled(Text)`
-  color: ${theme.colors.text.inverse};
+  color: ${theme.colors.text.main};
   font-size: 16px;
   font-weight: 600;
 `;

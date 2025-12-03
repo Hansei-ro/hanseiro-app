@@ -71,7 +71,7 @@ const DateSeparatorContainer = styled(View)`
 
 const DateText = styled(Text)`
   font-size: 12px;
-  color: ${theme.colors.text.subtitle};
+  color: ${theme.colors.text.secondary};
 `;
 
 const MessageContainer = styled(View)<{ isMe: boolean }>`
@@ -85,7 +85,7 @@ const ProfilePlaceholder = styled(View)`
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background-color: ${theme.colors.neutral.gray200};
+  background-color: ${theme.colors.background.chat};
   margin-right: 8px;
 `;
 
@@ -96,7 +96,7 @@ const ContentContainer = styled(View)<{ isMe: boolean }>`
 
 const SenderName = styled(Text)`
   font-size: 13px;
-  color: ${theme.colors.text.subtitle};
+  color: ${theme.colors.text.secondary};
   margin-bottom: 4px;
 `;
 
@@ -107,7 +107,7 @@ const BubbleRow = styled(View)<{ isMe: boolean }>`
 
 const Bubble = styled(View)<{ isMe: boolean }>`
   background-color: ${({ isMe }) =>
-    isMe ? theme.colors.primary.default : theme.colors.neutral.gray100};
+    isMe ? theme.colors.primary.main : theme.colors.background.chat};
   padding: 10px 14px;
   border-radius: 16px;
   ${({ isMe }) => (isMe ? 'border-top-right-radius: 4px;' : 'border-top-left-radius: 4px;')}
@@ -115,13 +115,13 @@ const Bubble = styled(View)<{ isMe: boolean }>`
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
   font-size: 14px;
-  color: ${({ isMe }) => (isMe ? theme.colors.text.inverse : theme.colors.text.primary)};
+  color: ${({ isMe }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
   line-height: 20px;
 `;
 
 const TimeText = styled(Text)`
   font-size: 12px;
-  color: ${theme.colors.text.subtitle};
+  color: ${theme.colors.text.secondary};
   margin-horizontal: 4px;
   margin-bottom: 2px;
 `;

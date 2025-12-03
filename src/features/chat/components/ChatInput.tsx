@@ -26,12 +26,12 @@ export function ChatInput({ onSend }: ChatInputProps) {
           value={text}
           onChangeText={setText}
           placeholder="메세지를 입력해주세요."
-          placeholderTextColor={theme.colors.text.subtitle}
+          placeholderTextColor={theme.colors.text.secondary}
           multiline
         />
         <SendButton onPress={handleSend} disabled={!text.trim()}>
           <Send
-            color={text.trim() ? theme.colors.text.primary : theme.colors.text.subtitle}
+            color={text.trim() ? theme.colors.primary.black : theme.colors.text.secondary}
             size={24}
           />
         </SendButton>
@@ -42,13 +42,13 @@ export function ChatInput({ onSend }: ChatInputProps) {
 
 const Container = styled(View)`
   padding: 16px;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.primary.white};
 `;
 
 const InputContainer = styled(View)`
   flex-direction: row;
   align-items: center;
-  background-color: ${theme.colors.neutral.gray100};
+  background-color: ${theme.colors.background.chat};
   border-radius: 24px;
   padding-horizontal: 16px;
   padding-vertical: 8px;
@@ -58,7 +58,7 @@ const InputContainer = styled(View)`
 const StyledInput = styled(TextInput)`
   flex: 1;
   font-size: 14px;
-  color: ${theme.colors.text.primary};
+  color: ${theme.colors.primary.black};
   max-height: 100px;
   padding-top: 0;
   padding-bottom: 0;

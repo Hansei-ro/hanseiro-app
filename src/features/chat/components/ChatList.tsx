@@ -27,5 +27,5 @@ export function ChatList({ messages, contentContainerStyle, inverted }: ChatList
 
 const StyledFlatList = styled(FlatList)`
   flex: 1;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.primary.white};
 `;
