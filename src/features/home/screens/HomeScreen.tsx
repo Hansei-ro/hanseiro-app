@@ -17,14 +17,14 @@ export function HomeScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.background.default};
 `;
 
 const Container = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.background.default};
 `;
 
 const Title = styled(Text)`
@@ -35,5 +35,5 @@ const Title = styled(Text)`
 
 const Subtitle = styled(Text)`
   font-size: 16px;
-  color: ${theme.colors.text.subtitle};
+  color: ${theme.colors.text.secondary};
 `;
