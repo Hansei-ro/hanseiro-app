@@ -18,8 +18,8 @@ export const colors = {
     gray900: '#111827',
   },
   background: {
-    main: '#FFFFFF',
-    screen: '#FFFFFF',
+    main: '#F8FAFB',
+    screen: '#F8FAFB',
   },
   text: {
     primary: '#111827',
