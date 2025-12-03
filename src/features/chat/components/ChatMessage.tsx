@@ -110,7 +110,7 @@ const Bubble = styled(View)<{ isMe: boolean }>`
     isMe ? theme.colors.primary.main : theme.colors.background.chat};
   padding: 10px 14px;
   border-radius: 16px;
-  ${({ isMe }) => (isMe ? 'border-top-right-radius: 4px;' : 'border-top-left-radius: 4px;')}
+  ${({ isMe }) => (isMe ? 'border-top-right-radius: 0px;' : 'border-top-left-radius: 0px;')}
 `;
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
@@ -121,7 +121,7 @@ const MessageText = styled(Text)<{ isMe: boolean }>`
 
 const TimeText = styled(Text)`
   font-size: 12px;
-  color: ${theme.colors.text.secondary};
+  color: #ced4db;
   margin-horizontal: 4px;
   margin-bottom: 2px;
 `;
