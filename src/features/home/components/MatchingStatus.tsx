@@ -7,12 +7,10 @@ import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
 const MatchingStatusFrame = styled(View)`
   display: flex;
-  position: fixed;
-  bottom: 60%;
-  height: 15%;
-  width: 90%;
+  height: 18%;
+  width: 100%;
   border: solid 1px #f2f4f5;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: white;
   padding: 18px;
 `;

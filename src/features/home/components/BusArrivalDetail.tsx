@@ -4,45 +4,36 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 import arrowRight from '@/shared/icons/arrowRight.png';
 import warnning from '@/shared/icons/warnning.png';
-import BusIamge from '@/shared/images/BusImage.png';
-
-// type BusArrivalDetail = {
-//   id: string; //표시 할 버스노선갯수
-//   busNumber: string; //버스번호
-//   howLong: string; //소요시간
-//   arrivalTime: string; //도착시간
-//   isDelay?: boolean; //지연여부
-// };
+import BusIcon from '@/shared/images/BusImage.png';
 
 const BusDetailBoxFrame = styled(View)`
   display: flex;
   position: fixed;
-  bottom: 18%;
-  height: 40%;
-  width: 90%;
+  bottom: 0%;
+  height: 50%;
+  width: 100%;
   border: solid 1px #f2f4f5;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: white;
   padding: 15px;
 `;
 
 const BusDetailOuter = styled(View)`
-  height: 25%;
   width: 100%;
+  height: 29%;
   background-color: none;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+  margin-top: 10px;
 `;
 
 const BusItemWrapper = styled(View)`
-  height: 80%;
   width: 100%;
-  border: none;
   background-color: none;
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-right: 10px;
 `;
 
 const BusImage = styled(Image)`
@@ -62,15 +53,14 @@ const ArrowRight = styled(Image)`
 `;
 
 const BusInform = styled(View)`
-  width: 80%;
+  flex: 1;
   height: 100%;
-  border: none;
   background-color: none;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: auto;
-  padding-right: 10px;
+  justify-content: space-between;
+  margin-left: 15px;
 `;
 
 const MoreInformBox = styled(View)`
@@ -95,8 +85,7 @@ const MoreInformText = styled(Text)`
 `;
 
 const InformLeft = styled(View)`
-  padding: 10px;
-  margin-bottom: 5px;
+  gap: 6px;
 `;
 
 const BusNumber = styled(Text)`
@@ -106,19 +95,18 @@ const BusNumber = styled(Text)`
 `;
 
 const ArrivalTime = styled(Text)`
-  margin-left: auto;
   color: #212528;
   font-weight: 600;
 `;
 
 const ArrivalTimeSoon = styled(Text)`
-  margin-left: auto;
   color: #fa5b4a;
   font-weight: 600;
 `;
 
 const HowLong = styled(Text)`
   font-size: 16px;
+  font-weight: 600;
   color: #848c95;
 `;
 
@@ -127,8 +115,9 @@ const DelayWarningBox = styled(View)`
   flex-direction: row;
   align-items: center;
   margin-top: 5px;
-  justify-content: center;
+  margin-left: 70px;
   gap: 5px;
+  background-color: none;
 `;
 
 const DelayWarningText = styled(Text)`
@@ -156,7 +145,7 @@ export function BusArrivalDetailBox(
       </MoreInformBox>
       <BusDetailOuter>
         <BusItemWrapper>
-          <BusImage source={BusIamge} />
+          <BusImage source={BusIcon} />
           <BusInform>
             <InformLeft>
               <BusNumber>81번</BusNumber>
@@ -173,7 +162,7 @@ export function BusArrivalDetailBox(
 
       <BusDetailOuter>
         <BusItemWrapper>
-          <BusImage source={BusIamge} />
+          <BusImage source={BusIcon} />
           <BusInform>
             <InformLeft>
               <BusNumber>10번</BusNumber>
@@ -186,7 +175,7 @@ export function BusArrivalDetailBox(
 
       <BusDetailOuter>
         <BusItemWrapper>
-          <BusImage source={BusIamge} />
+          <BusImage source={BusIcon} />
           <BusInform>
             <InformLeft>
               <BusNumber>3300번</BusNumber>
