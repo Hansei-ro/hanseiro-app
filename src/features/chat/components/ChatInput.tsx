@@ -43,8 +43,6 @@ export function ChatInput({ onSend }: ChatInputProps) {
 const Container = styled(View)`
   padding: 16px;
   background-color: ${theme.colors.background.screen};
-  border-top-width: 1px;
-  border-top-color: ${theme.colors.border.light};
 `;
 
 const InputContainer = styled(View)`

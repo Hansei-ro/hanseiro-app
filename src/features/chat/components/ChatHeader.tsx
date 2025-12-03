@@ -30,8 +30,6 @@ const Container = styled(View)`
   height: 56px;
   padding-horizontal: 16px;
   background-color: ${theme.colors.background.screen};
-  border-bottom-width: 1px;
-  border-bottom-color: ${theme.colors.border.light};
 `;
 
 const LeftButton = styled(TouchableOpacity)`

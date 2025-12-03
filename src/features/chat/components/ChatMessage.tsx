@@ -110,7 +110,7 @@ const Bubble = styled(View)<{ isMe: boolean }>`
     isMe ? theme.colors.primary.default : theme.colors.neutral.gray100};
   padding: 10px 14px;
   border-radius: 16px;
-  ${({ isMe }) => (isMe ? 'border-bottom-right-radius: 4px;' : 'border-top-left-radius: 4px;')}
+  ${({ isMe }) => (isMe ? 'border-top-right-radius: 4px;' : 'border-top-left-radius: 4px;')}
 `;
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
