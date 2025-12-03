@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 import fireImage from '@/shared/icons/FireImage.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
