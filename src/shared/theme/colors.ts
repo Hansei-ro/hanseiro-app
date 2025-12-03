@@ -4,12 +4,9 @@ export const colors = {
     white: '#FFFFFF',
     black: '#212528',
   },
-  text: {
-    main: '#FFFFFF',
-    secondary: '#848C95',
-    tertiary: '#CED4DB',
-    error: '#FA5B4A',
-    warning: '#FFBF01',
+  background: {
+    main: '#F8FAFB',
+    screen: '#F8FAFB',
   },
   semantic: {
     iconNav: '#ABB5BD',
