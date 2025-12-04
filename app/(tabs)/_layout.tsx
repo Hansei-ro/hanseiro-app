@@ -1,24 +1,25 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { Tabs } from 'expo-router';
 import { BusFront, Home, Library, MessageCircle, X } from 'lucide-react-native';
 import React, { useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import MatchIcon from '@/shared/icons/match.svg';
-import { theme } from '@/shared/theme';
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
+  const theme = useTheme();
 
   const screenOptions = useMemo(
     () => ({
       headerShown: false,
-      tabBarActiveTintColor: theme.colors.primary.default,
-      tabBarInactiveTintColor: theme.colors.neutral.gray400,
+      tabBarActiveTintColor: theme.colors.primary.main,
+      tabBarInactiveTintColor: theme.colors.semantic.iconNav,
       tabBarStyle: {
-        backgroundColor: theme.colors.neutral.white,
+        backgroundColor: theme.colors.primary.white,
         borderTopWidth: 1,
-        borderTopColor: theme.colors.border.light,
+        borderTopColor: theme.colors.semantic.stroke,
         height: 60 + insets.bottom,
         paddingBottom: insets.bottom + 5,
       },
@@ -27,7 +28,7 @@ export default function TabLayout() {
         fontWeight: '500' as const,
       },
     }),
-    [insets.bottom],
+    [insets.bottom, theme],
   );
 
   return (
@@ -53,7 +54,7 @@ export default function TabLayout() {
           tabBarIcon: ({ focused }) => (
             <MatchButton>
               {focused ? (
-                <X color={theme.colors.text.inverse} size={25} />
+                <X color={theme.colors.text.main} size={25} />
               ) : (
                 <MatchIcon width={25} height={25} />
               )}
@@ -85,8 +86,8 @@ const MatchButton = styled.View`
   width: 46px;
   height: 46px;
   border-radius: 23px;
-  background-color: ${theme.colors.primary.default};
+  background-color: ${({ theme }) => theme.colors.primary.main};
   justify-content: center;
   align-items: center;
-  shadow-color: ${theme.colors.primary.default};
+  shadow-color: ${({ theme }) => theme.colors.primary.main};
 `;

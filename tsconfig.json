@@ -22,6 +22,8 @@
     "noUnusedLocals": true,
 
     // 5. 사용되지 않는 함수 파라미터 경고 (단, _로 시작하면 제외)
-    "noUnusedParameters": true
-  }
+    "noUnusedParameters": true,
+    "typeRoots": ["./src/types", "./node_modules/@types"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"]
 }
