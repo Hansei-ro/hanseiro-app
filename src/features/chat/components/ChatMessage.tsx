@@ -112,8 +112,8 @@ const SenderName = styled(Text)`
 const Bubble = styled(View)<{ isMe: boolean }>`
   background-color: ${({ isMe, theme }) =>
     isMe ? theme.colors.primary.main : theme.colors.background.chat};
-  padding: 10px 14px;
-  border-radius: 16px;
+  padding: 10px 12px;
+  border-radius: 12px;
   ${({ isMe }) => (isMe ? 'border-top-right-radius: 0px;' : 'border-top-left-radius: 0px;')}
 `;
 

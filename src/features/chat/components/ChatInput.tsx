@@ -49,15 +49,14 @@ const InputContainer = styled(View)`
   flex-direction: row;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background.chat};
-  border-radius: 24px;
-  padding-horizontal: 16px;
-  padding-vertical: 8px;
-  min-height: 48px;
+  border-radius: 100px;
+  padding: 11px 18px;
+  min-height: 44px;
 `;
 
 const StyledInput = styled(TextInput)`
   flex: 1;
-  font-size: 14px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.primary.black};
   max-height: 100px;
   padding-top: 0;
