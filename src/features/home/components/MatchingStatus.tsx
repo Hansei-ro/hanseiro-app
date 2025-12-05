@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import fireImage from '@/shared/icons/FireImage.png';
+import fireImage from '@/shared/icons/warnning.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
 const MatchingStatusFrame = styled(View)`
