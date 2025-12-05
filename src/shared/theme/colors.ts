@@ -1,24 +1,34 @@
 export const colors = {
   primary: {
-    main: '#FB7035',
+    default: '#FB6435',
+    dark: '#E55A2F',
+    light: '#FF8A65',
+  },
+  neutral: {
     white: '#FFFFFF',
-    black: '#212528',
+    gray50: '#F9FAFB',
+    gray100: '#F3F4F6',
+    gray200: '#E5E7EB',
+    gray300: '#D1D5DB',
+    gray400: '#9CA3AF',
+    gray500: '#6B7280',
+    gray600: '#4B5563',
+    gray700: '#374151',
+    gray800: '#1F2937',
+    gray900: '#111827',
   },
   background: {
     main: '#F8FAFB',
     screen: '#F8FAFB',
   },
-  semantic: {
-    iconNav: '#ABB5BD',
-    iconBus: '#87C700',
-    iconMore: '#ABB5BD',
-    iconSend: '#495157',
-    stroke: '#EAEBEF',
+  text: {
+    primary: '#111827',
+    secondary: '#6B7280',
+    subtitle: '#666666',
+    inverse: '#FFFFFF',
   },
-  background: {
-    default: '#F8FAFB',
-    chat: '#F2F4F5',
-    bus: '#EDF7D9',
-    cardOutline: '#F2F4F5',
+  border: {
+    default: '#E5E7EB',
+    light: '#F9FAFB',
   },
 } as const;
