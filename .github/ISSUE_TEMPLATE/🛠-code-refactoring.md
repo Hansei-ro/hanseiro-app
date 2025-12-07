@@ -1,3 +1,12 @@
+---
+name: "\U0001F6E0 Code Refactoring"
+about: 코드 리팩토링 작업 시 작성합니다.드
+title: "[refactor]"
+labels: refactor
+assignees: ''
+
+---
+
 # 🛠 작업 내용
 
 어떤 코드를 개선하거나 변경하나요?
