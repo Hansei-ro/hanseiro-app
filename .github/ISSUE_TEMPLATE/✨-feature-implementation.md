@@ -1,9 +1,10 @@
 ---
-name: '✨ Feature Request (기능 요청)'
-about: '새로운 기능을 제안하거나 작업을 시작할 때 사용합니다.'
-title: '[feature] '
-labels: ['feature']
+name: "✨ Feature Implementation"
+about: 기능 구현 시 작성합니다.
+title: "[feature] "
+labels: feature
 assignees: ''
+
 ---
 
 ## 📝 개요 (Summary)

@@ -1,31 +1,35 @@
 ---
-name: '🐛 Bug Report (버그 제보)'
-about: '버그를 발견했을 때 제보합니다.'
-title: '[bug] '
-labels: ['bug']
+name: "\U0001F41B Bug Report (버그 제보)"
+about: 버그를 발견했을 때 작성합니다.
+title: "[bug] "
+labels: bug
+assignees: ''
+
+---
+
+---
+name: 🐛 버그 제보 (Bug Report)
+about: 앱 사용 중 발생한 버그를 제보해주세요.
+title: "[BUG] "
+labels: bug
 assignees: ''
 ---
 
-## 🐛 버그 설명 (Description)
-
-- 어떤 버그인지 간단히 설명해주세요.
+## 🐛 버그 설명
+어떤 버그인지 간략하게 설명해주세요.
 
 ## 🔄 재현 방법 (Steps to Reproduce)
+1. '...' 화면으로 이동
+2. '...' 버튼 클릭
+3. 스크롤을 내리면 에러 발생
 
-1.
-2.
-3.
+## 📸 스크린샷
+(가능하다면 스크린샷이나 화면 녹화를 첨부해주세요)
 
-## 📸 스크린샷 (Screenshots)
+## 📱 기기 및 환경
+- **Device:** [e.g. iPhone 14, Galaxy S23]
+- **OS:** [e.g. iOS 16.0, Android 13]
+- **App Version:** [e.g. 1.0.0]
 
-- 버그 화면을 캡처해서 첨부해주세요.
-
-## 💻 환경 (Environment)
-
-- **OS:** (예: Android 14, iOS 17)
-- **Device:** (예: Galaxy S24, iPhone 15)
-- **Version:** (예: 1.0.0)
-
-## 📝 추가 내용 (Additional Context)
-
--
+## 📢 추가 정보
+추가로 공유할 내용이 있다면 적어주세요.

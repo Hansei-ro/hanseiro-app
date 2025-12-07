@@ -1,0 +1,27 @@
+---
+name: "\U0001F3A8 Design Update"
+about: 디자인 반영 시 작성합니다.
+title: ''
+labels: ''
+assignees: ''
+
+---
+
+---
+name: 🎨 디자인/스타일 수정 (UI Polish)
+about: UI 디자인이나 스타일을 수정해야 할 때 사용합니다.
+title: "[STYLE] "
+labels: design
+assignees: ''
+---
+
+## 🎨 수정할 내용
+어떤 부분의 디자인을 수정해야 하나요?
+(예: 채팅 말풍선 색상을 #CED4DB로 변경)
+
+## 📸 참고 이미지 (Figma/Screenshot)
+(피그마 캡처나 스크린샷이 있다면 붙여주세요)
+
+## ✅ 체크리스트
+- [ ] 모바일 화면에서 깨지지 않는지 확인
+- [ ] 다크모드(있다면) 고려
