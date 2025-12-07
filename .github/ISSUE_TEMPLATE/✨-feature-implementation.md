@@ -1,25 +1,20 @@
----
-name: "✨ Feature Implementation"
-about: 기능 구현 시 작성합니다.
-title: "[feature] "
-labels: feature
-assignees: ''
+# 📝 기능 설명 (Summary)
 
----
-
-## 📝 기능 설명 (Summary)
 어떤 기능을 개발해야 하나요? (간단 요약)
 (예: 채팅방 목록에서 읽지 않은 메시지 수 표시)
 
 ## 🎨 디자인 (Design)
+
 - [Figma 링크](https://figma.com/...)
 - (또는 스크린샷 첨부)
 
 ## ✅ 할 일 목록 (To-Do)
+
 - [ ] API 명세서 확인 (GET /chats)
 - [ ] UI 컴포넌트 퍼블리싱
 - [ ] 데이터 바인딩
 - [ ] 테스트 진행
 
 ## 📆 예상 일정
+
 - 2025.12.10 까지 완료 예정
