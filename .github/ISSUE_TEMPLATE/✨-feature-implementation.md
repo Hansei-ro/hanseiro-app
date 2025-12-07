@@ -1,13 +1,12 @@
 ---
-name: "✨ Feature Implementation"
+name: '✨ Feature Implementation'
 about: 기능 추가 시 작성합니다.
-title: "[feature]"
+title: '[feature]'
 labels: feature
 assignees: ''
-
 ---
 
-# 🛠 작업 내용
+## 🛠 작업 내용
 
 어떤 코드를 개선하거나 변경하나요?
 (예: 컴포넌트 폴더 구조 변경, 안 쓰는 import 정리)
