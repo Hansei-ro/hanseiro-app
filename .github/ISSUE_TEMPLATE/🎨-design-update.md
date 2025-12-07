@@ -1,3 +1,12 @@
+---
+name: "\U0001F3A8 Design Update"
+about: 디자인 수정 시 작성합니다.
+title: "[style]"
+labels: style
+assignees: ''
+
+---
+
 # 🎨 수정할 내용
 
 어떤 부분의 디자인을 수정해야 하나요?
