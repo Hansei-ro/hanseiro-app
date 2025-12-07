@@ -1,8 +1,8 @@
 ---
 name: "\U0001F6E0 Code Refactoring"
 about: 코드 리팩토링 작업 시 작성합니다.
-title: ''
-labels: ''
+title: "[refactor]"
+labels: refactor
 assignees: ''
 
 ---
