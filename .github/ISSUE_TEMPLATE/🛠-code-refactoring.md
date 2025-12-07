@@ -7,14 +7,6 @@ assignees: ''
 
 ---
 
----
-name: 🛠 코드 리팩토링/유지보수 (Refactor/Chore)
-about: 기능 변경 없이 코드 구조를 개선하거나 설정을 변경할 때 사용합니다.
-title: "[REFACTOR] "
-labels: refactor
-assignees: ''
----
-
 ## 🛠 작업 내용
 어떤 코드를 개선하거나 변경하나요?
 (예: 컴포넌트 폴더 구조 변경, 안 쓰는 import 정리)

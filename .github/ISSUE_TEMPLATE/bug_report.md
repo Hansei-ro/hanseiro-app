@@ -2,17 +2,9 @@
 name: "\U0001F41B Bug Report (버그 제보)"
 about: 버그를 발견했을 때 작성합니다.
 title: "[bug] "
-labels: bug
+labels: bug, refactor
 assignees: ''
 
----
-
----
-name: 🐛 버그 제보 (Bug Report)
-about: 앱 사용 중 발생한 버그를 제보해주세요.
-title: "[BUG] "
-labels: bug
-assignees: ''
 ---
 
 ## 🐛 버그 설명
