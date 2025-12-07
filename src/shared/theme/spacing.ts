@@ -1,6 +1,6 @@
 export type SpacingKey = 4 | 8 | 12 | 14 | 16 | 20 | 24 | 28;
 
-export const spacing: Record<SpacingKey, string> = {
+export const spacing = {
   4: '4px',
   8: '8px',
   12: '12px',
@@ -9,4 +9,4 @@ export const spacing: Record<SpacingKey, string> = {
   20: '20px',
   24: '24px',
   28: '28px',
-} as const;
+} as const satisfies Record<SpacingKey, string>;
