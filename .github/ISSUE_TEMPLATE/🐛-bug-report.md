@@ -1,13 +1,12 @@
 ---
 name: "\U0001F41B Bug Report"
 about: 버그를 발견했을 때 작성합니다.
-title: "[bug]"
+title: '[bug]'
 labels: bug
 assignees: ''
-
 ---
 
-# 🐛 버그 설명
+## 🐛 버그 설명
 
 어떤 버그인지 간략하게 설명해주세요.
 
