@@ -1,5 +1,5 @@
-export type FontSizeKey = 'xs' | 's' | 'm' | 'l' | 'titleM' | 'titleL';
-export type FontWeightKey = 'regular' | 'medium' | 'semiBold' | 'bold';
+type FontSizeKey = 'xs' | 's' | 'm' | 'l' | 'titleM' | 'titleL';
+type FontWeightKey = 'regular' | 'medium' | 'semiBold' | 'bold';
 
 export const typography = {
   fontSize: {
