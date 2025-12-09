@@ -34,7 +34,7 @@ const MOCK_ROOMS: ChatListItemProps[] = [
 export function ChatListScreen() {
   const router = useRouter();
 
-  const handleEnterChat = (roomId: string) => {
+  const handleEnterChat = (_roomId: string) => {
     // For now, always go to the same chat-room demo
     router.push('/chat-room');
   };
