@@ -1,4 +1,4 @@
-export type RadiusKey = 12 | 24;
+type RadiusKey = 12 | 24;
 
 export const radius = {
   12: '12px',
