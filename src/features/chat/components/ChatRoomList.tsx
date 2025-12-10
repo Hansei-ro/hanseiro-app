@@ -14,12 +14,7 @@ export function ChatRoomList({ rooms, onRoomPress, contentContainerStyle }: Chat
   return (
     <StyledFlatList
       data={rooms}
-      renderItem={({ item }) => (
-        <ChatListItem
-          {...item}
-          onPress={() => onRoomPress(item.id)}
-        />
-      )}
+      renderItem={({ item }) => <ChatListItem {...item} onPress={() => onRoomPress(item.id)} />}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={() => <Separator />}
       contentContainerStyle={contentContainerStyle}
@@ -28,7 +23,7 @@ export function ChatRoomList({ rooms, onRoomPress, contentContainerStyle }: Chat
   );
 }
 
-const StyledFlatList = styled(FlatList)`
+const StyledFlatList = styled(FlatList<ChatListItemProps>)`
   flex: 1;
 `;
 
