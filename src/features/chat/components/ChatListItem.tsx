@@ -59,8 +59,8 @@ const HeaderRow = styled(View)`
 `;
 
 const Title = styled(Text)`
-  font-size: 16px;
-  font-weight: 600; /* Semi-bold */
+  font-size: ${({ theme }) => theme.typography.fontSize.m}; // 16px
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold}; // 600
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
