@@ -71,6 +71,6 @@ const CountText = styled(Text)`
 `;
 
 const MessageText = styled(Text)`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
