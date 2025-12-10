@@ -13,15 +13,11 @@ export function ChatAvatarGroup({ imageUrls = [], count = 0 }: ChatAvatarGroupPr
   const displayCount = validImageUrls.length > 0 ? validImageUrls.length : count;
   const safeCount = Math.min(displayCount, 4);
 
-  if (safeCount <= 1) {
-    return <SingleAvatar />;
-  }
-
   if (safeCount === 2) {
     return (
       <Container>
-        <AvatarBase style={{ position: 'absolute', top: 4, left: 4, zIndex: 2 }} />
-        <AvatarBase style={{ position: 'absolute', bottom: 4, right: 4, zIndex: 1 }} />
+        <AvatarBase style={{ position: 'absolute', top: 2, left: 2, zIndex: 2 }} />
+        <AvatarBase style={{ position: 'absolute', bottom: 2, right: 2, zIndex: 1 }} />
       </Container>
     );
   }
@@ -30,12 +26,12 @@ export function ChatAvatarGroup({ imageUrls = [], count = 0 }: ChatAvatarGroupPr
     return (
       <Container>
         {/* Top Center */}
-        <View style={{ width: '100%', alignItems: 'center', marginBottom: 4 }}>
+        <View style={{ width: '100%', alignItems: 'center', marginBottom: 2 }}>
           <AvatarBase />
         </View>
         {/* Bottom Row */}
         <Row>
-          <AvatarBase style={{ marginRight: 4 }} />
+          <AvatarBase style={{ marginRight: 2 }} />
           <AvatarBase />
         </Row>
       </Container>
@@ -45,18 +41,19 @@ export function ChatAvatarGroup({ imageUrls = [], count = 0 }: ChatAvatarGroupPr
   if (safeCount === 4) {
     return (
       <Container>
-        <Row style={{ marginBottom: 4 }}>
-          <AvatarBase style={{ marginRight: 4 }} />
+        <Row style={{ marginBottom: 2 }}>
+          <AvatarBase style={{ marginRight: 2 }} />
           <AvatarBase />
         </Row>
         <Row>
-          <AvatarBase style={{ marginRight: 4 }} />
+          <AvatarBase style={{ marginRight: 2 }} />
           <AvatarBase />
         </Row>
       </Container>
     );
   }
 
+  // Default: single avatar (safeCount <= 1)
   return <SingleAvatar />;
 }
 
