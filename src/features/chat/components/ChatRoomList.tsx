@@ -16,11 +16,11 @@ export function ChatRoomList({ rooms, onRoomPress, contentContainerStyle }: Chat
       data={rooms}
       renderItem={({ item }) => (
         <ChatListItem
-          {...(item as ChatListItemProps)}
-          onPress={() => onRoomPress((item as ChatListItemProps).id)}
+          {...item}
+          onPress={() => onRoomPress(item.id)}
         />
       )}
-      keyExtractor={(item) => (item as ChatListItemProps).id}
+      keyExtractor={(item) => item.id}
       ItemSeparatorComponent={() => <Separator />}
       contentContainerStyle={contentContainerStyle}
       showsVerticalScrollIndicator={false}
