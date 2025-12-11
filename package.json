@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "build:check": "expo export --platform all --output-dir .expo-test --clear",
+    "build:check": "expo export --platform all --output-dir .expo-test",
     "test:ci": "yarn type-check && yarn lint"
   },
   "lint-staged": {

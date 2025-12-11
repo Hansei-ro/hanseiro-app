@@ -1,4 +1,4 @@
-export type SpacingKey = 4 | 8 | 12 | 14 | 16 | 20 | 24 | 28;
+type SpacingKey = 4 | 8 | 12 | 14 | 16 | 20 | 24 | 28;
 
 export const spacing = {
   4: '4px',
