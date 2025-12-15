@@ -91,5 +91,5 @@ const AvatarContainer = styled(View)`
 `;
 
 const Separator = styled(View)`
-  height: 12px;
+  height: ${({ theme }) => theme.spacing[12]};
 `;
