@@ -2,12 +2,12 @@ import styled from '@emotion/native';
 import React from 'react';
 import { View } from 'react-native';
 
-interface ChatAvatarGroupProps {
+interface AvatarGroupProps {
   imageUrls?: string[]; // Up to 4 images
   count?: number; // Callback if we just want to show based on count
 }
 
-export function ChatAvatarGroup({ imageUrls = [], count = 0 }: ChatAvatarGroupProps) {
+export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
   // 빈 문자열이나 falsy 값을 제외한 유효한 이미지 URL만 필터링
   const validImageUrls = imageUrls.filter((url) => url && url.trim() !== '');
   const displayCount = validImageUrls.length > 0 ? validImageUrls.length : count;

@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-import { ChatAvatarGroup } from './ChatAvatarGroup';
+import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 
 export interface ChatListItemProps {
   id: string;
@@ -22,7 +22,7 @@ export function ChatListItem({
 }: ChatListItemProps) {
   return (
     <Container onPress={onPress}>
-      <ChatAvatarGroup imageUrls={imageUrls} count={participantCount} />
+      <AvatarGroup imageUrls={imageUrls} count={participantCount} />
       <Content>
         <HeaderRow>
           <Title numberOfLines={1}>{title}</Title>
