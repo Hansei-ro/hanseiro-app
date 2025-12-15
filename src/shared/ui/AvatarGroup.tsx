@@ -58,22 +58,22 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
 }
 
 const Container = styled(View)`
-  width: 72px;
-  height: 72px;
+  width: 72;
+  height: 72;
   justify-content: center;
   align-items: center;
 `;
 
 const SingleAvatar = styled(View)`
-  width: 32px;
-  height: 32px;
+  width: 32;
+  height: 32;
   border-radius: ${({ theme }) => theme.radius[12]};
   background-color: ${({ theme }) => theme.colors.semantic.stroke};
 `;
 
 const AvatarBase = styled(View)`
-  width: 32px;
-  height: 32px;
+  width: 32;
+  height: 32;
   background-color: ${({ theme }) => theme.colors.semantic.stroke};
   border-radius: ${({ theme }) => theme.radius[12]};
 `;

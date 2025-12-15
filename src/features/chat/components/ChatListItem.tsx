@@ -47,15 +47,15 @@ const Container = styled(TouchableOpacity)`
 
 const Content = styled(View)`
   flex: 1;
-  margin-left: 12px;
+  margin-left: 12;
   justify-content: center;
-  gap: 2px;
+  gap: 2;
 `;
 
 const HeaderRow = styled(View)`
   flex-direction: row;
   align-items: center;
-  gap: 6px;
+  gap: 6;
 `;
 
 const Title = styled(Text)`
@@ -65,9 +65,9 @@ const Title = styled(Text)`
 `;
 
 const CountText = styled(Text)`
-  font-size: 16px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.text.tertiary}; /* Using tertiary for light gray */
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.text.tertiary};
 `;
 
 const MessageText = styled(Text)`

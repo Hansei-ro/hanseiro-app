@@ -66,12 +66,12 @@ const Container = styled(View)`
 `;
 
 const Header = styled(View)`
-  padding: 16px 20px;
-  margin-bottom: 18px; /* Gap between header and list */
+  padding: 16 20;
+  margin-bottom: 18;
 `;
 
 const Title = styled(Text)`
-  font-size: 20px;
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;

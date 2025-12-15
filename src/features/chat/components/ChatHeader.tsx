@@ -27,27 +27,27 @@ const Container = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  padding-horizontal: 16px;
+  height: 56;
+  padding-horizontal: 16;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const BackButton = styled(TouchableOpacity)`
-  width: 40px;
-  height: 40px;
+  width: 40;
+  height: 40;
   justify-content: center;
   align-items: flex-start;
 `;
 
 const Title = styled(Text)`
-  font-size: 18px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
   text-align: center;
   flex: 1;
 `;
 
 const RightContainer = styled(View)`
-  width: 40px;
+  width: 40;
   align-items: flex-end;
 `;
