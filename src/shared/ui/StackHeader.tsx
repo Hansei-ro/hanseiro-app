@@ -66,7 +66,6 @@ const LeftContainer = styled(View)`
 `;
 
 const BackButton = styled(TouchableOpacity)`
-  padding: ${({ theme }) => theme.spacing[8]};
   margin-right: ${({ theme }) => theme.spacing[8]};
 `;
 
