@@ -1,5 +1,4 @@
 import styled from '@emotion/native';
-import { useTheme } from '@emotion/react';
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,8 +23,6 @@ const MOCK_HISTORY = [
 ];
 
 export function MatchHistoryScreen() {
-  const theme = useTheme();
-
   const renderItem = ({ item }: { item: (typeof MOCK_HISTORY)[0] }) => (
     <HistoryItemContainer>
       <InfoContainer>
