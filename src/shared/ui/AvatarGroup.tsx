@@ -67,15 +67,15 @@ const Container = styled(View)`
 const SingleAvatar = styled(View)`
   width: 32px;
   height: 32px;
-  border-radius: 12px;
-  background-color: #d9d9d9;
+  border-radius: ${({ theme }) => theme.radius[12]};
+  background-color: ${({ theme }) => theme.colors.semantic.stroke};
 `;
 
 const AvatarBase = styled(View)`
   width: 32px;
   height: 32px;
-  background-color: #d9d9d9;
-  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.semantic.stroke};
+  border-radius: ${({ theme }) => theme.radius[12]};
 `;
 
 const Row = styled(View)`
