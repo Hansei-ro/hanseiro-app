@@ -47,8 +47,8 @@ export function MatchHistoryScreen() {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{
-            paddingHorizontal: theme.spacing[20],
-            paddingTop: theme.spacing[20],
+            paddingHorizontal: 20,
+            paddingTop: 20,
           }}
           ItemSeparatorComponent={() => <Separator />}
         />
@@ -71,8 +71,8 @@ const HistoryItemContainer = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-vertical: ${({ theme }) => theme.spacing[14]};
-  padding-horizontal: ${({ theme }) => theme.spacing[18]};
+  padding-vertical: 14px;
+  padding-horizontal: 18px;
 `;
 
 const InfoContainer = styled(View)`
@@ -82,7 +82,7 @@ const InfoContainer = styled(View)`
 const DateText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
-  margin-bottom: ${({ theme }) => theme.spacing[4]};
+  margin-bottom: 4px;
 `;
 
 const TitleText = styled(Text)`
@@ -97,5 +97,5 @@ const AvatarContainer = styled(View)`
 `;
 
 const Separator = styled(View)`
-  height: ${({ theme }) => theme.spacing[12]};
+  height: 12px;
 `;

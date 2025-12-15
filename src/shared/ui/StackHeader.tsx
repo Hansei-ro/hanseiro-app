@@ -45,8 +45,8 @@ const Container = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-horizontal: ${({ theme }) => theme.spacing[20]};
-  padding-vertical: ${({ theme }) => theme.spacing[16]};
+  padding-horizontal: 20px;
+  padding-vertical: 16px;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
@@ -57,7 +57,7 @@ const LeftContainer = styled(View)`
 `;
 
 const BackButton = styled(TouchableOpacity)`
-  margin-right: ${({ theme }) => theme.spacing[8]};
+  margin-right: 8px;
 `;
 
 const CenterContainer = styled(View)`

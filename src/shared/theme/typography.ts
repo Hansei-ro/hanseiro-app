@@ -3,13 +3,13 @@ type FontWeightKey = 'regular' | 'medium' | 'semiBold' | 'bold';
 
 export const typography = {
   fontSize: {
-    xs: 12, // Text XS
-    s: 14, // Text S
-    m: 16, // Text M
-    l: 18, // Text L
-    titleM: 20, // Title-M
-    titleL: 24, // Title-L
-  } satisfies Record<FontSizeKey, number>,
+    xs: '12px', // Text XS
+    s: '14px', // Text S
+    m: '16px', // Text M
+    l: '18px', // Text L
+    titleM: '20px', // Title-M
+    titleL: '24px', // Title-L
+  } satisfies Record<FontSizeKey, string>,
   fontWeight: {
     regular: '400', // Regular
     medium: '500', // Medium

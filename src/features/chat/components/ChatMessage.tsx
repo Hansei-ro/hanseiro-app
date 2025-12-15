@@ -63,14 +63,14 @@ export function ChatMessage({ message }: ChatMessageProps) {
 
 const DateSeparatorContainer = styled(View)`
   align-items: center;
-  margin-vertical: 16;
+  margin-vertical: 16px;
 `;
 
 const MessageContainer = styled(View)<{ isMe: boolean }>`
   flex-direction: row;
   justify-content: ${({ isMe }) => (isMe ? 'flex-end' : 'flex-start')};
-  margin-bottom: 16;
-  padding-horizontal: 16;
+  margin-bottom: 16px;
+  padding-horizontal: 16px;
 `;
 
 const ContentContainer = styled(View)<{ isMe: boolean }>`
@@ -84,10 +84,10 @@ const BubbleRow = styled(View)<{ isMe: boolean }>`
 `;
 
 const TimeText = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs}px;
   color: ${({ theme }) => theme.colors.text.tertiary};
-  margin-horizontal: 4;
-  margin-bottom: 2;
+  margin-horizontal: 4px;
+  margin-bottom: 2px;
 `;
 
 const DateText = styled(Text)`
@@ -96,11 +96,11 @@ const DateText = styled(Text)`
 `;
 
 const ProfilePlaceholder = styled(View)`
-  width: 36;
-  height: 36;
-  border-radius: ${({ theme }) => theme.radius[12]};
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.background.chat};
-  margin-right: 8;
+  margin-right: 8px;
 `;
 
 const SenderName = styled(Text)`
@@ -112,13 +112,13 @@ const SenderName = styled(Text)`
 const Bubble = styled(View)<{ isMe: boolean }>`
   background-color: ${({ isMe, theme }) =>
     isMe ? theme.colors.primary.main : theme.colors.background.chat};
-  padding: 10 12;
-  border-radius: ${({ theme }) => theme.radius[12]};
+  padding: 10px 12px;
+  border-radius: 12px;
   ${({ isMe }) => (isMe ? 'border-top-right-radius: 0px;' : 'border-top-left-radius: 0px;')}
 `;
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ isMe, theme }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
-  line-height: 20;
+  line-height: 20px;
 `;

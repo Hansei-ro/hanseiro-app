@@ -28,5 +28,5 @@ const StyledFlatList = styled(FlatList<ChatListItemProps>)`
 `;
 
 const Separator = styled(View)`
-  height: 28;
+  height: 28px;
 `;

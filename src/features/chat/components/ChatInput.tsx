@@ -41,7 +41,7 @@ export function ChatInput({ onSend }: ChatInputProps) {
 }
 
 const Container = styled(View)`
-  padding: 16;
+  padding: 16px;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
@@ -49,21 +49,21 @@ const InputContainer = styled(View)`
   flex-direction: row;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background.chat};
-  border-radius: 100;
-  padding: 11 18;
-  min-height: 44;
+  border-radius: 100px;
+  padding: 11px 18px;
+  min-height: 44px;
 `;
 
 const StyledInput = styled(TextInput)`
   flex: 1;
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   color: ${({ theme }) => theme.colors.primary.black};
-  max-height: 100;
+  max-height: 100px;
   padding-top: 0;
   padding-bottom: 0;
 `;
 
 const SendButton = styled(TouchableOpacity)`
-  margin-left: 8;
-  padding: 4;
+  margin-left: 8px;
+  padding: 4px;
 `;

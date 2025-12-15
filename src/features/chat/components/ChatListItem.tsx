@@ -47,20 +47,20 @@ const Container = styled(TouchableOpacity)`
 
 const Content = styled(View)`
   flex: 1;
-  margin-left: 12;
+  margin-left: 12px;
   justify-content: center;
-  gap: 2;
+  gap: 2px;
 `;
 
 const HeaderRow = styled(View)`
   flex-direction: row;
   align-items: center;
-  gap: 6;
+  gap: 6px;
 `;
 
 const Title = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.m}; // 16px
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold}; // 600
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 

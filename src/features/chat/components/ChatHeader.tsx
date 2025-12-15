@@ -27,14 +27,14 @@ const Container = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 56;
-  padding-horizontal: 16;
+  height: 56px;
+  padding-horizontal: 16px;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const BackButton = styled(TouchableOpacity)`
-  width: 40;
-  height: 40;
+  width: 40px;
+  height: 40px;
   justify-content: center;
   align-items: flex-start;
 `;
@@ -48,6 +48,6 @@ const Title = styled(Text)`
 `;
 
 const RightContainer = styled(View)`
-  width: 40;
+  width: 40px;
   align-items: flex-end;
 `;

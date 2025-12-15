@@ -26,12 +26,12 @@ const Container = styled(View)`
 `;
 
 const Title = styled(Text)`
-  font-size: 24px;
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleL};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
