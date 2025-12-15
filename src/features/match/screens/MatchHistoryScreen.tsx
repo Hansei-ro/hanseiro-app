@@ -74,14 +74,14 @@ const InfoContainer = styled(View)`
 `;
 
 const DateText = styled(Text)`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
   margin-bottom: ${({ theme }) => theme.spacing[4]};
 `;
 
 const TitleText = styled(Text)`
-  font-size: 18px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
