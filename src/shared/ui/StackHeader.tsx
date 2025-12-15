@@ -9,17 +9,10 @@ interface StackHeaderProps {
   title: string;
   titleAlign?: 'left' | 'center';
   onBack?: () => void;
-  right?: React.ReactNode;
   style?: ViewStyle;
 }
 
-export function StackHeader({
-  title,
-  titleAlign = 'left',
-  onBack,
-  right,
-  style,
-}: StackHeaderProps) {
+export function StackHeader({ title, titleAlign = 'left', onBack, style }: StackHeaderProps) {
   const theme = useTheme();
 
   const handleBack = () => {
@@ -44,8 +37,6 @@ export function StackHeader({
           <Title align="center">{title}</Title>
         </CenterContainer>
       )}
-
-      <RightContainer>{right}</RightContainer>
     </Container>
   );
 }
@@ -78,13 +69,6 @@ const CenterContainer = styled(View)`
   justify-content: center;
   align-items: center;
   z-index: 0;
-`;
-
-const RightContainer = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  padding-right: ${({ theme }) => theme.spacing[12]};
-  z-index: 1;
 `;
 
 const Title = styled(Text)<{ align: 'left' | 'center' }>`
