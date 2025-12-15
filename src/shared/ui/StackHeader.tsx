@@ -54,8 +54,8 @@ const Container = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  padding-horizontal: 4px;
+  padding-horizontal: ${({ theme }) => theme.spacing[20]};
+  padding-vertical: ${({ theme }) => theme.spacing[16]};
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
@@ -66,8 +66,8 @@ const LeftContainer = styled(View)`
 `;
 
 const BackButton = styled(TouchableOpacity)`
-  padding: 8px;
-  margin-right: 4px;
+  padding: ${({ theme }) => theme.spacing[8]};
+  margin-right: ${({ theme }) => theme.spacing[8]};
 `;
 
 const CenterContainer = styled(View)`
@@ -84,12 +84,12 @@ const CenterContainer = styled(View)`
 const RightContainer = styled(View)`
   flex-direction: row;
   align-items: center;
-  padding-right: 12px;
+  padding-right: ${({ theme }) => theme.spacing[12]};
   z-index: 1;
 `;
 
 const Title = styled(Text)<{ align: 'left' | 'center' }>`
-  font-size: 18px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
