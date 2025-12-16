@@ -52,7 +52,7 @@ export default function MatchingWaitingScreen() {
           </ScrollContent>
         </ScrollView>
 
-        <BottomContainer bottomInset={insets.bottom}>
+        <BottomContainer style={{ paddingBottom: insets.bottom + 16 }}>
           <Button title="현재 인원으로 출발" onPress={() => {}} variant="primary" />
           <Button title="매칭 취소" onPress={() => {}} variant="secondary" />
         </BottomContainer>
@@ -95,7 +95,6 @@ const TimerText = styled(Text)`
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 `;
 
-const BottomContainer = styled(View)<{ bottomInset: number }>`
+const BottomContainer = styled(View)`
   gap: 8px;
-  padding-bottom: ${({ bottomInset }) => bottomInset + 16}px;
 `;
