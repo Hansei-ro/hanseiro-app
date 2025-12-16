@@ -72,7 +72,7 @@ const Container = styled(View)<{ isReady: boolean }>`
   border-radius: 12px;
   border-width: 1.5px;
   border-color: ${({ theme, isReady }) =>
-    isReady ? theme.colors.primary.main : theme.colors.semantic.stroke};
+    isReady ? theme.colors.primary.main : theme.colors.border.waitingOutline};
   height: 70px;
 `;
 
@@ -102,7 +102,7 @@ const DashedBorder = () => {
         rx="12"
         ry="12"
         fill="none"
-        stroke={theme.colors.text.tertiary}
+        stroke={theme.colors.border.joiningOutline}
         strokeWidth="1.5"
         strokeDasharray="6, 4"
       />

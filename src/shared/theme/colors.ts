@@ -25,6 +25,13 @@ export const colors = {
     default: '#F8FAFB',
     chat: '#F2F4F5',
     bus: '#EDF7D9',
+    toggle: '#CED4DB',
+    matching: '#FFF1EB',
+    buttonSecondary: '#F2F4F5',
+  },
+  border: {
     cardOutline: '#F2F4F5',
+    waitingOutline: '#CED4DB',
+    joiningOutline: '#CED4DB',
   },
 } as const;

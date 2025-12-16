@@ -45,8 +45,8 @@ const Container = styled(Pressable)<{
   disabled: boolean;
 }>`
   width: 100%;
-  height: 56px;
-  border-radius: ${({ theme }) => theme.radius[12]}px;
+  height: 54px;
+  border-radius: 12px;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme, variant, disabled }) => {
@@ -55,7 +55,7 @@ const Container = styled(Pressable)<{
       case 'primary':
         return theme.colors.primary.main;
       case 'secondary':
-        return theme.colors.background.cardOutline;
+        return theme.colors.border.cardOutline;
       default:
         return theme.colors.primary.main;
     }
@@ -64,7 +64,7 @@ const Container = styled(Pressable)<{
 
 const Label = styled(Text)<{ variant: 'primary' | 'secondary' }>`
   font-size: ${({ theme }) => theme.typography.fontSize.m};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme, variant }) => {
     switch (variant) {
       case 'primary':
