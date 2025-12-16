@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { ChevronLeft } from 'lucide-react-native';
 import React, { ReactNode } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 interface ChatHeaderProps {
   title: string;
@@ -32,7 +32,7 @@ const Container = styled(View)`
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
-const BackButton = styled(TouchableOpacity)`
+const BackButton = styled(Pressable)`
   width: 40px;
   height: 40px;
   justify-content: center;

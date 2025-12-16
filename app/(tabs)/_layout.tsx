@@ -56,7 +56,7 @@ export default function TabLayout() {
               {focused ? (
                 <X color={theme.colors.text.main} size={25} />
               ) : (
-                <MatchIcon width={25} height={25} />
+                <MatchIcon width={25} height={25} color={theme.colors.primary.white} />
               )}
             </MatchButton>
           ),

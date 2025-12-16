@@ -1,23 +1,37 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { MapPin } from 'lucide-react-native';
 import React from 'react';
 import { Text, View } from 'react-native';
+import Svg, { Line } from 'react-native-svg';
 
 export function MatchingRouteInfo() {
+  const theme = useTheme();
+
   return (
     <Container>
-      <LocationContainer>
-        <MapPin color="#FB7035" size={16} />
+      <MapPin color={theme.colors.primary.main} size={18} />
+
+      <RouteContent>
         <LocationText>금정</LocationText>
-      </LocationContainer>
 
-      <DashedLineContainer>
-        <DashedLine />
-      </DashedLineContainer>
+        <View style={{ flex: 1 }}>
+          <Svg height="2" width="100%">
+            <Line
+              x1="0"
+              y1="1"
+              x2="100%"
+              y2="1"
+              stroke={theme.colors.primary.main}
+              strokeWidth="2"
+              strokeDasharray="5, 5"
+              strokeLinecap="round"
+            />
+          </Svg>
+        </View>
 
-      <LocationContainer>
         <LocationText>한세대</LocationText>
-      </LocationContainer>
+      </RouteContent>
     </Container>
   );
 }
@@ -25,41 +39,21 @@ export function MatchingRouteInfo() {
 const Container = styled(View)`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   background-color: #fff4ee;
-  padding: 16px 20px;
+  padding: 11px 14px;
   border-radius: 12px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 10px;
-  height: 52px;
 `;
 
-const LocationContainer = styled(View)`
+const RouteContent = styled(View)`
+  flex: 1;
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  gap: 8px;
 `;
 
 const LocationText = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  font-size: ${({ theme }) => theme.typography.fontSize.s};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const DashedLineContainer = styled(View)`
-  flex: 1;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 1px;
-  overflow: hidden;
-`;
-
-const DashedLine = styled(View)`
-  width: 100%;
-  height: 1px;
-  border-width: 1px;
-  border-style: dashed;
-  border-color: ${({ theme }) => theme.colors.primary.main};
-  opacity: 0.5;
 `;

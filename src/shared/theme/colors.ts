@@ -10,6 +10,9 @@ export const colors = {
     tertiary: '#CED4DB',
     error: '#FA5B4A',
     warning: '#FFBF01',
+    waiting: '#666E76',
+    joining: '#ABB5BD',
+    time: '#B5BBC2',
   },
   semantic: {
     iconNav: '#ABB5BD',

@@ -3,12 +3,13 @@ import { useTheme } from '@emotion/react';
 import { Check } from 'lucide-react-native';
 import React from 'react';
 import { Image, Text, View } from 'react-native';
+import Svg, { Rect } from 'react-native-svg';
 
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
 
 interface ParticipantCardProps {
   name?: string;
-  department?: string;
+  department: string;
   status?: string;
   isMe?: boolean;
   isReady?: boolean;
@@ -27,21 +28,24 @@ export function ParticipantCard({
 
   if (isEmpty) {
     return (
-      <EmptyContainer isReady={false}>
-        <ProfileImage source={DEFAULT_PROFILE_IMAGE} style={{ opacity: 0.3 }} />
-        <StatusText isEmpty>합류중...</StatusText>
-      </EmptyContainer>
+      <EmptyWrapper>
+        <DashedBorder />
+        <EmptyContent>
+          <ProfileImage source={DEFAULT_PROFILE_IMAGE} style={{ opacity: 0.5 }} />
+          <StatusText isEmpty>합류중...</StatusText>
+        </EmptyContent>
+      </EmptyWrapper>
     );
   }
 
   return (
-    <Container isReady={isReady} style={isMe ? { backgroundColor: '#FFF5F0' } : undefined}>
+    <Container isReady={isReady}>
       <LeftContent>
         <ProfileImage source={DEFAULT_PROFILE_IMAGE} />
         <InfoContainer>
           <NameRow>
             <NameText>{name}</NameText>
-            {department && <DepartmentText>({department})</DepartmentText>}
+            {!isMe && <NameText>({department})</NameText>}
           </NameRow>
           <StatusText isReady={isReady}>{status}</StatusText>
         </InfoContainer>
@@ -65,19 +69,51 @@ const Container = styled(View)<{ isReady: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background-color: ${({ theme }) => theme.colors.primary.white};
   border-radius: 12px;
-  border-width: 1px;
+  border-width: 1.5px;
   border-color: ${({ theme, isReady }) =>
     isReady ? theme.colors.primary.main : theme.colors.semantic.stroke};
-  margin-bottom: 8px;
-  height: 72px;
+  height: 70px;
 `;
 
-const EmptyContainer = styled(Container)`
-  border-color: ${({ theme }) => theme.colors.semantic.stroke};
-  border-style: dashed;
-  justify-content: flex-start;
+const EmptyWrapper = styled(View)`
+  position: relative;
+  margin-bottom: 8px;
+  height: 70px;
+  border-radius: 12px;
+`;
+
+const DashedBorder = () => {
+  const theme = useTheme();
+  return (
+    <Svg
+      width="100%"
+      height="70"
+      viewBox="0 0 400 70"
+      preserveAspectRatio="none"
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1 }}
+      pointerEvents="none"
+    >
+      <Rect
+        x="0.75"
+        y="0.75"
+        width="398.5"
+        height="68.5"
+        rx="12"
+        ry="12"
+        fill="none"
+        stroke={theme.colors.text.tertiary}
+        strokeWidth="1.5"
+        strokeDasharray="6, 4"
+      />
+    </Svg>
+  );
+};
+
+const EmptyContent = styled(View)`
+  flex: 1;
+  flex-direction: row;
+  padding: 12px 16px;
   gap: 12px;
 `;
 
@@ -88,8 +124,8 @@ const LeftContent = styled(View)`
 `;
 
 const ProfileImage = styled(Image)`
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   border-radius: 20px;
 `;
 
@@ -104,32 +140,33 @@ const NameRow = styled(View)`
 `;
 
 const NameText = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const DepartmentText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.s};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const StatusText = styled(Text)<{ isReady?: boolean; isEmpty?: boolean }>`
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+  font-size: ${({ theme, isEmpty }) => {
+    if (isEmpty) return theme.typography.fontSize.s;
+    return theme.typography.fontSize.xs;
+  }};
+  font-weight: ${({ theme, isReady, isEmpty }) => {
+    if (isEmpty) return theme.typography.fontWeight.medium;
+    if (isReady) return theme.typography.fontWeight.semiBold;
+    return theme.typography.fontWeight.regular;
+  }};
   color: ${({ theme, isReady, isEmpty }) => {
-    if (isEmpty) return theme.colors.text.tertiary;
+    if (isEmpty) return theme.colors.text.joining;
     if (isReady) return theme.colors.primary.main;
-    return theme.colors.text.secondary;
+    return theme.colors.text.waiting;
   }};
 `;
 
 const RightContent = styled(View)``;
 
 const CheckCircle = styled(View)`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.primary.main};
   align-items: center;
@@ -137,8 +174,8 @@ const CheckCircle = styled(View)`
 `;
 
 const EmptyCircle = styled(View)`
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   border-radius: 12px;
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.text.tertiary};

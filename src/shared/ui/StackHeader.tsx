@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import { router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import React from 'react';
-import { Text, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Pressable, Text, View, ViewStyle } from 'react-native';
 
 interface StackHeaderProps {
   title: string;
@@ -56,7 +56,7 @@ const LeftContainer = styled(View)`
   z-index: 1;
 `;
 
-const BackButton = styled(TouchableOpacity)`
+const BackButton = styled(Pressable)`
   margin-right: 8px;
 `;
 

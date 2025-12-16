@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import React from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { ActivityIndicator, Pressable, Text, ViewStyle } from 'react-native';
 
 interface ButtonProps {
   title: string;
@@ -27,8 +27,7 @@ export function Button({
       onPress={onPress}
       variant={variant}
       disabled={disabled || loading}
-      style={style}
-      activeOpacity={0.8}
+      style={({ pressed }) => [style, pressed && !disabled && !loading && { opacity: 0.8 }]}
     >
       {loading ? (
         <ActivityIndicator
@@ -41,7 +40,7 @@ export function Button({
   );
 }
 
-const Container = styled(TouchableOpacity)<{
+const Container = styled(Pressable)<{
   variant: 'primary' | 'secondary';
   disabled: boolean;
 }>`

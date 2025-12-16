@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 
@@ -34,7 +34,7 @@ export function ChatListItem({
   );
 }
 
-const Container = styled(TouchableOpacity)`
+const Container = styled(Pressable)`
   flex-direction: row;
   align-items: center;
   /* User specified 28px gap between items, handled by List separator. 
