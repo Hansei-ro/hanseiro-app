@@ -4,6 +4,8 @@ import { ChevronLeft } from 'lucide-react-native';
 import React, { ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { getFontFamily } from '@/shared/lib/typography';
+
 interface ChatHeaderProps {
   title: string;
   onBackPress: () => void;
@@ -40,6 +42,7 @@ const BackButton = styled(Pressable)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.l};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};

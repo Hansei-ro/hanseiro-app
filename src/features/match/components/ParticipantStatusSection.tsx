@@ -3,9 +3,10 @@ import { useTheme } from '@emotion/react';
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import MatchIcon from '../../../shared/icons/match.svg';
-
 import { ParticipantCard } from './ParticipantCard';
+
+import MatchIcon from '@/shared/icons/match.svg';
+import { getFontFamily } from '@/shared/lib/typography';
 
 interface Participant {
   name?: string;
@@ -77,18 +78,21 @@ const TitleContainer = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('medium')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const Status = styled(Text)`
+  font-family: ${getFontFamily('medium')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.primary.black};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 `;
 
 const StatusHighlight = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   color: ${({ theme }) => theme.colors.primary.main};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
 `;

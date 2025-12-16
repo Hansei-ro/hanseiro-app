@@ -5,10 +5,12 @@ import React from 'react';
 import { ScrollView, StatusBar, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Button } from '../../../shared/ui/Button';
-import { StackHeader } from '../../../shared/ui/StackHeader';
 import { MatchingRouteInfo } from '../components/MatchingRouteInfo';
 import { ParticipantStatusSection } from '../components/ParticipantStatusSection';
+
+import { getFontFamily } from '@/shared/lib/typography';
+import { Button } from '@/shared/ui/Button';
+import { StackHeader } from '@/shared/ui/StackHeader';
 
 export default function MatchingWaitingScreen() {
   const theme = useTheme();
@@ -87,6 +89,7 @@ const TimerWrapper = styled(View)`
 `;
 
 const TimerText = styled(Text)`
+  font-family: ${getFontFamily('medium')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.text.time};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};

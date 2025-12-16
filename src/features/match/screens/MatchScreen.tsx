@@ -3,7 +3,8 @@ import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { Button } from '../../../shared/ui/Button';
+import { getFontFamily } from '@/shared/lib/typography';
+import { Button } from '@/shared/ui/Button';
 
 export function MatchScreen() {
   return (
@@ -34,12 +35,14 @@ const Container = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   font-size: ${({ theme }) => theme.typography.fontSize.titleL};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;

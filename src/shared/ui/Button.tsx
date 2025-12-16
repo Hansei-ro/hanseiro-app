@@ -3,6 +3,8 @@ import { useTheme } from '@emotion/react';
 import React from 'react';
 import { ActivityIndicator, Pressable, Text, ViewStyle } from 'react-native';
 
+import { getFontFamily } from '../lib/typography';
+
 interface ButtonProps {
   title: string;
   onPress: () => void;
@@ -63,6 +65,7 @@ const Container = styled(Pressable)<{
 `;
 
 const Label = styled(Text)<{ variant: 'primary' | 'secondary' }>`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme, variant }) => {

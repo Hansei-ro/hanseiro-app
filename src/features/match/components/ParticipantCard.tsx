@@ -6,6 +6,7 @@ import { Image, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
+import { getFontFamily } from '@/shared/lib/typography';
 
 interface ParticipantCardProps {
   name?: string;
@@ -140,12 +141,18 @@ const NameRow = styled(View)`
 `;
 
 const NameText = styled(Text)`
+  font-family: ${getFontFamily('medium')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const StatusText = styled(Text)<{ isReady?: boolean; isEmpty?: boolean }>`
+  font-family: ${({ isReady, isEmpty }) => {
+    if (isEmpty) return getFontFamily('medium');
+    if (isReady) return getFontFamily('semiBold');
+    return getFontFamily('regular');
+  }};
   font-size: ${({ theme, isEmpty }) => {
     if (isEmpty) return theme.typography.fontSize.s;
     return theme.typography.fontSize.xs;

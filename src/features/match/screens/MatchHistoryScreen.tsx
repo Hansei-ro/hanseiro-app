@@ -3,6 +3,7 @@ import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { getFontFamily } from '@/shared/lib/typography';
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 import { StackHeader } from '@/shared/ui/StackHeader';
 
@@ -77,12 +78,14 @@ const InfoContainer = styled(View)`
 `;
 
 const DateText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
   margin-bottom: 4px;
 `;
 
 const TitleText = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.l};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};

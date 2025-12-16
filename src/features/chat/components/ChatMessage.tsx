@@ -1,6 +1,8 @@
 import styled from '@emotion/native';
 import { Text, View } from 'react-native';
 
+import { getFontFamily } from '@/shared/lib/typography';
+
 export interface Message {
   id: string;
   text: string;
@@ -84,6 +86,7 @@ const BubbleRow = styled(View)<{ isMe: boolean }>`
 `;
 
 const TimeText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.tertiary};
   margin-horizontal: 4px;
@@ -91,6 +94,7 @@ const TimeText = styled(Text)`
 `;
 
 const DateText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
@@ -104,6 +108,7 @@ const ProfilePlaceholder = styled(View)`
 `;
 
 const SenderName = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: 13px;
   color: ${({ theme }) => theme.colors.text.secondary};
   margin-bottom: 4px;
@@ -118,6 +123,7 @@ const Bubble = styled(View)<{ isMe: boolean }>`
 `;
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ isMe, theme }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
   line-height: 20px;

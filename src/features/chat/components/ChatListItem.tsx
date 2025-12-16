@@ -2,6 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { getFontFamily } from '@/shared/lib/typography';
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 
 export interface ChatListItemProps {
@@ -59,18 +60,21 @@ const HeaderRow = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const CountText = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.text.tertiary};
 `;
 
 const MessageText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;

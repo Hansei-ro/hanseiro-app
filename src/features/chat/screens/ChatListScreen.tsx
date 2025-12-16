@@ -7,6 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChatListItemProps } from '../components/ChatListItem';
 import { ChatRoomList } from '../components/ChatRoomList';
 
+import { getFontFamily } from '@/shared/lib/typography';
+
 const MOCK_ROOMS: ChatListItemProps[] = [
   {
     id: '1',
@@ -71,6 +73,7 @@ const Header = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   font-size: ${({ theme }) => theme.typography.fontSize.titleM};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.primary.black};

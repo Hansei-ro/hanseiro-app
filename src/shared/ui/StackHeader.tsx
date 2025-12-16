@@ -5,6 +5,8 @@ import { ChevronLeft } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, Text, View, ViewStyle } from 'react-native';
 
+import { getFontFamily } from '../lib/typography';
+
 interface StackHeaderProps {
   title: string;
   titleAlign?: 'left' | 'center';
@@ -72,6 +74,7 @@ const CenterContainer = styled(View)`
 `;
 
 const Title = styled(Text)<{ align: 'left' | 'center' }>`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.l};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};

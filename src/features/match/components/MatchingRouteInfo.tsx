@@ -5,6 +5,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
+import { getFontFamily } from '@/shared/lib/typography';
+
 export function MatchingRouteInfo() {
   const theme = useTheme();
 
@@ -54,6 +56,7 @@ const RouteContent = styled(View)`
 `;
 
 const LocationText = styled(Text)`
+  font-family: ${getFontFamily('medium')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 `;
