@@ -52,7 +52,7 @@ export default function MatchingWaitingScreen() {
           </ScrollContent>
         </ScrollView>
 
-        <BottomContainer style={{ paddingBottom: insets.bottom > 0 ? insets.bottom : 16 }}>
+        <BottomContainer style={{ paddingBottom: insets.bottom + 16 }}>
           <Button title="현재 인원으로 출발" onPress={() => {}} variant="primary" />
           <Button title="매칭 취소" onPress={() => {}} variant="secondary" />
         </BottomContainer>
