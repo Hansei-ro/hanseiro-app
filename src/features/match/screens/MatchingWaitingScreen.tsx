@@ -64,7 +64,8 @@ const Container = styled(View)`
 `;
 
 const Section = styled(View)`
-  padding-horizontal: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: 24px;
 `;
 
@@ -113,7 +114,8 @@ const BottomContainer = styled(View)`
   bottom: 0;
   left: 0;
   right: 0;
-  padding-horizontal: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 16px;
   background-color: ${({ theme }) => theme.colors.primary.white};
   border-top-width: 1px;

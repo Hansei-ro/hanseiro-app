@@ -1,6 +1,9 @@
 import styled from '@emotion/native';
+import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { Button } from '../../../shared/ui/Button';
 
 export function MatchScreen() {
   return (
@@ -8,6 +11,11 @@ export function MatchScreen() {
       <Container>
         <Title>매칭</Title>
         <Subtitle>택시 매칭 및 방 생성</Subtitle>
+        <Button
+          title="매칭 대기 화면 (임시)"
+          onPress={() => router.push('/match/waiting')}
+          style={{ width: 200, marginTop: 20 }}
+        />
       </Container>
     </SafeArea>
   );
