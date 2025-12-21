@@ -28,6 +28,7 @@ export function ChatInput({ onSend }: ChatInputProps) {
           placeholder="메세지를 입력해주세요."
           placeholderTextColor={theme.colors.text.secondary}
           multiline
+          numberOfLines={1}
         />
         <SendButton onPress={handleSend} disabled={!text.trim()}>
           <Send
@@ -56,9 +57,10 @@ const InputContainer = styled(View)`
 
 const StyledInput = styled(TextInput)`
   flex: 1;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
   color: ${({ theme }) => theme.colors.primary.black};
   max-height: 100px;
+  line-height: 22px;
   padding-top: 0;
   padding-bottom: 0;
 `;

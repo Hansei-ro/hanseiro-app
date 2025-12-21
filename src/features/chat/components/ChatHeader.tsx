@@ -40,8 +40,8 @@ const BackButton = styled(TouchableOpacity)`
 `;
 
 const Title = styled(Text)`
-  font-size: 18px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
   text-align: center;
   flex: 1;
