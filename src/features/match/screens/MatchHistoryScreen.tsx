@@ -74,12 +74,12 @@ const HistoryItemContainer = styled(View)`
 
 const InfoContainer = styled(View)`
   justify-content: center;
+  gap: 4px;
 `;
 
 const DateText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
-  margin-bottom: 4px;
 `;
 
 const TitleText = styled(Text)`
