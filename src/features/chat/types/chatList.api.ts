@@ -12,6 +12,8 @@ export type ApiChatRoomsResponse = ApiSuccessResponse<{
 export interface ApiChatRoom {
   chat_room_id: number;
   match_id: number;
+  match_location: string; // "산본역"
+  match_date: string; // "YYYY-MM-DD"
   participants: ApiParticipant[];
   last_message: string | null;
   last_message_time: string; // ISO 8601
