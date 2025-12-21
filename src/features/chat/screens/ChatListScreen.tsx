@@ -1,46 +1,74 @@
 import styled from '@emotion/native';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ChatListItemProps } from '../components/ChatListItem';
 import { ChatRoomList } from '../components/ChatRoomList';
+import { useChatRoomList } from '../hooks/useChatRoomList';
 
 import { getFontFamily } from '@/shared/utils/typography';
 
-const MOCK_ROOMS: ChatListItemProps[] = [
-  {
-    id: '1',
-    title: '25.11.24 / 산본역',
-    participantCount: 4,
-    lastMessage: '안녕하세요',
-    imageUrls: ['', '', '', ''],
-  },
-  {
-    id: '2',
-    title: '25.11.24 / 금정역',
-    participantCount: 3,
-    lastMessage: '수고하셨습니다~~',
-    imageUrls: ['', '', ''],
-  },
-  {
-    id: '3',
-    title: '25.11.25 / 안양역',
-    participantCount: 2,
-    lastMessage: '2명 레이아웃 테스트',
-    imageUrls: ['', ''],
-  },
-];
-
 export function ChatListScreen() {
   const router = useRouter();
+  const { data: rooms, isLoading, isError, refetch } = useChatRoomList();
 
-  const handleEnterChat = (_roomId: string) => {
-    // For now, always go to the same chat-room demo
-    router.push('/chat-room');
+  const handleEnterChat = (roomId: string) => {
+    router.push(`/chat-room?id=${roomId}`);
   };
 
+  // Loading 상태
+  if (isLoading) {
+    return (
+      <SafeArea edges={['top']}>
+        <Container>
+          <Header>
+            <Title>채팅</Title>
+          </Header>
+          <CenteredView>
+            <ActivityIndicator size="large" />
+          </CenteredView>
+        </Container>
+      </SafeArea>
+    );
+  }
+
+  // Error 상태
+  if (isError) {
+    return (
+      <SafeArea edges={['top']}>
+        <Container>
+          <Header>
+            <Title>채팅</Title>
+          </Header>
+          <CenteredView>
+            <ErrorText>채팅방 목록을 불러올 수 없습니다</ErrorText>
+            <RetryButton onPress={() => refetch()}>
+              <RetryText>다시 시도</RetryText>
+            </RetryButton>
+          </CenteredView>
+        </Container>
+      </SafeArea>
+    );
+  }
+
+  // Empty 상태
+  if (!rooms || rooms.length === 0) {
+    return (
+      <SafeArea edges={['top']}>
+        <Container>
+          <Header>
+            <Title>채팅</Title>
+          </Header>
+          <CenteredView>
+            <EmptyText>참여 중인 채팅방이 없습니다</EmptyText>
+          </CenteredView>
+        </Container>
+      </SafeArea>
+    );
+  }
+
+  // 정상 상태
   return (
     <SafeArea edges={['top']}>
       <Container>
@@ -48,7 +76,7 @@ export function ChatListScreen() {
           <Title>채팅</Title>
         </Header>
         <ChatRoomList
-          rooms={MOCK_ROOMS}
+          rooms={rooms}
           onRoomPress={handleEnterChat}
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
         />
@@ -78,4 +106,38 @@ const Title = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.titleM};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   color: ${({ theme }) => theme.colors.primary.black};
+`;
+
+const CenteredView = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+const ErrorText = styled(Text)`
+  font-family: ${getFontFamily('medium')};
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  text-align: center;
+  margin-bottom: 16px;
+`;
+
+const RetryButton = styled(Pressable)`
+  padding: 12px 24px;
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  border-radius: 8px;
+`;
+
+const RetryText = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  color: ${({ theme }) => theme.colors.text.main};
+`;
+
+const EmptyText = styled(Text)`
+  font-family: ${getFontFamily('medium')};
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  color: ${({ theme }) => theme.colors.text.tertiary};
+  text-align: center;
 `;
