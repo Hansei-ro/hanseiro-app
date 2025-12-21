@@ -80,12 +80,16 @@ const InfoContainer = styled(View)`
 const DateText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
+  include-font-padding: false;
+  line-height: 17px;
 `;
 
 const TitleText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.l};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
+  include-font-padding: false;
+  line-height: 25px;
 `;
 
 const AvatarContainer = styled(View)`
