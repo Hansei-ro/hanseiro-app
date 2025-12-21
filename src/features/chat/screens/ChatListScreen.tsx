@@ -11,7 +11,7 @@ import { getFontFamily } from '@/shared/utils/typography';
 
 export function ChatListScreen() {
   const router = useRouter();
-  const { data: rooms, isLoading, isError, refetch } = useChatRoomList();
+  const { data: rooms, isLoading, isError, refetch, isRefetching } = useChatRoomList();
 
   const handleEnterChat = (roomId: string) => {
     router.push(`/chat-room?id=${roomId}`);
@@ -79,6 +79,8 @@ export function ChatListScreen() {
           rooms={rooms}
           onRoomPress={handleEnterChat}
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}
+          refreshing={isRefetching}
+          onRefresh={() => refetch()}
         />
       </Container>
     </SafeArea>

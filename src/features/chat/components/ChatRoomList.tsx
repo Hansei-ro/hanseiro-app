@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, RefreshControl, View } from 'react-native';
 
 import { ChatListItem, ChatListItemProps } from './ChatListItem';
 
@@ -8,9 +8,17 @@ interface ChatRoomListProps {
   rooms: ChatListItemProps[];
   onRoomPress: (roomId: string) => void;
   contentContainerStyle?: object;
+  refreshing?: boolean;
+  onRefresh?: () => void;
 }
 
-export function ChatRoomList({ rooms, onRoomPress, contentContainerStyle }: ChatRoomListProps) {
+export function ChatRoomList({
+  rooms,
+  onRoomPress,
+  contentContainerStyle,
+  refreshing = false,
+  onRefresh,
+}: ChatRoomListProps) {
   return (
     <StyledFlatList
       data={rooms}
@@ -19,6 +27,9 @@ export function ChatRoomList({ rooms, onRoomPress, contentContainerStyle }: Chat
       ItemSeparatorComponent={() => <Separator />}
       contentContainerStyle={contentContainerStyle}
       showsVerticalScrollIndicator={false}
+      refreshControl={
+        onRefresh ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} /> : undefined
+      }
     />
   );
 }
