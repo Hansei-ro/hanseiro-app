@@ -6,7 +6,7 @@ import { Text, View } from 'react-native';
 import { ParticipantCard } from './ParticipantCard';
 
 import MatchIcon from '@/shared/icons/match.svg';
-import { getFontFamily } from '@/shared/lib/typography';
+import { getFontFamily } from '@/shared/utils/typography';
 
 interface Participant {
   name?: string;

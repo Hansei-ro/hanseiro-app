@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import React from 'react';
 import { ActivityIndicator, Pressable, Text, ViewStyle } from 'react-native';
 
-import { getFontFamily } from '../lib/typography';
+import { getFontFamily } from '../utils/typography';
 
 interface ButtonProps {
   title: string;

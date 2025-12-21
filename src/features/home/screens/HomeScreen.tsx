@@ -2,8 +2,8 @@ import styled from '@emotion/native';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '../../../shared/lib/typography';
-import { theme } from '../../../shared/theme';
+import { theme } from '@/shared/theme';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export function HomeScreen() {
   return (

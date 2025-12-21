@@ -3,9 +3,9 @@ import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '@/shared/lib/typography';
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 import { StackHeader } from '@/shared/ui/StackHeader';
+import { getFontFamily } from '@/shared/utils/typography';
 
 // Mock Data based on the screenshot
 const MOCK_HISTORY = [

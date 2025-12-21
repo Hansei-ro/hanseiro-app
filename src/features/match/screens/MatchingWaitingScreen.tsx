@@ -8,9 +8,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MatchingRouteInfo } from '../components/MatchingRouteInfo';
 import { ParticipantStatusSection } from '../components/ParticipantStatusSection';
 
-import { getFontFamily } from '@/shared/lib/typography';
 import { Button } from '@/shared/ui/Button';
 import { StackHeader } from '@/shared/ui/StackHeader';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export default function MatchingWaitingScreen() {
   const theme = useTheme();

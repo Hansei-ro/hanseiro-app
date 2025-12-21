@@ -3,8 +3,8 @@ import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '@/shared/lib/typography';
 import { Button } from '@/shared/ui/Button';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export function MatchScreen() {
   return (

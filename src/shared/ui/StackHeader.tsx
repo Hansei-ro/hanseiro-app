@@ -5,7 +5,7 @@ import { ChevronLeft } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, Text, View, ViewStyle } from 'react-native';
 
-import { getFontFamily } from '../lib/typography';
+import { getFontFamily } from '../utils/typography';
 
 interface StackHeaderProps {
   title: string;

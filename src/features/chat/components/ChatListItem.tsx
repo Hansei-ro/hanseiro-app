@@ -2,8 +2,8 @@ import styled from '@emotion/native';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { getFontFamily } from '@/shared/lib/typography';
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export interface ChatListItemProps {
   id: string;

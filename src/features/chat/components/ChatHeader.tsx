@@ -4,7 +4,7 @@ import { ChevronLeft } from 'lucide-react-native';
 import React, { ReactNode } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
-import { getFontFamily } from '@/shared/lib/typography';
+import { getFontFamily } from '@/shared/utils/typography';
 
 interface ChatHeaderProps {
   title: string;

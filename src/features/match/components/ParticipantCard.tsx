@@ -6,7 +6,7 @@ import { Image, Text, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
-import { getFontFamily } from '@/shared/lib/typography';
+import { getFontFamily } from '@/shared/utils/typography';
 
 interface ParticipantCardProps {
   name?: string;

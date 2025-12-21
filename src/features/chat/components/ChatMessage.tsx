@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { Text, View } from 'react-native';
 
-import { getFontFamily } from '@/shared/lib/typography';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export interface Message {
   id: string;

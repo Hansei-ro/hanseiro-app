@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChatListItemProps } from '../components/ChatListItem';
 import { ChatRoomList } from '../components/ChatRoomList';
 
-import { getFontFamily } from '@/shared/lib/typography';
+import { getFontFamily } from '@/shared/utils/typography';
 
 const MOCK_ROOMS: ChatListItemProps[] = [
   {
