@@ -9,28 +9,35 @@ export interface ChatListItemProps {
   id: string;
   title: string;
   lastMessage: string;
+  lastMessageTime: string; // "방금 전", "5분 전"
   participantCount: number;
-  imageUrls?: string[];
+  hasUnread: boolean;
   onPress?: () => void;
 }
 
 export function ChatListItem({
   title,
   lastMessage,
+  lastMessageTime,
   participantCount,
-  imageUrls,
+  hasUnread,
   onPress,
 }: ChatListItemProps) {
   return (
     <Container onPress={onPress}>
-      <AvatarGroup imageUrls={imageUrls} count={participantCount} />
-      <AvatarGroup imageUrls={imageUrls} count={participantCount} />
+      <AvatarGroup count={participantCount} />
       <Content>
         <HeaderRow>
-          <Title numberOfLines={1}>{title}</Title>
+          <TitleRow>
+            <Title numberOfLines={1}>{title}</Title>
+            {hasUnread && <UnreadBadge />}
+          </TitleRow>
           <CountText>{participantCount}</CountText>
         </HeaderRow>
-        <MessageText numberOfLines={1}>{lastMessage}</MessageText>
+        <BottomRow>
+          <MessageText numberOfLines={1}>{lastMessage}</MessageText>
+          <TimeText>{lastMessageTime}</TimeText>
+        </BottomRow>
       </Content>
     </Container>
   );
@@ -60,11 +67,24 @@ const HeaderRow = styled(View)`
   gap: 6px;
 `;
 
+const TitleRow = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+`;
+
 const Title = styled(Text)`
   font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
+`;
+
+const UnreadBadge = styled(View)`
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 const CountText = styled(Text)`
@@ -74,8 +94,21 @@ const CountText = styled(Text)`
   color: ${({ theme }) => theme.colors.text.tertiary};
 `;
 
+const BottomRow = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+`;
+
 const MessageText = styled(Text)`
   font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.text.secondary};
+`;
+
+const TimeText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  color: ${({ theme }) => theme.colors.text.tertiary};
 `;
