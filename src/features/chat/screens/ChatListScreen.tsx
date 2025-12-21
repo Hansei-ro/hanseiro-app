@@ -70,6 +70,7 @@ const Container = styled(View)`
 const Header = styled(View)`
   padding: 16px 20px;
   margin-bottom: 18px;
+  margin-bottom: 18px;
 `;
 
 const Title = styled(Text)`

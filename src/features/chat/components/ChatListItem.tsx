@@ -24,6 +24,7 @@ export function ChatListItem({
   return (
     <Container onPress={onPress}>
       <AvatarGroup imageUrls={imageUrls} count={participantCount} />
+      <AvatarGroup imageUrls={imageUrls} count={participantCount} />
       <Content>
         <HeaderRow>
           <Title numberOfLines={1}>{title}</Title>
