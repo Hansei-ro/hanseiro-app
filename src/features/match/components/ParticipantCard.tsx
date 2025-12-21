@@ -79,7 +79,6 @@ const Container = styled(View)<{ isReady: boolean }>`
 
 const EmptyWrapper = styled(View)`
   position: relative;
-  margin-bottom: 8px;
   height: 70px;
   border-radius: 12px;
 `;
