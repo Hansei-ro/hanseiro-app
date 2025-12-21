@@ -23,7 +23,7 @@ const generateParticipants = (count: number, baseId: number) => {
   }));
 };
 
-const MOCK_ROOMS: ApiChatRoom[] = Array.from({ length: 25 }, (_, i) => {
+const MOCK_ROOM_LIST: ApiChatRoom[] = Array.from({ length: 25 }, (_, i) => {
   const participantCount = (i % 4) + 1; // 1~4명
   const date = new Date();
   date.setDate(date.getDate() - Math.floor(i / 3)); // 날짜 다양화
@@ -42,22 +42,22 @@ const MOCK_ROOMS: ApiChatRoom[] = Array.from({ length: 25 }, (_, i) => {
 });
 
 /**
- * Mock 채팅방 목록 API
+ * Mock 채팅방 목록 API (ChatListScreen 전용)
  * 실제 API 연동 전까지 사용
  *
  * @returns 채팅방 목록 응답
  */
-export const mockFetchChatRooms = async (): Promise<ApiChatRoomsResponse> => {
+export const mockFetchChatRoomList = async (): Promise<ApiChatRoomsResponse> => {
   await new Promise((resolve) => setTimeout(resolve, MOCK_DELAY));
 
-  // 10% 확률로 에러 시뮬레이션 (__DEV__에서만)
-  if (__DEV__ && Math.random() < 0.1) {
+  // 10% 확률로 에러 시뮬레이션 (개발 환경)
+  if (process.env.NODE_ENV !== 'production' && Math.random() < 0.1) {
     throw new Error('Mock Network Error');
   }
 
   return {
     status: 'success',
     message: '채팅방 목록을 조회했습니다',
-    data: { rooms: MOCK_ROOMS },
+    data: { rooms: MOCK_ROOM_LIST },
   };
 };
