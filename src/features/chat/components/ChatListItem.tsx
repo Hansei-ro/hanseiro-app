@@ -28,11 +28,9 @@ export function ChatListItem({
       <AvatarGroup count={participantCount} />
       <Content>
         <HeaderRow>
-          <TitleRow>
-            <Title numberOfLines={1}>{title}</Title>
-            {hasUnread && <UnreadBadge />}
-          </TitleRow>
+          <Title numberOfLines={1}>{title}</Title>
           <CountText>{participantCount}</CountText>
+          {hasUnread && <UnreadBadge />}
         </HeaderRow>
         <BottomRow>
           <MessageText numberOfLines={1}>{lastMessage}</MessageText>
@@ -65,12 +63,6 @@ const HeaderRow = styled(View)`
   flex-direction: row;
   align-items: center;
   gap: 6px;
-`;
-
-const TitleRow = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
 `;
 
 const Title = styled(Text)`

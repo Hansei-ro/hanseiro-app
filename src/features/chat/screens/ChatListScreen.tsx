@@ -93,12 +93,11 @@ const SafeArea = styled(SafeAreaView)`
 
 const Container = styled(View)`
   flex: 1;
+  gap: 18px;
 `;
 
 const Header = styled(View)`
   padding: 16px 20px;
-  margin-bottom: 18px;
-  margin-bottom: 18px;
 `;
 
 const Title = styled(Text)`

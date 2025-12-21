@@ -54,7 +54,11 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
   }
 
   // Default: single avatar (safeCount <= 1)
-  return <SingleAvatar />;
+  return (
+    <Container>
+      <SingleAvatar />
+    </Container>
+  );
 }
 
 const Container = styled(View)`

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { mockFetchChatRoomList } from '../api/mockChatRoomList';
 import { ChatRoomListItemUI } from '../types/chatList.ui';
 
-import { formatRelativeTime } from '@/shared/utils/date';
+import { formatRelativeTime, formatShortDate } from '@/shared/utils/date';
 
 /**
  * 채팅방 목록 조회 React Query 훅 (ChatListScreen 전용)
@@ -24,7 +24,7 @@ export const useChatRoomList = () => {
     select: (response): ChatRoomListItemUI[] => {
       return response.data.rooms.map((room) => ({
         id: String(room.chat_room_id),
-        title: `${room.match_date.slice(5)} / ${room.match_location}`, // "11.24 / 산본역"
+        title: `${formatShortDate(room.match_date)} / ${room.match_location}`, // "24.11.24 / 산본역"
         lastMessage: room.last_message ?? '',
         lastMessageTime: formatRelativeTime(room.last_message_time),
         participantCount: room.participants.length,

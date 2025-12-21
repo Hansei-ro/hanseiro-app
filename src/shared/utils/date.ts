@@ -1,4 +1,4 @@
-import { formatDistanceToNow, parseISO } from 'date-fns';
+import { format, formatDistanceToNow, parseISO } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
 /**
@@ -18,6 +18,25 @@ export const formatRelativeTime = (isoString: string | null | undefined): string
       addSuffix: true,
       locale: ko,
     });
+  } catch {
+    return '';
+  }
+};
+
+/**
+ * ISO 8601 날짜 문자열을 "YY.MM.DD" 형식으로 변환
+ *
+ * @param isoString - ISO 8601 형식의 날짜 문자열
+ * @returns "YY.MM.DD" 형식 문자열
+ *
+ * @example
+ * formatShortDate('2024-11-24T10:00:00Z') // "24.11.24"
+ */
+export const formatShortDate = (isoString: string | null | undefined): string => {
+  if (!isoString) return '';
+
+  try {
+    return format(parseISO(isoString), 'yy.MM.dd');
   } catch {
     return '';
   }
