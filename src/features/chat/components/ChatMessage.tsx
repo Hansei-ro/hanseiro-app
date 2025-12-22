@@ -84,14 +84,14 @@ const BubbleRow = styled(View)<{ isMe: boolean }>`
 `;
 
 const TimeText = styled(Text)`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.tertiary};
   margin-horizontal: 4px;
   margin-bottom: 2px;
 `;
 
 const DateText = styled(Text)`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
@@ -118,7 +118,7 @@ const Bubble = styled(View)<{ isMe: boolean }>`
 `;
 
 const MessageText = styled(Text)<{ isMe: boolean }>`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ isMe, theme }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
   line-height: 20px;
 `;

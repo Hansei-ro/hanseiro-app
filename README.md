@@ -546,12 +546,11 @@ export default function NotificationsScreen() {
 
 **타입**:
 
-- `feat` - 새로운 기능 추가
+- `feat` - 새로운 기능 추가 (UI/디자인 포함)
 - `fix` - 버그 수정
-- `style` - UI/디자인 수정
 - `refactor` - 코드 개선 (기능 변경 없음)
 - `docs` - 문서 수정
-- `chore` - 설정 파일, 패키지 설치 등
+- `chore` - 빌드/설정 작업 (Prettier 등)
 
 **범위** (선택사항):
 
@@ -564,8 +563,8 @@ export default function NotificationsScreen() {
 
 ```bash
 git commit -m "feat(auth): 로그인 페이지 UI 구현"
+git commit -m "feat(ui): 로그인 버튼 색상 변경"
 git commit -m "fix(match): 매칭 시간 계산 오류 수정"
-git commit -m "style(button): 로그인 버튼 색상 변경"
 ```
 
 > 💡 자세한 커밋 규칙은 [CONVENTIONS.md](./docs/CONVENTIONS.md)를 참고하세요!

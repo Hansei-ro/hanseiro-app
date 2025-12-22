@@ -5,10 +5,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Keyboard, Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ChatHeader } from '../components/ChatHeader';
 import { ChatInput } from '../components/ChatInput';
 import { ChatList } from '../components/ChatList';
 import { Message } from '../components/ChatMessage';
+
+import { StackHeader } from '@/shared/ui/StackHeader';
 
 // iOS 키보드 높이 계산 시 TabBar 높이를 고려한 오프셋 값
 // iOS에서는 TabBar(하단 탭 바)가 키보드 높이에 포함되어 있으므로,
@@ -179,7 +180,7 @@ export function ChatRoomScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.primary.white }}>
-      <ChatHeader title="25.11.24 / 산본역" onBackPress={handleBack} />
+      <StackHeader title="25.11.24 / 산본역" titleAlign="center" onBack={handleBack} />
 
       {/* 키보드 높이만큼 paddingBottom 적용 */}
       <View
