@@ -104,7 +104,7 @@ const DashedBorder = () => {
         fill="none"
         stroke={theme.colors.border.joiningOutline}
         strokeWidth="1.5"
-        strokeDasharray="6, 4"
+        strokeDasharray="5, 3"
       />
     </Svg>
   );
