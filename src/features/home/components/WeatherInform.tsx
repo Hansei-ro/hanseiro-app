@@ -5,16 +5,18 @@ import { View, Text, Image } from 'react-native';
 import SunIcon from '@/shared/icons/SunIcon.png';
 
 const WeatherInformFrame = styled(View)`
-  display: flex;
-  width: 33%;
-  height: 12%;
+  width: 112px;
+  height: 80px;
   border: solid 1px #f2f4f5;
-  border-radius: 10px;
-  background-color: white;
-  padding: 18px;
+  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
+  background-color: ${({ theme }) => theme.colors.primary.white};
   flex-direction: row;
   margin-right: auto;
-  gap: 7px;
+  gap: 8px;
+  padding-top: ${({ theme }) => theme.spacing[18]};
+  padding-bottom: ${({ theme }) => theme.spacing[18]};
+  padding-left: ${({ theme }) => theme.spacing[16]};
+  padding-right: ${({ theme }) => theme.spacing[16]};
 `;
 
 const WeatherInformLeft = styled(View)`
@@ -28,24 +30,21 @@ const WeatherIcon = styled(Image)`
 
 const WhetherInformRight = styled(View)`
   justify-content: center;
-  display: flex;
-  width: 50%;
-  height: 100%;
+  width: 35px;
+  height: 44px;
   background-color: none;
 `;
 
 const TemperatureText = styled(Text)`
-  justify-content: flex-start;
-  font-size: 25px;
-  font-weight: 600;
-  color: #212528;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const CityText = styled(Text)`
-  justify-content: flex-end;
-  font-size: 16px;
-  font-weight: 500;
-  color: #212528;
+  ${({ theme }) => theme.typography.fontSize.m};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 export function WeatherInform() {

@@ -6,77 +6,76 @@ import fireImage from '@/shared/icons/FireImage.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
 const MatchingStatusFrame = styled(View)`
-  display: flex;
-  height: 18%;
+  height: 127px;
   width: 100%;
+  align-self: stretch;
   border: solid 1px #f2f4f5;
-  border-radius: 10px;
-  background-color: white;
-  padding: 18px;
+  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
+  background-color: ${({ theme }) => theme.colors.primary.white};
+  padding-left: ${({ theme }) => theme.spacing[20]};
+  padding-right: ${({ theme }) => theme.spacing[20]};
+  padding-bottom: 22px;
+  padding-top: ${({ theme }) => theme.spacing[12]};
 `;
 
 const MatchingStatusTopBox = styled(View)`
-  width: 100%;
-  height: 50%;
+  height: 45px;
   background-color: none;
   flex-direction: row;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing[4]};
+  background-color: none;
 `;
 
 const PersonImage = styled(Image)`
   width: 28px;
   height: 28px;
+  margin-right: ${({ theme }) => theme.spacing[8]};
 `;
 
 const MatchingStatusText = styled(Text)`
-  font-size: 20px;
-  font-weight: 600;
-  color: #212528;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const FireImage = styled(Image)`
   width: 16px;
   height: 22px;
-  margin-left: -6px;
 `;
 
 const MatchingStatusBottomBox = styled(View)`
-  display: flex;
-  width: 100%;
-  height: 50%;
-  background-color: none;
+  height: 45px;
 `;
 
 const MatchingStatusCountBox = styled(View)`
   flex-direction: row;
   margin-left: auto;
   align-items: center;
-  gap: 5px;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const MatchingPersonNow = styled(Text)`
-  font-size: 24px;
-  color: #212528;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleL};
+  color: ${({ theme }) => theme.colors.primary.black};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 `;
 
 const Slice = styled(Text)`
-  font-size: 19px;
-  color: #ced4db;
-  font-weight: 400;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  color: ${({ theme }) => theme.colors.primary.gray300};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 `;
 
 const MatchingPersonMax = styled(Text)`
-  font-size: 19px;
-  color: #ced4db;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.typography.fontSize.l};
+  color: ${({ theme }) => theme.colors.primary.gray300};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 `;
 
 const MatchingProgressContainer = styled(View)`
-  display: flex;
   flex-direction: column;
-  height: 40%;
+  height: 12px;
   width: 100%;
   justify-content: flex-end;
   background-color: none;
@@ -85,14 +84,14 @@ const MatchingProgressContainer = styled(View)`
 const MatchingProgressTrack = styled(View)`
   width: 100%;
   height: 5px;
-  background-color: #f2f4f5;
+  background-color: ${({ theme }) => theme.colors.background.chat};
   border-radius: 7px;
   overflow: hidden;
 `;
 
 const StyledProgressFill = styled(View)`
   height: 100%;
-  background-color: #ff781c;
+  background-color: ${({ theme }) => theme.colors.primary.main};
   width: 50%;
   border-radius: 7px;
 `;

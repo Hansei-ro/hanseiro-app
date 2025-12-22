@@ -26,10 +26,11 @@ const SafeArea = styled(SafeAreaView)`
 
 const Container = styled(View)`
   flex: 1;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px 45px;
+  padding-horizontal: 20px;
+  padding-top: 28px;
+  padding-bottom: 112px;
   gap: 15px;
   background-color: ${theme.colors.background.screen};
 `;

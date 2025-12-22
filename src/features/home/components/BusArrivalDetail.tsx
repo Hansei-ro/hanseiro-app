@@ -7,40 +7,32 @@ import warnning from '@/shared/icons/warnning.png';
 import BusIcon from '@/shared/images/BusImage.png';
 
 const BusDetailBoxFrame = styled(View)`
-  display: flex;
-  position: fixed;
-  bottom: 0%;
-  height: 50%;
   width: 100%;
+  height: 348px;
   border: solid 1px #f2f4f5;
-  border-radius: 10px;
-  background-color: white;
-  padding: 12px;
+  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
+  background-color: ${({ theme }) => theme.colors.primary.white};
+  padding: ${({ theme }) => theme.spacing[12]};
 `;
 
 const BusDetailOuter = styled(View)`
-  width: 100%;
-  height: 25%;
-  background-color: none;
-  display: flex;
+  height: 80px;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.spacing[8]};
   justify-content: center;
 `;
 
 const BusItemWrapper = styled(View)`
-  width: 100%;
-  background-color: none;
-  display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
-  padding-right: 10px;
+  padding-right: ${({ theme }) => theme.spacing[18]};
 `;
 
 const BusImage = styled(Image)`
   width: 54px;
   height: 54px;
-  margin-left: 10px;
+  margin-left: ${({ theme }) => theme.spacing[12]};
 `;
 
 const WarningImage = styled(Image)`
@@ -55,79 +47,73 @@ const ArrowRight = styled(Image)`
 
 const BusInform = styled(View)`
   flex: 1;
-  height: 100%;
   background-color: none;
-  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 15px;
+  margin-left: ${({ theme }) => theme.spacing[16]};
 `;
 
 const MoreInformBox = styled(View)`
-  display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 2px;
-  gap: 5px;
+  margin-top: ${({ theme }) => theme.spacing[4]};
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const MoreInformButton = styled(TouchableOpacity)`
   background-color: none;
   border-radius: 20px;
-  display: flex;
-  margin-bottom: 15px;
+  margin-bottom: ${({ theme }) => theme.spacing[16]};
   flex-direction: row;
 `;
 
 const MoreInformText = styled(Text)`
-  color: #212528;
-  font-weight: 600;
-  font-size: 14px;
+  color: ${({ theme }) => theme.colors.primary.black};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  font-size: ${({ theme }) => theme.typography.fontSize.s};
 `;
 
 const InformLeft = styled(View)`
-  gap: 6px;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const BusNumber = styled(Text)`
-  font-size: 20px;
-  font-weight: bold;
-  color: #212528;
+  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const ArrivalTime = styled(Text)`
-  color: #212528;
-  font-weight: 600;
+  color: ${({ theme }) => theme.colors.primary.black};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 `;
 
 const ArrivalTimeSoon = styled(Text)`
-  color: #fa5b4a;
-  font-weight: 600;
+  color: ${({ theme }) => theme.colors.text.error};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
 `;
 
 const HowLong = styled(Text)`
-  font-size: 16px;
-  font-weight: 600;
-  color: #848c95;
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.primary.gray500};
 `;
 
 const DelayWarningBox = styled(View)`
-  display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 6px;
+  margin-top: ${({ theme }) => theme.spacing[4]};
   margin-left: 80px;
-  width: 222px;
-  gap: 3px;
-  background-color: none;
+  width: 230px;
+  gap: ${({ theme }) => theme.spacing[4]};
 `;
 
 const DelayWarningText = styled(Text)`
   text-align: center;
-  color: #ffbf01;
-  font-size: 11px;
-  font-weight: 800;
+  color: ${({ theme }) => theme.colors.text.warning};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
 `;
 
 export function BusArrivalDetailBox(
