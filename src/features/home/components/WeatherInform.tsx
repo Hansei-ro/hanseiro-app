@@ -14,7 +14,7 @@ const WeatherInformFrame = styled(View)`
   padding: 18px;
   flex-direction: row;
   margin-right: auto;
-  gap: 14px;
+  gap: 7px;
 `;
 
 const WeatherInformLeft = styled(View)`
