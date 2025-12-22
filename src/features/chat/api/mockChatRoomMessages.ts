@@ -209,3 +209,24 @@ export const resetMockMessages = () => {
     MOCK_MESSAGES_BY_ROOM[chatRoomId] = generateMessagesForRoom(chatRoomId, participantCount);
   });
 };
+
+/**
+ * 채팅방의 마지막 메시지 조회 (채팅 목록용)
+ * mockChatRoomList와 데이터 일관성 유지
+ *
+ * @param chatRoomId - 채팅방 ID
+ * @returns 마지막 메시지 또는 null
+ */
+export const getLastMessageForRoom = (chatRoomId: number): ApiMessage | null => {
+  const messages = MOCK_MESSAGES_BY_ROOM[chatRoomId];
+  if (!messages || messages.length === 0) {
+    return null;
+  }
+
+  // 가장 최신 메시지 반환 (sent_at 기준 내림차순)
+  const sortedMessages = [...messages].sort(
+    (a, b) => new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime(),
+  );
+
+  return sortedMessages[0] ?? null;
+};
