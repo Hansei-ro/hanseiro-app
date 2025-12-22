@@ -1,6 +1,8 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
+
+import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
 
 interface AvatarGroupProps {
   imageUrls?: string[]; // Up to 4 images
@@ -16,8 +18,14 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
   if (safeCount === 2) {
     return (
       <Container>
-        <AvatarBase style={{ position: 'absolute', top: 2, left: 2, zIndex: 2 }} />
-        <AvatarBase style={{ position: 'absolute', bottom: 2, right: 2, zIndex: 1 }} />
+        <AvatarBase
+          source={DEFAULT_PROFILE_IMAGE}
+          style={{ position: 'absolute', top: 2, left: 2, zIndex: 2 }}
+        />
+        <AvatarBase
+          source={DEFAULT_PROFILE_IMAGE}
+          style={{ position: 'absolute', bottom: 2, right: 2, zIndex: 1 }}
+        />
       </Container>
     );
   }
@@ -27,12 +35,12 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
       <Container>
         {/* Top Center */}
         <View style={{ width: '100%', alignItems: 'center', marginBottom: 2 }}>
-          <AvatarBase />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} />
         </View>
         {/* Bottom Row */}
         <Row>
-          <AvatarBase style={{ marginRight: 2 }} />
-          <AvatarBase />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} style={{ marginRight: 2 }} />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} />
         </Row>
       </Container>
     );
@@ -42,12 +50,12 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
     return (
       <Container>
         <Row style={{ marginBottom: 2 }}>
-          <AvatarBase style={{ marginRight: 2 }} />
-          <AvatarBase />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} style={{ marginRight: 2 }} />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} />
         </Row>
         <Row>
-          <AvatarBase style={{ marginRight: 2 }} />
-          <AvatarBase />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} style={{ marginRight: 2 }} />
+          <AvatarBase source={DEFAULT_PROFILE_IMAGE} />
         </Row>
       </Container>
     );
@@ -56,7 +64,7 @@ export function AvatarGroup({ imageUrls = [], count = 0 }: AvatarGroupProps) {
   // Default: single avatar (safeCount <= 1)
   return (
     <Container>
-      <SingleAvatar />
+      <SingleAvatar source={DEFAULT_PROFILE_IMAGE} />
     </Container>
   );
 }
@@ -68,17 +76,15 @@ const Container = styled(View)`
   align-items: center;
 `;
 
-const SingleAvatar = styled(View)`
+const SingleAvatar = styled(Image)`
   width: 32px;
   height: 32px;
   border-radius: 12px;
-  background-color: ${({ theme }) => theme.colors.semantic.stroke};
 `;
 
-const AvatarBase = styled(View)`
+const AvatarBase = styled(Image)`
   width: 32px;
   height: 32px;
-  background-color: ${({ theme }) => theme.colors.semantic.stroke};
   border-radius: 12px;
 `;
 
