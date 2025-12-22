@@ -2,10 +2,10 @@ import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { MapPin } from 'lucide-react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import Svg, { Line } from 'react-native-svg';
 
-import { getFontFamily } from '@/shared/lib/typography';
+import { Text } from '@/shared/ui/Text';
 
 export function MatchingRouteInfo() {
   const theme = useTheme();
@@ -15,7 +15,9 @@ export function MatchingRouteInfo() {
       <MapPin color={theme.colors.primary.main} size={18} />
 
       <RouteContent>
-        <LocationText>금정</LocationText>
+        <Text variant="s" weight="medium">
+          금정
+        </Text>
 
         <View style={{ flex: 1 }}>
           <Svg height="2" width="100%">
@@ -32,7 +34,9 @@ export function MatchingRouteInfo() {
           </Svg>
         </View>
 
-        <LocationText>한세대</LocationText>
+        <Text variant="s" weight="medium">
+          한세대
+        </Text>
       </RouteContent>
     </Container>
   );
@@ -53,10 +57,4 @@ const RouteContent = styled(View)`
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-`;
-
-const LocationText = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 `;

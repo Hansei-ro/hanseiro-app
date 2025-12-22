@@ -2,11 +2,11 @@ import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { Check } from 'lucide-react-native';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, View } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
-import { getFontFamily } from '@/shared/lib/typography';
+import { Text } from '@/shared/ui/Text';
 
 interface ParticipantCardProps {
   name?: string;
@@ -33,7 +33,9 @@ export function ParticipantCard({
         <DashedBorder />
         <EmptyContent>
           <ProfileImage source={DEFAULT_PROFILE_IMAGE} style={{ opacity: 0.5 }} />
-          <StatusText isEmpty>합류중...</StatusText>
+          <Text variant="s" weight="medium" color={theme.colors.text.joining}>
+            합류중...
+          </Text>
         </EmptyContent>
       </EmptyWrapper>
     );
@@ -45,10 +47,28 @@ export function ParticipantCard({
         <ProfileImage source={DEFAULT_PROFILE_IMAGE} />
         <InfoContainer>
           <NameRow>
-            <NameText>{name}</NameText>
-            {!isMe && <NameText>({department})</NameText>}
+            <Text variant="s" weight="medium" color={theme.colors.primary.black}>
+              {name}
+            </Text>
+            {!isMe && (
+              <Text variant="s" weight="medium" color={theme.colors.primary.black}>
+                ({department})
+              </Text>
+            )}
           </NameRow>
-          <StatusText isReady={isReady}>{status}</StatusText>
+          <Text
+            variant={isEmpty ? 's' : 'xs'}
+            weight={isEmpty ? 'medium' : isReady ? 'semiBold' : 'regular'}
+            color={
+              isEmpty
+                ? theme.colors.text.joining
+                : isReady
+                  ? theme.colors.primary.main
+                  : theme.colors.text.waiting
+            }
+          >
+            {status}
+          </Text>
         </InfoContainer>
       </LeftContent>
 
@@ -137,35 +157,6 @@ const InfoContainer = styled(View)`
 const NameRow = styled(View)`
   flex-direction: row;
   align-items: center;
-`;
-
-const NameText = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const StatusText = styled(Text)<{ isReady?: boolean; isEmpty?: boolean }>`
-  font-family: ${({ isReady, isEmpty }) => {
-    if (isEmpty) return getFontFamily('medium');
-    if (isReady) return getFontFamily('semiBold');
-    return getFontFamily('regular');
-  }};
-  font-size: ${({ theme, isEmpty }) => {
-    if (isEmpty) return theme.typography.fontSize.s;
-    return theme.typography.fontSize.xs;
-  }};
-  font-weight: ${({ theme, isReady, isEmpty }) => {
-    if (isEmpty) return theme.typography.fontWeight.medium;
-    if (isReady) return theme.typography.fontWeight.semiBold;
-    return theme.typography.fontWeight.regular;
-  }};
-  color: ${({ theme, isReady, isEmpty }) => {
-    if (isEmpty) return theme.colors.text.joining;
-    if (isReady) return theme.colors.primary.main;
-    return theme.colors.text.waiting;
-  }};
 `;
 
 const RightContent = styled(View)``;
