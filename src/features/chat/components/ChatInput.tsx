@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { Send } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { TextInput, TouchableOpacity, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -65,7 +65,7 @@ const StyledInput = styled(TextInput)`
   padding-bottom: 0;
 `;
 
-const SendButton = styled(TouchableOpacity)`
+const SendButton = styled(Pressable)`
   margin-left: 8px;
   padding: 4px;
 `;

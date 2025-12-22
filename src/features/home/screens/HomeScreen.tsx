@@ -2,6 +2,7 @@ import styled from '@emotion/native';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { getFontFamily } from '../../../shared/lib/typography';
 import { theme } from '../../../shared/theme';
 
 export function HomeScreen() {
@@ -28,12 +29,14 @@ const Container = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: 16px;
   color: ${theme.colors.text.secondary};
 `;

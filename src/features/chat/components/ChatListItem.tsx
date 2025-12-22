@@ -1,7 +1,8 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
+import { getFontFamily } from '@/shared/lib/typography';
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 
 export interface ChatListItemProps {
@@ -23,6 +24,7 @@ export function ChatListItem({
   return (
     <Container onPress={onPress}>
       <AvatarGroup imageUrls={imageUrls} count={participantCount} />
+      <AvatarGroup imageUrls={imageUrls} count={participantCount} />
       <Content>
         <HeaderRow>
           <Title numberOfLines={1}>{title}</Title>
@@ -34,7 +36,7 @@ export function ChatListItem({
   );
 }
 
-const Container = styled(TouchableOpacity)`
+const Container = styled(Pressable)`
   flex-direction: row;
   align-items: center;
   /* User specified 28px gap between items, handled by List separator. 
@@ -59,18 +61,21 @@ const HeaderRow = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const CountText = styled(Text)`
+  font-family: ${getFontFamily('semiBold')};
   font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.text.tertiary};
 `;
 
 const MessageText = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: ${({ theme }) => theme.typography.fontSize.s};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;

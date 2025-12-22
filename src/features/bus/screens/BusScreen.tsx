@@ -2,6 +2,8 @@ import styled from '@emotion/native';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { getFontFamily } from '@/shared/lib/typography';
+
 export function BusScreen() {
   return (
     <SafeArea edges={['top']}>
@@ -26,12 +28,14 @@ const Container = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: 16px;
   color: ${({ theme }) => theme.colors.text.secondary};
 `;

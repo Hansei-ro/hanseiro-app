@@ -1,7 +1,9 @@
 import styled from '@emotion/native';
 import { router } from 'expo-router';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+import { getFontFamily } from '@/shared/lib/typography';
 
 export function ProfileScreen() {
   return (
@@ -9,12 +11,15 @@ export function ProfileScreen() {
       <Container>
         <Title>프로필</Title>
         <Subtitle>내 정보 및 설정</Subtitle>
-        <TouchableOpacity
+        <Pressable
           onPress={() => router.push('/match/history')}
-          style={{ marginTop: 20, padding: 10, backgroundColor: '#eee', borderRadius: 8 }}
+          style={({ pressed }) => [
+            { marginTop: 20, padding: 10, backgroundColor: '#eee', borderRadius: 8 },
+            pressed && { opacity: 0.7 },
+          ]}
         >
           <Text>지난 매칭 내역 보기 (임시)</Text>
-        </TouchableOpacity>
+        </Pressable>
       </Container>
     </SafeArea>
   );
@@ -33,12 +38,14 @@ const Container = styled(View)`
 `;
 
 const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-size: 16px;
   color: ${({ theme }) => theme.colors.text.secondary};
 `;

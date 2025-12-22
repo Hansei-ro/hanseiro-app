@@ -1,7 +1,7 @@
 ---
 name: "\U0001F3A8 Design Update"
 about: 디자인 작업 진행 시 작성합니다.
-title: '[feature]'
+title: '[design]'
 labels: design
 assignees: ''
 ---
