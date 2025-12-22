@@ -1,7 +1,10 @@
 import styled from '@emotion/native';
-import { Text, View } from 'react-native';
+import { useTheme } from '@emotion/react';
+import { format } from 'date-fns';
+import { Image, View } from 'react-native';
 
-import { getFontFamily } from '@/shared/lib/typography';
+import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
+import { Text } from '@/shared/ui/Text';
 
 export interface Message {
   id: string;
@@ -17,47 +20,59 @@ interface ChatMessageProps {
 }
 
 export function ChatMessage({ message }: ChatMessageProps) {
+  const theme = useTheme();
+
   if (message.isDateSeparator) {
     return (
       <DateSeparatorContainer>
-        <DateText>{message.text}</DateText>
+        <Text variant="xs" weight="regular" color={theme.colors.text.secondary}>
+          {message.text}
+        </Text>
       </DateSeparatorContainer>
     );
   }
 
   const isMe = message.sender === 'me';
-  const timeString = new Date(message.timestamp).toLocaleTimeString('ko-KR', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
+  const timeString = format(new Date(message.timestamp), 'HH:mm');
 
+  // 내 말풍선
   if (isMe) {
     return (
       <MessageContainer isMe>
         <ContentContainer isMe>
-          <BubbleRow isMe>
-            <TimeText>{timeString}</TimeText>
-            <Bubble isMe>
-              <MessageText isMe>{message.text}</MessageText>
-            </Bubble>
-          </BubbleRow>
+          <MessageWrapper isMe>
+            <Text variant="xs" weight="regular" color={theme.colors.text.tertiary}>
+              {timeString}
+            </Text>
+            <MessageContent isMe>
+              <Text variant="s" weight="medium" color={theme.colors.text.main} lineHeight={20}>
+                {message.text}
+              </Text>
+            </MessageContent>
+          </MessageWrapper>
         </ContentContainer>
       </MessageContainer>
     );
   }
 
+  // 상대방 말풍선
   return (
     <MessageContainer isMe={false}>
-      <ProfilePlaceholder />
+      <ProfilePlaceholder source={DEFAULT_PROFILE_IMAGE} />
       <ContentContainer isMe={false}>
-        <SenderName>{message.senderName}</SenderName>
-        <BubbleRow isMe={false}>
-          <Bubble isMe={false}>
-            <MessageText isMe={false}>{message.text}</MessageText>
-          </Bubble>
-          <TimeText>{timeString}</TimeText>
-        </BubbleRow>
+        <Text weight="regular" color={theme.colors.text.secondary} style={{ fontSize: 13 }}>
+          {message.senderName}
+        </Text>
+        <MessageWrapper isMe={false}>
+          <MessageContent isMe={false}>
+            <Text variant="s" weight="medium" color={theme.colors.primary.black} lineHeight={20}>
+              {message.text}
+            </Text>
+          </MessageContent>
+          <Text variant="xs" weight="regular" color={theme.colors.text.tertiary}>
+            {timeString}
+          </Text>
+        </MessageWrapper>
       </ContentContainer>
     </MessageContainer>
   );
@@ -71,60 +86,32 @@ const DateSeparatorContainer = styled(View)`
 const MessageContainer = styled(View)<{ isMe: boolean }>`
   flex-direction: row;
   justify-content: ${({ isMe }) => (isMe ? 'flex-end' : 'flex-start')};
-  margin-bottom: 16px;
-  padding-horizontal: 16px;
+  gap: 6px;
 `;
 
 const ContentContainer = styled(View)<{ isMe: boolean }>`
   align-items: ${({ isMe }) => (isMe ? 'flex-end' : 'flex-start')};
   max-width: 70%;
+  gap: 4px;
 `;
 
-const BubbleRow = styled(View)<{ isMe: boolean }>`
+const MessageWrapper = styled(View)<{ isMe: boolean }>`
   flex-direction: row;
   align-items: flex-end;
+  gap: 4px;
 `;
 
-const TimeText = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  color: ${({ theme }) => theme.colors.text.tertiary};
-  margin-horizontal: 4px;
-  margin-bottom: 2px;
-`;
-
-const DateText = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  color: ${({ theme }) => theme.colors.text.secondary};
-`;
-
-const ProfilePlaceholder = styled(View)`
+const ProfilePlaceholder = styled(Image)`
   width: 36px;
   height: 36px;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.background.chat};
-  margin-right: 8px;
 `;
 
-const SenderName = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.text.secondary};
-  margin-bottom: 4px;
-`;
-
-const Bubble = styled(View)<{ isMe: boolean }>`
+const MessageContent = styled(View)<{ isMe: boolean }>`
   background-color: ${({ isMe, theme }) =>
     isMe ? theme.colors.primary.main : theme.colors.background.chat};
   padding: 10px 12px;
   border-radius: 12px;
   ${({ isMe }) => (isMe ? 'border-top-right-radius: 0px;' : 'border-top-left-radius: 0px;')}
-`;
-
-const MessageText = styled(Text)<{ isMe: boolean }>`
-  font-family: ${getFontFamily('regular')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  color: ${({ isMe, theme }) => (isMe ? theme.colors.text.main : theme.colors.primary.black)};
-  line-height: 20px;
 `;

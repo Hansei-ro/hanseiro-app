@@ -82,7 +82,6 @@ const HistoryItemContainer = styled(View)`
 
 const InfoContainer = styled(View)`
   justify-content: center;
-  gap: 4px;
 `;
 
 const AvatarContainer = styled(View)`

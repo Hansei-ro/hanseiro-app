@@ -1,21 +1,27 @@
 import styled from '@emotion/native';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 import { ChatMessage, Message } from './ChatMessage';
 
-interface ChatListProps {
+interface ChatMessageListProps {
   messages: Message[];
   contentContainerStyle?: object;
   inverted?: boolean;
 }
 
-export function ChatList({ messages, contentContainerStyle, inverted }: ChatListProps) {
+// 채팅 메시지 리스트 컴포넌트
+export function ChatMessageList({
+  messages,
+  contentContainerStyle,
+  inverted,
+}: ChatMessageListProps) {
   return (
     <StyledFlatList
       data={messages}
       renderItem={({ item }) => <ChatMessage message={item as Message} />}
       keyExtractor={(item) => (item as Message).id}
-      contentContainerStyle={[{ paddingVertical: 16 }, contentContainerStyle]}
+      contentContainerStyle={[{ paddingHorizontal: 16 }, contentContainerStyle]}
+      ItemSeparatorComponent={() => <Separator />}
       showsVerticalScrollIndicator={false}
       inverted={inverted}
     />
@@ -24,5 +30,8 @@ export function ChatList({ messages, contentContainerStyle, inverted }: ChatList
 
 const StyledFlatList = styled(FlatList)`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.primary.white};
+`;
+
+const Separator = styled(View)`
+  height: 18px;
 `;
