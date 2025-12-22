@@ -1,13 +1,16 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useMemo, useState } from 'react';
-import { Keyboard, Platform, View } from 'react-native';
+import { ActivityIndicator, Keyboard, Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ChatInput } from '../components/ChatInput';
 import { Message } from '../components/ChatMessage';
 import { ChatMessageList } from '../components/ChatMessageList';
+import { useChatRoomDetail } from '../hooks/useChatRoomDetail';
+import { useChatRoomMessages } from '../hooks/useChatRoomMessages';
+import { useSendMessage } from '../hooks/useSendMessage';
 
 import { StackHeader } from '@/shared/ui/StackHeader';
 
@@ -16,85 +19,20 @@ import { StackHeader } from '@/shared/ui/StackHeader';
 // 실제 콘텐츠 영역 조정 시 이를 차감해야 올바른 레이아웃을 유지할 수 있음
 const IOS_KEYBOARD_OFFSET = 35;
 
-const MOCK_MESSAGES: Message[] = [
-  {
-    id: '1',
-    text: '안녕하세요',
-    sender: 'other',
-    timestamp: '2025-11-24T17:45:00',
-    senderName: '홍길동',
-  },
-  {
-    id: '2',
-    text: '안녕하세요!',
-    sender: 'me',
-    timestamp: '2025-11-24T17:46:00',
-  },
-  {
-    id: '3',
-    text: '반가워요 다들~',
-    sender: 'other',
-    timestamp: '2025-11-24T17:47:00',
-    senderName: '김철수',
-  },
-  {
-    id: '4',
-    text: '오늘 모임 몇 시인가요?',
-    sender: 'other',
-    timestamp: '2025-11-24T17:48:00',
-    senderName: '이영희',
-  },
-  {
-    id: '5',
-    text: '7시로 알고 있어요',
-    sender: 'me',
-    timestamp: '2025-11-24T17:49:00',
-  },
-  {
-    id: '6',
-    text: '네 맞습니다 7시 산본역이에요',
-    sender: 'other',
-    timestamp: '2025-11-24T17:50:00',
-    senderName: '홍길동',
-  },
-  {
-    id: '7',
-    text: '늦지 않게 갈게요',
-    sender: 'other',
-    timestamp: '2025-11-24T17:51:00',
-    senderName: '김철수',
-  },
-  {
-    id: '8',
-    text: '저도 금방 갑니다',
-    sender: 'other',
-    timestamp: '2025-11-24T17:52:00',
-    senderName: '이영희',
-  },
-  {
-    id: '9',
-    text: '조심히 오세요',
-    sender: 'me',
-    timestamp: '2025-11-24T17:53:00',
-  },
-  {
-    id: '10',
-    text: '이따 봬요!',
-    sender: 'other',
-    timestamp: '2025-11-24T17:54:00',
-    senderName: '홍길동',
-  },
-];
-
 export function ChatRoomScreen() {
   const router = useRouter();
   const theme = useTheme();
+  const { chatRoomId } = useLocalSearchParams<{ chatRoomId: string }>();
 
   // 키보드 높이 추적
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
-  // 최신 메시지가 0번 인덱스에 오도록 정렬 (inverted 리스트용)
-  const [messages, setMessages] = useState<Message[]>([...MOCK_MESSAGES].reverse());
+  // API 훅 사용
+  const { data: roomDetail, isLoading: isLoadingRoom } = useChatRoomDetail(chatRoomId || '');
+  const { data: messages = [], isLoading: isLoadingMessages } = useChatRoomMessages(
+    chatRoomId || '',
+  );
+  const sendMessage = useSendMessage(chatRoomId || '');
 
   // 키보드 이벤트 리스너
   useEffect(() => {
@@ -160,14 +98,7 @@ export function ChatRoomScreen() {
   }, [messages]);
 
   const handleSend = (text: string) => {
-    const newMessage: Message = {
-      id: Date.now().toString(),
-      text,
-      sender: 'me',
-      timestamp: new Date().toISOString(),
-    };
-    // 최신 메시지를 배열의 앞(0번 인덱스)에 추가
-    setMessages((prev) => [newMessage, ...prev]);
+    sendMessage.mutate(text);
   };
 
   const handleBack = () => {
@@ -178,9 +109,20 @@ export function ChatRoomScreen() {
     }
   };
 
+  // 로딩 상태 처리
+  if (isLoadingRoom || isLoadingMessages) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.primary.white }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color={theme.colors.primary.main} />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.primary.white }}>
-      <StackHeader title="25.11.24 / 산본역" titleAlign="center" onBack={handleBack} />
+      <StackHeader title={roomDetail?.title || '채팅방'} titleAlign="center" onBack={handleBack} />
 
       {/* 키보드 높이만큼 paddingBottom 적용 */}
       <View
