@@ -15,16 +15,17 @@ const BusDetailBoxFrame = styled(View)`
   border: solid 1px #f2f4f5;
   border-radius: 10px;
   background-color: white;
-  padding: 15px;
+  padding: 12px;
 `;
 
 const BusDetailOuter = styled(View)`
   width: 100%;
-  height: 29%;
+  height: 25%;
   background-color: none;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  justify-content: center;
 `;
 
 const BusItemWrapper = styled(View)`
@@ -67,7 +68,7 @@ const MoreInformBox = styled(View)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 2px;
   gap: 5px;
 `;
 
@@ -75,6 +76,7 @@ const MoreInformButton = styled(TouchableOpacity)`
   background-color: none;
   border-radius: 20px;
   display: flex;
+  margin-bottom: 15px;
   flex-direction: row;
 `;
 
@@ -114,16 +116,18 @@ const DelayWarningBox = styled(View)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5px;
-  margin-left: 70px;
-  gap: 5px;
+  margin-top: 6px;
+  margin-left: 80px;
+  width: 222px;
+  gap: 3px;
   background-color: none;
 `;
 
 const DelayWarningText = styled(Text)`
   text-align: center;
   color: #ffbf01;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 800;
 `;
 
 export function BusArrivalDetailBox(
@@ -154,10 +158,6 @@ export function BusArrivalDetailBox(
             <ArrivalTimeSoon>곧 도착</ArrivalTimeSoon>
           </BusInform>
         </BusItemWrapper>
-        <DelayWarningBox>
-          <WarningImage source={warnning} />
-          <DelayWarningText>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</DelayWarningText>
-        </DelayWarningBox>
       </BusDetailOuter>
 
       <BusDetailOuter>
@@ -171,6 +171,10 @@ export function BusArrivalDetailBox(
             <ArrivalTime>5분 뒤 도착</ArrivalTime>
           </BusInform>
         </BusItemWrapper>
+        <DelayWarningBox>
+          <WarningImage source={warnning} />
+          <DelayWarningText>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</DelayWarningText>
+        </DelayWarningBox>
       </BusDetailOuter>
 
       <BusDetailOuter>
