@@ -1,12 +1,12 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { ParticipantCard } from './ParticipantCard';
 
 import MatchIcon from '@/shared/icons/match.svg';
-import { getFontFamily } from '@/shared/utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 interface Participant {
   name?: string;
@@ -42,12 +42,20 @@ export function ParticipantStatusSection({
             color={theme.colors.primary.black}
             style={{ marginTop: 2 }}
           />
-          <Title>참가자 현황</Title>
+          <Text variant="s" weight="medium" color={theme.colors.primary.black}>
+            참가자 현황
+          </Text>
         </TitleContainer>
-        <Status>
-          <StatusHighlight>{currentCount}</StatusHighlight>/{maxCount}명 ·{' '}
-          <StatusHighlight>{readyCount}</StatusHighlight>명 준비 완료
-        </Status>
+        <Text variant="s" weight="medium" color={theme.colors.primary.black}>
+          <Text variant="s" weight="bold" color={theme.colors.primary.main}>
+            {currentCount}
+          </Text>
+          /{maxCount}명 ·{' '}
+          <Text variant="s" weight="bold" color={theme.colors.primary.main}>
+            {readyCount}
+          </Text>
+          명 준비 완료
+        </Text>
       </Header>
 
       <ParticipantList>
@@ -67,7 +75,8 @@ const Header = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-horizontal: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   gap: 8px;
 `;
 
@@ -75,26 +84,6 @@ const TitleContainer = styled(View)`
   flex-direction: row;
   align-items: center;
   gap: 4px;
-`;
-
-const Title = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const Status = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  color: ${({ theme }) => theme.colors.primary.black};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-`;
-
-const StatusHighlight = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  color: ${({ theme }) => theme.colors.primary.main};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
 `;
 
 const ParticipantList = styled(View)`

@@ -1,17 +1,30 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { router } from 'expo-router';
-import { Text, View } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/shared/ui/Button';
-import { getFontFamily } from '@/shared/utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 export function MatchScreen() {
+  const theme = useTheme();
+
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Title>매칭</Title>
-        <Subtitle>택시 매칭 및 방 생성</Subtitle>
+        <Text
+          variant="titleL"
+          weight="bold"
+          style={{ marginBottom: 8 }}
+          color={theme.colors.primary.black}
+        >
+          매칭
+        </Text>
+        <Text variant="m" weight="regular" color={theme.colors.text.secondary}>
+          택시 매칭 및 방 생성
+        </Text>
         <Button
           title="매칭 대기 화면 (임시)"
           onPress={() => router.push('/match/waiting')}
@@ -32,17 +45,4 @@ const Container = styled(View)`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background.default};
-`;
-
-const Title = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.titleL};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  margin-bottom: 8px;
-`;
-
-const Subtitle = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  color: ${({ theme }) => theme.colors.text.secondary};
 `;

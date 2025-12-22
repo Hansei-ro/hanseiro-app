@@ -30,12 +30,14 @@ const Container = styled(View)`
 
 const Title = styled(Text)`
   font-family: ${getFontFamily('bold')};
+  font-family: ${getFontFamily('bold')};
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
 const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
   font-family: ${getFontFamily('regular')};
   font-size: 16px;
   color: ${theme.colors.text.secondary};

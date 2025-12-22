@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { Clock } from 'lucide-react-native';
 import React from 'react';
-import { ScrollView, StatusBar, Text, View } from 'react-native';
+import { ScrollView, StatusBar, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { MatchingRouteInfo } from '../components/MatchingRouteInfo';
@@ -10,7 +10,7 @@ import { ParticipantStatusSection } from '../components/ParticipantStatusSection
 
 import { Button } from '@/shared/ui/Button';
 import { StackHeader } from '@/shared/ui/StackHeader';
-import { getFontFamily } from '@/shared/utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 export default function MatchingWaitingScreen() {
   const theme = useTheme();
@@ -46,7 +46,9 @@ export default function MatchingWaitingScreen() {
 
               <TimerWrapper>
                 <Clock size={16} color={theme.colors.text.tertiary} />
-                <TimerText>2분 01초</TimerText>
+                <Text variant="s" weight="medium" color={theme.colors.text.time}>
+                  2분 01초
+                </Text>
               </TimerWrapper>
             </MatchingContent>
           </ScrollContent>
@@ -86,13 +88,6 @@ const TimerWrapper = styled(View)`
   align-items: center;
   justify-content: center;
   gap: 4px;
-`;
-
-const TimerText = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-  color: ${({ theme }) => theme.colors.text.time};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
 `;
 
 const BottomContainer = styled(View)`

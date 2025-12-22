@@ -3,9 +3,9 @@ import { useTheme } from '@emotion/react';
 import { router } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import React from 'react';
-import { Pressable, Text, View, ViewStyle } from 'react-native';
+import { Pressable, View, ViewStyle } from 'react-native';
 
-import { getFontFamily } from '../utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 interface StackHeaderProps {
   title: string;
@@ -31,12 +31,18 @@ export function StackHeader({ title, titleAlign = 'left', onBack, style }: Stack
         <BackButton onPress={handleBack}>
           <ChevronLeft color={theme.colors.primary.black} size={28} />
         </BackButton>
-        {titleAlign === 'left' && <Title align="left">{title}</Title>}
+        {titleAlign === 'left' && (
+          <Text variant="l" weight="semiBold" color={theme.colors.primary.black}>
+            {title}
+          </Text>
+        )}
       </LeftContainer>
 
       {titleAlign === 'center' && (
         <CenterContainer pointerEvents="none">
-          <Title align="center">{title}</Title>
+          <Text variant="l" weight="semiBold" color={theme.colors.primary.black}>
+            {title}
+          </Text>
         </CenterContainer>
       )}
     </Container>
@@ -71,11 +77,4 @@ const CenterContainer = styled(View)`
   justify-content: center;
   align-items: center;
   z-index: 0;
-`;
-
-const Title = styled(Text)<{ align: 'left' | 'center' }>`
-  font-family: ${getFontFamily('semiBold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.l};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  color: ${({ theme }) => theme.colors.primary.black};
 `;

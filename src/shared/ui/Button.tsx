@@ -1,9 +1,9 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import React from 'react';
-import { ActivityIndicator, Pressable, Text, ViewStyle } from 'react-native';
+import { ActivityIndicator, Pressable, ViewStyle } from 'react-native';
 
-import { getFontFamily } from '../utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 interface ButtonProps {
   title: string;
@@ -36,7 +36,13 @@ export function Button({
           color={variant === 'primary' ? theme.colors.primary.white : theme.colors.text.secondary}
         />
       ) : (
-        <Label variant={variant}>{title}</Label>
+        <Text
+          variant="m"
+          weight="semiBold"
+          color={variant === 'primary' ? theme.colors.primary.white : theme.colors.text.secondary}
+        >
+          {title}
+        </Text>
       )}
     </Container>
   );
@@ -60,22 +66,6 @@ const Container = styled(Pressable)<{
         return theme.colors.border.cardOutline;
       default:
         return theme.colors.primary.main;
-    }
-  }};
-`;
-
-const Label = styled(Text)<{ variant: 'primary' | 'secondary' }>`
-  font-family: ${getFontFamily('semiBold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  color: ${({ theme, variant }) => {
-    switch (variant) {
-      case 'primary':
-        return theme.colors.primary.white;
-      case 'secondary':
-        return theme.colors.text.secondary;
-      default:
-        return theme.colors.primary.white;
     }
   }};
 `;

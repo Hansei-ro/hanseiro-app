@@ -1,11 +1,12 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 import { StackHeader } from '@/shared/ui/StackHeader';
-import { getFontFamily } from '@/shared/utils/typography';
+import { Text } from '@/shared/ui/Text';
 
 // Mock Data based on the screenshot
 const MOCK_HISTORY = [
@@ -24,11 +25,17 @@ const MOCK_HISTORY = [
 ];
 
 export function MatchHistoryScreen() {
+  const theme = useTheme();
+
   const renderItem = ({ item }: { item: (typeof MOCK_HISTORY)[0] }) => (
     <HistoryItemContainer>
       <InfoContainer>
-        <DateText>{item.date}</DateText>
-        <TitleText>{item.title}</TitleText>
+        <Text variant="xs" color={theme.colors.text.secondary}>
+          {item.date}
+        </Text>
+        <Text variant="l" weight="semiBold">
+          {item.title}
+        </Text>
       </InfoContainer>
       <AvatarContainer>
         <AvatarGroup count={item.participantCount} />
@@ -75,20 +82,6 @@ const HistoryItemContainer = styled(View)`
 
 const InfoContainer = styled(View)`
   justify-content: center;
-`;
-
-const DateText = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  color: ${({ theme }) => theme.colors.text.secondary};
-  margin-bottom: 4px;
-`;
-
-const TitleText = styled(Text)`
-  font-family: ${getFontFamily('semiBold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.l};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  color: ${({ theme }) => theme.colors.primary.black};
 `;
 
 const AvatarContainer = styled(View)`
