@@ -21,7 +21,6 @@ export function HomeScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: purple;
   background-color: ${theme.colors.background.screen};
 `;
 
@@ -30,7 +29,7 @@ const Container = styled(View)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
-  gap: 20px;
+  padding: 0 20px 45px;
+  gap: 15px;
   background-color: ${theme.colors.background.screen};
 `;
