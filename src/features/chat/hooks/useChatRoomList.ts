@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { mockFetchChatRoomList } from '../api/mockChatRoomList';
-import { ChatRoomListItemUI } from '../types/chatList.ui';
+import { ChatRoomListItemUI } from '../types/chatRoom.ui';
 
 import { formatRelativeTime, formatShortDate } from '@/shared/utils/date';
 
 /**
- * 채팅방 목록 조회 React Query 훅 (ChatListScreen 전용)
+ * 채팅방 목록 조회 React Query 훅 (ChatRoomListScreen 전용)
  *
  * @returns 채팅방 목록 데이터 (UI 형태로 변환됨)
  *

@@ -32,7 +32,7 @@ export function StackHeader({ title, titleAlign = 'left', onBack, style }: Stack
           <ChevronLeft color={theme.colors.primary.black} size={28} />
         </BackButton>
         {titleAlign === 'left' && (
-          <Text variant="l" weight="semiBold" color={theme.colors.primary.black}>
+          <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
             {title}
           </Text>
         )}
@@ -40,7 +40,7 @@ export function StackHeader({ title, titleAlign = 'left', onBack, style }: Stack
 
       {titleAlign === 'center' && (
         <CenterContainer pointerEvents="none">
-          <Text variant="l" weight="semiBold" color={theme.colors.primary.black}>
+          <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
             {title}
           </Text>
         </CenterContainer>

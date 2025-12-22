@@ -6,8 +6,8 @@ import { Keyboard, Platform, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ChatInput } from '../components/ChatInput';
-import { ChatList } from '../components/ChatList';
 import { Message } from '../components/ChatMessage';
+import { ChatMessageList } from '../components/ChatMessageList';
 
 import { StackHeader } from '@/shared/ui/StackHeader';
 
@@ -190,7 +190,7 @@ export function ChatRoomScreen() {
             Platform.OS === 'ios' ? keyboardHeight - IOS_KEYBOARD_OFFSET : keyboardHeight,
         }}
       >
-        <ChatList messages={processedMessages} inverted />
+        <ChatMessageList messages={processedMessages} inverted />
         <InputWrapper>
           <ChatInput onSend={handleSend} />
         </InputWrapper>

@@ -1,5 +1,5 @@
 /**
- * ChatListScreen 전용 UI 타입
+ * ChatRoomListScreen 전용 UI 타입
  */
 
 /** 채팅방 목록 아이템 (UI용) */

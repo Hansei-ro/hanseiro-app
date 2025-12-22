@@ -1,4 +1,4 @@
-import { ApiChatRoom, ApiChatRoomsResponse } from '../types/chatList.api';
+import { ApiChatRoom, ApiChatRoomsResponse } from '../types/chatRoom.api';
 
 const MOCK_DELAY = 800;
 
@@ -42,7 +42,7 @@ const MOCK_ROOM_LIST: ApiChatRoom[] = Array.from({ length: 25 }, (_, i) => {
 });
 
 /**
- * Mock 채팅방 목록 API (ChatListScreen 전용)
+ * Mock 채팅방 목록 API (ChatRoomListScreen 전용)
  * 실제 API 연동 전까지 사용
  *
  * @returns 채팅방 목록 응답

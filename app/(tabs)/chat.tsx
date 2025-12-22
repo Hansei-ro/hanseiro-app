@@ -1,3 +1,3 @@
-import { ChatListScreen } from '@/features/chat/screens/ChatListScreen';
+import { ChatRoomListScreen } from '@/features/chat/screens/ChatRoomListScreen';
 
-export default ChatListScreen;
+export default ChatRoomListScreen;

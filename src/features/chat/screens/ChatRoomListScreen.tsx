@@ -1,16 +1,18 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ChatRoomList } from '../components/ChatRoomList';
 import { useChatRoomList } from '../hooks/useChatRoomList';
 
-import { getFontFamily } from '@/shared/utils/typography';
+import { Text } from '@/shared/ui/Text';
 
-export function ChatListScreen() {
+export function ChatRoomListScreen() {
   const router = useRouter();
+  const theme = useTheme();
   const { data: rooms, isLoading, isError, refetch, isRefetching } = useChatRoomList();
 
   const handleEnterChat = (roomId: string) => {
@@ -23,7 +25,9 @@ export function ChatListScreen() {
       <SafeArea edges={['top']}>
         <Container>
           <Header>
-            <Title>채팅</Title>
+            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+              채팅
+            </Text>
           </Header>
           <CenteredView>
             <ActivityIndicator size="large" />
@@ -39,12 +43,24 @@ export function ChatListScreen() {
       <SafeArea edges={['top']}>
         <Container>
           <Header>
-            <Title>채팅</Title>
+            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+              채팅
+            </Text>
           </Header>
           <CenteredView>
-            <ErrorText>채팅방 목록을 불러올 수 없습니다</ErrorText>
+            <Text
+              variant="m"
+              weight="medium"
+              color={theme.colors.text.secondary}
+              align="center"
+              style={{ marginBottom: 16 }}
+            >
+              채팅방 목록을 불러올 수 없습니다
+            </Text>
             <RetryButton onPress={() => refetch()}>
-              <RetryText>다시 시도</RetryText>
+              <Text variant="m" weight="semiBold" color={theme.colors.text.main}>
+                다시 시도
+              </Text>
             </RetryButton>
           </CenteredView>
         </Container>
@@ -58,10 +74,14 @@ export function ChatListScreen() {
       <SafeArea edges={['top']}>
         <Container>
           <Header>
-            <Title>채팅</Title>
+            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+              채팅
+            </Text>
           </Header>
           <CenteredView>
-            <EmptyText>참여 중인 채팅방이 없습니다</EmptyText>
+            <Text variant="m" weight="medium" color={theme.colors.text.tertiary} align="center">
+              참여 중인 채팅방이 없습니다
+            </Text>
           </CenteredView>
         </Container>
       </SafeArea>
@@ -73,7 +93,9 @@ export function ChatListScreen() {
     <SafeArea edges={['top']}>
       <Container>
         <Header>
-          <Title>채팅</Title>
+          <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+            채팅
+          </Text>
         </Header>
         <ChatRoomList
           rooms={rooms}
@@ -102,13 +124,6 @@ const Header = styled(View)`
   padding: 16px 20px;
 `;
 
-const Title = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
 const CenteredView = styled(View)`
   flex: 1;
   justify-content: center;
@@ -116,29 +131,8 @@ const CenteredView = styled(View)`
   padding: 20px;
 `;
 
-const ErrorText = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  color: ${({ theme }) => theme.colors.text.secondary};
-  text-align: center;
-  margin-bottom: 16px;
-`;
-
 const RetryButton = styled(Pressable)`
   padding: 12px 24px;
   background-color: ${({ theme }) => theme.colors.primary.main};
   border-radius: 8px;
-`;
-
-const RetryText = styled(Text)`
-  font-family: ${getFontFamily('semiBold')};
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  color: ${({ theme }) => theme.colors.text.main};
-`;
-
-const EmptyText = styled(Text)`
-  font-family: ${getFontFamily('medium')};
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  color: ${({ theme }) => theme.colors.text.tertiary};
-  text-align: center;
 `;
