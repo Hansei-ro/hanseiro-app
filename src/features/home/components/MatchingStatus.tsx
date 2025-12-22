@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-import fireImage from '@/shared/icons/warnning.png';
+import fireImage from '@/shared/icons/FireImage.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
 const MatchingStatusFrame = styled(View)`
@@ -36,8 +36,9 @@ const MatchingStatusText = styled(Text)`
 `;
 
 const FireImage = styled(Image)`
-  width: 20px;
-  height: 28px;
+  width: 16px;
+  height: 22px;
+  margin-left: -6px;
 `;
 
 const MatchingStatusBottomBox = styled(View)`
@@ -104,12 +105,14 @@ export function MatchingStatus() {
         <MatchingStatusText>산본역 매칭현황</MatchingStatusText>
         <FireImage source={fireImage} />
       </MatchingStatusTopBox>
+
       <MatchingStatusBottomBox>
         <MatchingStatusCountBox>
           <MatchingPersonNow>2</MatchingPersonNow>
           <Slice>/</Slice>
           <MatchingPersonMax>4</MatchingPersonMax>
         </MatchingStatusCountBox>
+
         <MatchingProgressContainer>
           <MatchingProgressTrack>
             <StyledProgressFill />
