@@ -1,25 +1,31 @@
 import styled from '@emotion/native';
+import { useTheme } from '@emotion/react';
 import { router } from 'expo-router';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '@/shared/utils/typography';
+import { ProfileCard } from '../components/ProfileCard';
+
+import { Text } from '@/shared/ui/Text';
 
 export function ProfileScreen() {
+  const theme = useTheme();
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Title>프로필</Title>
-        <Subtitle>내 정보 및 설정</Subtitle>
+        <Header>
+          <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+            MY
+          </Text>
+        </Header>
+        <ProfileCard />
         <Pressable
           onPress={() => router.push('/match/history')}
           style={({ pressed }) => [
             { marginTop: 20, padding: 10, backgroundColor: '#eee', borderRadius: 8 },
             pressed && { opacity: 0.7 },
           ]}
-        >
-          <Text>지난 매칭 내역 보기 (임시)</Text>
-        </Pressable>
+        />
       </Container>
     </SafeArea>
   );
@@ -27,25 +33,13 @@ export function ProfileScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.background.default};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const Container = styled(View)`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.background.default};
 `;
 
-const Title = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const Subtitle = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.text.secondary};
+const Header = styled(View)`
+  padding: 16px 20px;
 `;
