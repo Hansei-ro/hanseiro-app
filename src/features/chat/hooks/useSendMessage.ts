@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { adaptApiMessageToUI } from '../adapters/messageAdapter';
 import { mockSendMessage } from '../api/mockChatRoomMessages';
 import { ApiMessagesResponse } from '../types/message.api';
 
@@ -32,7 +31,7 @@ export const useSendMessage = (chatRoomId: string) => {
     },
     onSuccess: (response) => {
       // 전송된 메시지를 UI 타입으로 변환
-      const newMessage = adaptApiMessageToUI(response.data.message);
+      // const newMessage = adaptApiMessageToUI(response.data.message);
 
       // 메시지 목록 캐시 업데이트 (Optimistic Update)
       queryClient.setQueryData<ApiMessagesResponse>(['chatRoomMessages', chatRoomId], (oldData) => {
