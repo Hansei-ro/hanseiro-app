@@ -86,3 +86,25 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+/**
+ * Orval에서 사용하는 Custom Instance
+ * @description Orval 코드 생성 시 이 함수를 mutator로 사용합니다.
+ * @see https://orval.dev/reference/configuration/output#mutator
+ */
+export const customInstance = <T>(config: import('axios').AxiosRequestConfig): Promise<T> => {
+  const source = axios.CancelToken.source();
+
+  const promise = axiosInstance({
+    ...config,
+    cancelToken: source.token,
+  }).then(({ data }) => data);
+
+  // React Query의 query cancellation 지원
+  // @ts-expect-error - cancel 속성 동적 추가
+  promise.cancel = () => {
+    source.cancel('Query was cancelled');
+  };
+
+  return promise;
+};

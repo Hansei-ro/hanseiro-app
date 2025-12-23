@@ -6,10 +6,43 @@
 ## 📋 목차
 
 - [시작하기](#-시작하기)
+- [Orval - API 코드 자동 생성](#-orval---api-코드-자동-생성)
 - [프로젝트 구조](#-프로젝트-구조)
 - [새 기능 추가하기](#-새-기능-추가하기)
 - [개발 컨벤션](#-개발-컨벤션)
 - [자주 하는 질문](#-자주-하는-질문)
+
+---
+
+## 🔄 Orval - API 코드 자동 생성
+
+> 💡 **Orval이란?** 백엔드 API 명세서(OpenAPI)를 기반으로 TypeScript 타입, API 호출 함수, React Query 훅을 **자동으로 생성**해주는 도구입니다.
+
+### 왜 사용하나요?
+
+| 장점 ✅        | 설명                              |
+| -------------- | --------------------------------- |
+| 타입 자동 생성 | 타입 수동 작성 불필요             |
+| 백엔드 동기화  | API 변경 시 타입 오류로 바로 감지 |
+| 생산성 향상    | 반복적인 코드 작성 제거           |
+
+### 사용 방법
+
+```bash
+# 백엔드 API 명세서 URL을 orval.config.ts에 설정한 후
+yarn api:generate
+```
+
+```tsx
+// 생성된 훅을 바로 사용
+import { useGetMatchList } from '@/api/generated';
+
+const { data, isLoading } = useGetMatchList();
+```
+
+> ⚠️ **주의**: `src/api/generated/` 폴더는 **직접 수정 금지!** 코드 생성 시 덮어씌워집니다.
+
+👉 **자세한 사용법**: [src/api/generated/README.md](./src/api/generated/README.md)
 
 ---
 
@@ -109,6 +142,7 @@ OpenJDK Runtime Environment Zulu17.46+19-CA (build 17.0.9+8-LTS)
 
 - App Store에서 Xcode 다운로드 및 설치
 - 터미널에서 Command Line Tools 설정:
+
   ```bash
   sudo xcode-select --install
   ```
@@ -239,11 +273,14 @@ npx expo run:android --device
 
 - 제어판 → 시스템 → 고급 시스템 설정 → 환경 변수
 - **시스템 변수에 새로 만들기**:
+
   ```
   변수 이름: ANDROID_HOME
   변수 값: C:\Users\[사용자명]\AppData\Local\Android\Sdk
   ```
+
 - **Path 변수에 추가**:
+
   ```
   %ANDROID_HOME%\platform-tools
   %ANDROID_HOME%\emulator
@@ -268,14 +305,18 @@ java -version
 
 1. 제어판 → 시스템 → 고급 시스템 설정 → 환경 변수
 2. 시스템 변수에서 "새로 만들기":
+
    ```
    변수 이름: JAVA_HOME
    변수 값: C:\Program Files\Zulu\zulu-17
    ```
+
 3. Path 변수에 추가:
+
    ```
    %JAVA_HOME%\bin
    ```
+
 4. PowerShell 재시작 후 `java -version` 재확인
 
 **여러 Java 버전이 설치된 경우**
