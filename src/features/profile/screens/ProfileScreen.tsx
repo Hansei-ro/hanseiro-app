@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { router } from 'expo-router';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ProfileCard } from '../components/ProfileCard';
