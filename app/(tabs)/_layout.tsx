@@ -17,15 +17,17 @@ export default function TabLayout() {
       tabBarActiveTintColor: theme.colors.primary.main,
       tabBarInactiveTintColor: theme.colors.semantic.iconNav,
       tabBarStyle: {
-        backgroundColor: theme.colors.primary.white,
         borderTopWidth: 1,
-        borderTopColor: theme.colors.semantic.stroke,
+        borderTopColor: '#F8FAFB',
         height: 60 + insets.bottom,
         paddingBottom: insets.bottom + 5,
       },
+      tabBarIconStyle: {
+        marginBottom: 2,
+      },
       tabBarLabelStyle: {
-        fontSize: 12,
-        fontWeight: '500' as const,
+        fontFamily: 'Pretendard-Medium',
+        fontSize: parseInt(theme.typography.fontSize.xs, 10),
       },
     }),
     [insets.bottom, theme],
@@ -34,21 +36,21 @@ export default function TabLayout() {
   return (
     <Tabs screenOptions={screenOptions}>
       <Tabs.Screen
-        name="index"
+        name="home/index"
         options={{
           title: '홈',
           tabBarIcon: ({ color }) => <Home color={color} size={25} />,
         }}
       />
       <Tabs.Screen
-        name="bus"
+        name="bus/index"
         options={{
           title: '버스',
           tabBarIcon: ({ color }) => <BusFront color={color} size={25} />,
         }}
       />
       <Tabs.Screen
-        name="match"
+        name="match/index"
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
@@ -63,14 +65,14 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="chat"
+        name="chat/index"
         options={{
           title: '채팅',
           tabBarIcon: ({ color }) => <MessageCircle color={color} size={25} />,
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="profile/index"
         options={{
           title: 'MY',
           tabBarIcon: ({ color }) => <Library color={color} size={25} />,
