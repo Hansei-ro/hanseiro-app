@@ -15,7 +15,7 @@ export function ProfileScreen() {
     <SafeArea edges={['top']}>
       <Container>
         <Header>
-          <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
+          <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
             MY
           </Text>
         </Header>
