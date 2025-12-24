@@ -20,10 +20,10 @@ export function ProfileCard() {
 
         <ScoreContainer>
           <ScoreLabelRow>
-            <Text variant="xs" weight="regular" color={theme.colors.text.secondary}>
+            <Text variant="xs" weight="medium" color={theme.colors.text.secondary}>
               신뢰학점
             </Text>
-            <Text variant="s" weight="semiBold" color={theme.colors.primary.main}>
+            <Text variant="xs" weight="medium" color={theme.colors.primary.main}>
               70학점
             </Text>
           </ScoreLabelRow>
