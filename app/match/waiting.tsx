@@ -1,3 +1,3 @@
-import MatchingWaitingScreen from '../../src/features/match/screens/MatchingWaitingScreen';
+import MatchingWaitingScreen from '@/features/match/screens/MatchingWaitingScreen';
 
 export default MatchingWaitingScreen;
