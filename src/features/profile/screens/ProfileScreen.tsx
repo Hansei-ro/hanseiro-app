@@ -1,11 +1,10 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import { router } from 'expo-router';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ProfileCard } from '../components/ProfileCard';
-import { ProfileMenu } from '../components/ProfileMenu';
+import { ProfileMenuList } from '../components/ProfileMenuList';
 
 import { Text } from '@/shared/ui/Text';
 
@@ -21,12 +20,7 @@ export function ProfileScreen() {
         </Header>
         <ContentWrapper>
           <ProfileCard />
-          <MenuContainer>
-            <ProfileMenu title="지난 매칭 내역" onPress={() => router.push('/match/history')} />
-            <ProfileMenu title="설정" onPress={() => {}} />
-            <ProfileMenu title="회원탈퇴" onPress={() => {}} />
-            <ProfileMenu title="로그아웃" onPress={() => {}} hasArrow={false} />
-          </MenuContainer>
+          <ProfileMenuList />
         </ContentWrapper>
       </Container>
     </SafeArea>
