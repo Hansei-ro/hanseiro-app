@@ -12,12 +12,9 @@ export function ProfileCard() {
     <CardContainer>
       <ProfileImage source={DEFAULT_PROFILE_IMAGE} />
       <InfoContainer>
-        <NameSection>
-          <Text variant="m" weight="semiBold" color={theme.colors.primary.black}>
-            홍길동(컴퓨터공학과)
-          </Text>
-        </NameSection>
-
+        <Text variant="m" weight="semiBold" color={theme.colors.primary.black}>
+          홍길동(컴퓨터공학과)
+        </Text>
         <ScoreContainer>
           <ScoreLabelRow>
             <Text variant="xs" weight="medium" color={theme.colors.text.secondary}>
@@ -49,10 +46,6 @@ const ProfileImage = styled(Image)`
 const InfoContainer = styled(View)`
   flex: 1;
   gap: 14px;
-`;
-
-const NameSection = styled(View)`
-  gap: 4px;
 `;
 
 const ScoreContainer = styled(View)`
