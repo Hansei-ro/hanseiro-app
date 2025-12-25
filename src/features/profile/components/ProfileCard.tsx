@@ -39,7 +39,7 @@ export function ProfileCard() {
 const CardContainer = styled(View)`
   flex-direction: row;
   gap: 12px;
-  padding: 20px;
+  padding: 0 20px;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
