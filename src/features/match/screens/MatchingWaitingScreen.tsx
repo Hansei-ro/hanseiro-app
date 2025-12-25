@@ -92,9 +92,8 @@ const Container = styled(View)`
 
 const ContentWrapper = styled(View)`
   flex: 1;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-top: 10px;
+  padding-horizontal: 20px;
 `;
 
 const ScrollContent = styled(View)`

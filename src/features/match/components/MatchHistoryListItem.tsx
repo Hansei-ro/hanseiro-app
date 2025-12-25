@@ -25,9 +25,7 @@ export function MatchHistoryListItem({ item }: MatchHistoryListItemProps) {
           {item.title}
         </Text>
       </InfoContainer>
-      <AvatarContainer>
-        <AvatarGroup count={item.participantCount} />
-      </AvatarContainer>
+      <AvatarGroup count={item.participantCount} />
     </HistoryItemContainer>
   );
 }
@@ -36,15 +34,9 @@ const HistoryItemContainer = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-vertical: 14px;
-  padding-horizontal: 18px;
+  padding: 14px 18px;
 `;
 
 const InfoContainer = styled(View)`
   justify-content: center;
-`;
-
-const AvatarContainer = styled(View)`
-  justify-content: center;
-  align-items: center;
 `;

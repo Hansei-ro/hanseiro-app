@@ -1,6 +1,5 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { MatchHistoryList } from '../components/MatchHistoryList';
@@ -14,25 +13,18 @@ export function MatchHistoryScreen() {
 
   return (
     <SafeArea edges={['top']}>
-      <Container>
-        <StackHeader title="매칭 내역" titleAlign="left" />
-        <MatchHistoryList
-          items={histories}
-          isPending={isPending}
-          isError={isError}
-          onRetry={refetch}
-        />
-      </Container>
+      <StackHeader title="매칭 내역" titleAlign="left" />
+      <MatchHistoryList
+        items={histories}
+        isPending={isPending}
+        isError={isError}
+        onRetry={refetch}
+      />
     </SafeArea>
   );
 }
 
 const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  background-color: ${({ theme }) => theme.colors.background.default};
-`;
-
-const Container = styled(View)`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
