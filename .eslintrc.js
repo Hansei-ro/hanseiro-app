@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
-  extends: ['universe/native'],
+  extends: ['universe/native', 'plugin:@tanstack/query/recommended'],
 
-  plugins: ['react-native', 'react', 'react-hooks', 'import'],
+  plugins: ['react-native', 'react', 'react-hooks', 'import', '@tanstack/query'],
 
   env: {
     node: true,
@@ -65,5 +65,10 @@ module.exports = {
         },
       },
     ],
+
+    // ===== TanStack Query =====
+    // 'plugin:@tanstack/query/recommended' 를 extends에 추가했으므로
+    // 모든 권장 규칙이 자동 적용됩니다.
+    // 필요시 여기서 개별 규칙을 override 할 수 있습니다.
   },
 };
