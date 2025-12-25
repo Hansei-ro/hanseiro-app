@@ -1,3 +1,4 @@
+import { useReactQueryDevTools } from '@dev-plugins/react-query';
 import { ThemeProvider } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
@@ -15,6 +16,9 @@ const queryClient = new QueryClient();
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  // React Query DevTools (개발 환경에서만 활성화됨)
+  useReactQueryDevTools(queryClient);
+
   const [fontsLoaded] = useFonts({
     'Pretendard-Regular': require('../assets/fonts/Pretendard-Regular.otf'),
     'Pretendard-Medium': require('../assets/fonts/Pretendard-Medium.otf'),
