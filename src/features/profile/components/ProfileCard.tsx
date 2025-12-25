@@ -27,9 +27,7 @@ export function ProfileCard() {
               70학점
             </Text>
           </ScoreLabelRow>
-          <ScoreBarContainer>
-            <ScoreBarFill />
-          </ScoreBarContainer>
+          <ScoreBarFill />
         </ScoreContainer>
       </InfoContainer>
     </CardContainer>
@@ -67,16 +65,9 @@ const ScoreLabelRow = styled(View)`
   align-items: center;
 `;
 
-const ScoreBarContainer = styled(View)`
-  height: 6px;
-  background-color: ${({ theme }) => theme.colors.semantic.stroke};
-  border-radius: 12px;
-  overflow: hidden;
-`;
-
 const ScoreBarFill = styled(View)`
   width: 70%;
-  height: 100%;
+  height: 6px;
   background-color: ${({ theme }) => theme.colors.primary.main};
   border-radius: 12px;
 `;
