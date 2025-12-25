@@ -44,5 +44,3 @@ const ContentWrapper = styled(View)`
 const Header = styled(View)`
   padding: 16px 20px;
 `;
-
-const MenuContainer = styled(View)``;
