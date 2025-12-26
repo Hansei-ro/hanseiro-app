@@ -5,17 +5,42 @@ import { View, Text, Image } from 'react-native';
 import fireImage from '@/shared/icons/FireImage.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
+export function MatchingStatus() {
+  return (
+    <MatchingStatusFrame>
+      <MatchingStatusTopBox>
+        <PersonImage source={MatchingPersonImage} />
+        <MatchingStatusText>산본역 매칭현황</MatchingStatusText>
+        <FireImage source={fireImage} />
+      </MatchingStatusTopBox>
+
+      <MatchingStatusBottomBox>
+        <MatchingStatusCountBox>
+          <MatchingPersonNow>2</MatchingPersonNow>
+          <Slice>/</Slice>
+          <MatchingPersonMax>4</MatchingPersonMax>
+        </MatchingStatusCountBox>
+
+        <MatchingProgressContainer>
+          <MatchingProgressTrack>
+            <StyledProgressFill />
+          </MatchingProgressTrack>
+        </MatchingProgressContainer>
+      </MatchingStatusBottomBox>
+    </MatchingStatusFrame>
+  );
+}
+
 const MatchingStatusFrame = styled(View)`
-  height: 127px;
+  height: auto;
   width: 100%;
   align-self: stretch;
   border: solid 1px #f2f4f5;
-  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
+  border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.primary.white};
-  padding-left: ${({ theme }) => theme.spacing[20]};
-  padding-right: ${({ theme }) => theme.spacing[20]};
+  padding-horizontal: 20px;
   padding-bottom: 22px;
-  padding-top: ${({ theme }) => theme.spacing[12]};
+  padding-top: 12px;
 `;
 
 const MatchingStatusTopBox = styled(View)`
@@ -23,14 +48,14 @@ const MatchingStatusTopBox = styled(View)`
   background-color: none;
   flex-direction: row;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing[4]};
+  gap: 4px;
   background-color: none;
 `;
 
 const PersonImage = styled(Image)`
   width: 28px;
   height: 28px;
-  margin-right: ${({ theme }) => theme.spacing[8]};
+  margin-right: 8px;
 `;
 
 const MatchingStatusText = styled(Text)`
@@ -52,7 +77,7 @@ const MatchingStatusCountBox = styled(View)`
   flex-direction: row;
   margin-left: auto;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing[4]};
+  gap: 4px;
 `;
 
 const MatchingPersonNow = styled(Text)`
@@ -95,29 +120,3 @@ const StyledProgressFill = styled(View)`
   width: 50%;
   border-radius: 7px;
 `;
-
-export function MatchingStatus() {
-  return (
-    <MatchingStatusFrame>
-      <MatchingStatusTopBox>
-        <PersonImage source={MatchingPersonImage} />
-        <MatchingStatusText>산본역 매칭현황</MatchingStatusText>
-        <FireImage source={fireImage} />
-      </MatchingStatusTopBox>
-
-      <MatchingStatusBottomBox>
-        <MatchingStatusCountBox>
-          <MatchingPersonNow>2</MatchingPersonNow>
-          <Slice>/</Slice>
-          <MatchingPersonMax>4</MatchingPersonMax>
-        </MatchingStatusCountBox>
-
-        <MatchingProgressContainer>
-          <MatchingProgressTrack>
-            <StyledProgressFill />
-          </MatchingProgressTrack>
-        </MatchingProgressContainer>
-      </MatchingStatusBottomBox>
-    </MatchingStatusFrame>
-  );
-}

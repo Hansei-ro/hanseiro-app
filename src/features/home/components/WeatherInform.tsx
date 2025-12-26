@@ -4,19 +4,32 @@ import { View, Text, Image } from 'react-native';
 
 import SunIcon from '@/shared/icons/SunIcon.png';
 
+export function WeatherInform() {
+  return (
+    <WeatherInformFrame>
+      <WeatherInformLeft>
+        <WeatherIcon source={SunIcon} />
+      </WeatherInformLeft>
+      <WhetherInformRight>
+        <TemperatureText>16&deg;</TemperatureText>
+        <CityText>산본</CityText>
+      </WhetherInformRight>
+    </WeatherInformFrame>
+  );
+}
+
 const WeatherInformFrame = styled(View)`
   width: 112px;
-  height: 80px;
+  height: auto;
   border: solid 1px #f2f4f5;
-  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
+  border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.primary.white};
   flex-direction: row;
   margin-right: auto;
   gap: 8px;
-  padding-top: ${({ theme }) => theme.spacing[18]};
-  padding-bottom: ${({ theme }) => theme.spacing[18]};
-  padding-left: ${({ theme }) => theme.spacing[16]};
-  padding-right: ${({ theme }) => theme.spacing[16]};
+  padding-right: 15px;
+  padding-left: 16px;
+  padding-vertical: 20px;
 `;
 
 const WeatherInformLeft = styled(View)`
@@ -42,21 +55,7 @@ const TemperatureText = styled(Text)`
 `;
 
 const CityText = styled(Text)`
-  ${({ theme }) => theme.typography.fontSize.m};
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   color: ${({ theme }) => theme.colors.primary.black};
 `;
-
-export function WeatherInform() {
-  return (
-    <WeatherInformFrame>
-      <WeatherInformLeft>
-        <WeatherIcon source={SunIcon} />
-      </WeatherInformLeft>
-      <WhetherInformRight>
-        <TemperatureText>16&deg;</TemperatureText>
-        <CityText>산본</CityText>
-      </WhetherInformRight>
-    </WeatherInformFrame>
-  );
-}

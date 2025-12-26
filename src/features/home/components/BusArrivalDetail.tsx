@@ -6,116 +6,6 @@ import arrowRight from '@/shared/icons/arrowRight.png';
 import warnning from '@/shared/icons/warnning.png';
 import BusIcon from '@/shared/images/BusImage.png';
 
-const BusDetailBoxFrame = styled(View)`
-  width: 100%;
-  height: 348px;
-  border: solid 1px #f2f4f5;
-  border-radius: ${({ theme }) => `${theme.radius[12]}px`};
-  background-color: ${({ theme }) => theme.colors.primary.white};
-  padding: ${({ theme }) => theme.spacing[12]};
-`;
-
-const BusDetailOuter = styled(View)`
-  height: 80px;
-  flex-direction: column;
-  margin-top: ${({ theme }) => theme.spacing[8]};
-  justify-content: center;
-`;
-
-const BusItemWrapper = styled(View)`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  padding-right: ${({ theme }) => theme.spacing[18]};
-`;
-
-const BusImage = styled(Image)`
-  width: 54px;
-  height: 54px;
-  margin-left: ${({ theme }) => theme.spacing[12]};
-`;
-
-const WarningImage = styled(Image)`
-  width: 15px;
-  height: 15px;
-`;
-
-const ArrowRight = styled(Image)`
-  width: 18px;
-  height: 18px;
-`;
-
-const BusInform = styled(View)`
-  flex: 1;
-  background-color: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: ${({ theme }) => theme.spacing[16]};
-`;
-
-const MoreInformBox = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  margin-top: ${({ theme }) => theme.spacing[4]};
-  gap: ${({ theme }) => theme.spacing[4]};
-`;
-
-const MoreInformButton = styled(TouchableOpacity)`
-  background-color: none;
-  border-radius: 20px;
-  margin-bottom: ${({ theme }) => theme.spacing[16]};
-  flex-direction: row;
-`;
-
-const MoreInformText = styled(Text)`
-  color: ${({ theme }) => theme.colors.primary.black};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  font-size: ${({ theme }) => theme.typography.fontSize.s};
-`;
-
-const InformLeft = styled(View)`
-  gap: ${({ theme }) => theme.spacing[4]};
-`;
-
-const BusNumber = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const ArrivalTime = styled(Text)`
-  color: ${({ theme }) => theme.colors.primary.black};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-`;
-
-const ArrivalTimeSoon = styled(Text)`
-  color: ${({ theme }) => theme.colors.text.error};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-`;
-
-const HowLong = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  color: ${({ theme }) => theme.colors.primary.gray500};
-`;
-
-const DelayWarningBox = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  margin-top: ${({ theme }) => theme.spacing[4]};
-  margin-left: 80px;
-  width: 230px;
-  gap: ${({ theme }) => theme.spacing[4]};
-`;
-
-const DelayWarningText = styled(Text)`
-  text-align: center;
-  color: ${({ theme }) => theme.colors.text.warning};
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-`;
-
 export function BusArrivalDetailBox(
   {
     // id,
@@ -178,3 +68,111 @@ export function BusArrivalDetailBox(
     </BusDetailBoxFrame>
   );
 }
+
+const BusDetailBoxFrame = styled(View)`
+  width: 100%;
+  height: auto;
+  border: solid 1px #f2f4f5;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.primary.white};
+  padding-horizontal: 18px;
+  padding-top: 12px;
+  padding-bottom: 44px;
+  gap: 24px;
+`;
+
+const BusDetailOuter = styled(View)`
+  height: 70px;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const BusItemWrapper = styled(View)`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const BusImage = styled(Image)`
+  width: 54px;
+  height: 54px;
+`;
+
+const WarningImage = styled(Image)`
+  width: 15px;
+  height: 15px;
+`;
+
+const ArrowRight = styled(Image)`
+  width: 18px;
+  height: 18px;
+`;
+
+const BusInform = styled(View)`
+  flex: 1;
+  background-color: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 11px;
+`;
+
+const MoreInformBox = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+`;
+
+const MoreInformButton = styled(TouchableOpacity)`
+  background-color: none;
+  border-radius: 20px;
+  flex-direction: row;
+`;
+
+const MoreInformText = styled(Text)`
+  color: ${({ theme }) => theme.colors.primary.black};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  font-size: ${({ theme }) => theme.typography.fontSize.s};
+`;
+
+const InformLeft = styled(View)`
+  gap: 4px;
+`;
+
+const BusNumber = styled(Text)`
+  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.primary.black};
+`;
+
+const ArrivalTime = styled(Text)`
+  color: ${({ theme }) => theme.colors.primary.black};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+`;
+
+const ArrivalTimeSoon = styled(Text)`
+  color: ${({ theme }) => theme.colors.text.error};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+`;
+
+const HowLong = styled(Text)`
+  font-size: ${({ theme }) => theme.typography.fontSize.m};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
+  color: ${({ theme }) => theme.colors.primary.gray500};
+`;
+
+const DelayWarningBox = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  margin-top: 11px;
+  margin-left: 65px;
+  width: 230px;
+  gap: 4px;
+`;
+
+const DelayWarningText = styled(Text)`
+  text-align: center;
+  color: ${({ theme }) => theme.colors.text.warning};
+  font-size: ${({ theme }) => theme.typography.fontSize.xs};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+`;
