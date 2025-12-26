@@ -1,11 +1,12 @@
 import styled from '@emotion/native';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { theme } from '../../../shared/theme';
-import { BusArrivalDetailBox } from '../components/BusArrivalDetail';
-import { MatchingStatus } from '../components/MatchingStatus';
-import { WeatherInform } from '../components/WeatherInform';
+import { BusArrivalDetailBox } from '@/features/home/components/BusArrivalDetail';
+import { MatchingStatus } from '@/features/home/components/MatchingStatus';
+import { WeatherInform } from '@/features/home/components/WeatherInform';
+import { theme } from '@/shared/theme';
+import { getFontFamily } from '@/shared/utils/typography';
 
 export function HomeScreen() {
   return (
@@ -21,16 +22,27 @@ export function HomeScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.background.default};
 `;
 
 const Container = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding-horizontal: 20px;
-  padding-top: 28px;
-  padding-bottom: 112px;
-  gap: 15px;
-  background-color: ${theme.colors.background.screen};
+  background-color: ${theme.colors.background.default};
+`;
+
+const Title = styled(Text)`
+  font-family: ${getFontFamily('bold')};
+  font-family: ${getFontFamily('bold')};
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+`;
+
+const Subtitle = styled(Text)`
+  font-family: ${getFontFamily('regular')};
+  font-family: ${getFontFamily('regular')};
+  font-size: 16px;
+  color: ${theme.colors.text.secondary};
 `;
