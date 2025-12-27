@@ -57,15 +57,9 @@ export function ParticipantCard({
             )}
           </NameRow>
           <Text
-            variant={isEmpty ? 's' : 'xs'}
-            weight={isEmpty ? 'medium' : isReady ? 'semiBold' : 'regular'}
-            color={
-              isEmpty
-                ? theme.colors.text.joining
-                : isReady
-                  ? theme.colors.primary.main
-                  : theme.colors.text.waiting
-            }
+            variant="xs"
+            weight={isReady ? 'semiBold' : 'regular'}
+            color={isReady ? theme.colors.primary.main : theme.colors.text.waiting}
           >
             {status}
           </Text>

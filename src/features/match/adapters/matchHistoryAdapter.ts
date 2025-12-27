@@ -8,7 +8,7 @@ const formatMatchHistoryDate = (matchDate: string): string => {
   try {
     return format(parseISO(matchDate), 'M월 d일 (EEE)', { locale: ko });
   } catch {
-    return '';
+    return '--';
   }
 };
 
