@@ -3,17 +3,10 @@ import { useTheme } from '@emotion/react';
 import { format } from 'date-fns';
 import { Image, View } from 'react-native';
 
+import { Message } from '../types/message.ui';
+
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
 import { Text } from '@/shared/ui/Text';
-
-export interface Message {
-  id: string;
-  text: string;
-  sender: 'me' | 'other';
-  timestamp: string;
-  senderName?: string; // Only for 'other'
-  isDateSeparator?: boolean; // Special type for date separators
-}
 
 interface ChatMessageProps {
   message: Message;

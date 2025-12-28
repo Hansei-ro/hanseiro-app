@@ -1,11 +1,13 @@
 import styled from '@emotion/native';
-import { FlatList, View } from 'react-native';
+import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
 
-import { ChatMessage, Message } from './ChatMessage';
+import { Message } from '../types/message.ui';
+
+import { ChatMessage } from './ChatMessage';
 
 interface ChatMessageListProps {
   messages: Message[];
-  contentContainerStyle?: object;
+  contentContainerStyle?: StyleProp<ViewStyle>;
   inverted?: boolean;
 }
 
@@ -18,8 +20,8 @@ export function ChatMessageList({
   return (
     <StyledFlatList
       data={messages}
-      renderItem={({ item }) => <ChatMessage message={item as Message} />}
-      keyExtractor={(item) => (item as Message).id}
+      renderItem={({ item }) => <ChatMessage message={item} />}
+      keyExtractor={(item) => item.id}
       contentContainerStyle={[{ paddingHorizontal: 16 }, contentContainerStyle]}
       ItemSeparatorComponent={() => <Separator />}
       showsVerticalScrollIndicator={false}
@@ -28,7 +30,7 @@ export function ChatMessageList({
   );
 }
 
-const StyledFlatList = styled(FlatList)`
+const StyledFlatList = styled(FlatList<Message>)`
   flex: 1;
 `;
 
