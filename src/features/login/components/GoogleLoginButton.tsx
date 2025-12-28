@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import React from 'react';
-import { Pressable, Image, ViewStyle } from 'react-native';
+import { Pressable, Image } from 'react-native';
 
 import { Text } from '@/shared/ui/Text';
 
