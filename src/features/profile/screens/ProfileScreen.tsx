@@ -1,23 +1,17 @@
 import styled from '@emotion/native';
-import { useTheme } from '@emotion/react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ProfileCard } from '../components/ProfileCard';
 import { ProfileMenuList } from '../components/ProfileMenuList';
 
-import { Text } from '@/shared/ui/Text';
+import { ScreenHeader } from '@/shared/ui/ScreenHeader';
 
 export function ProfileScreen() {
-  const theme = useTheme();
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Header>
-          <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
-            MY
-          </Text>
-        </Header>
+        <ScreenHeader title="MY" />
         <ContentWrapper>
           <ProfileCard />
           <ProfileMenuList />
@@ -39,8 +33,4 @@ const Container = styled(View)`
 
 const ContentWrapper = styled(View)`
   gap: 60px;
-`;
-
-const Header = styled(View)`
-  padding: 16px 20px;
 `;

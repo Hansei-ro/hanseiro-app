@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChatRoomList } from '../components/ChatRoomList';
 import { useChatRoomList } from '../hooks/useChatRoomList';
 
+import { ScreenHeader } from '@/shared/ui/ScreenHeader';
 import { Text } from '@/shared/ui/Text';
 
 export function ChatRoomListScreen() {
@@ -24,11 +25,7 @@ export function ChatRoomListScreen() {
     return (
       <SafeArea edges={['top']}>
         <Container>
-          <Header>
-            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
-              채팅
-            </Text>
-          </Header>
+          <ScreenHeader title="채팅" />
           <CenteredView>
             <ActivityIndicator size="large" />
           </CenteredView>
@@ -42,11 +39,7 @@ export function ChatRoomListScreen() {
     return (
       <SafeArea edges={['top']}>
         <Container>
-          <Header>
-            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
-              채팅
-            </Text>
-          </Header>
+          <ScreenHeader title="채팅" />
           <CenteredView>
             <Text
               variant="m"
@@ -73,11 +66,7 @@ export function ChatRoomListScreen() {
     return (
       <SafeArea edges={['top']}>
         <Container>
-          <Header>
-            <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
-              채팅
-            </Text>
-          </Header>
+          <ScreenHeader title="채팅" />
           <CenteredView>
             <Text variant="m" weight="medium" color={theme.colors.text.tertiary} align="center">
               참여 중인 채팅방이 없습니다
@@ -92,11 +81,7 @@ export function ChatRoomListScreen() {
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Header>
-          <Text variant="titleM" weight="bold" color={theme.colors.primary.black}>
-            채팅
-          </Text>
-        </Header>
+        <ScreenHeader title="채팅" />
         <ChatRoomList
           rooms={rooms}
           onRoomPress={handleEnterChat}
@@ -112,16 +97,11 @@ export function ChatRoomListScreen() {
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.primary.white};
-  /* Changed background to white to match design (usually list backgrounds are white or light gray) */
 `;
 
 const Container = styled(View)`
   flex: 1;
   gap: 18px;
-`;
-
-const Header = styled(View)`
-  padding: 16px 20px;
 `;
 
 const CenteredView = styled(View)`
