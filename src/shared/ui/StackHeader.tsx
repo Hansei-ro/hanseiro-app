@@ -53,8 +53,7 @@ const Container = styled(View)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-horizontal: 20px;
-  padding-vertical: 16px;
+  padding: 16px 20px;
   background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 

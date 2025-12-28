@@ -10,7 +10,7 @@ import { Text } from '@/shared/ui/Text';
 
 interface ParticipantCardProps {
   name?: string;
-  department: string;
+  department?: string;
   status?: string;
   isMe?: boolean;
   isReady?: boolean;
@@ -50,22 +50,16 @@ export function ParticipantCard({
             <Text variant="s" weight="medium" color={theme.colors.primary.black}>
               {name}
             </Text>
-            {!isMe && (
+            {!isMe && department && (
               <Text variant="s" weight="medium" color={theme.colors.primary.black}>
                 ({department})
               </Text>
             )}
           </NameRow>
           <Text
-            variant={isEmpty ? 's' : 'xs'}
-            weight={isEmpty ? 'medium' : isReady ? 'semiBold' : 'regular'}
-            color={
-              isEmpty
-                ? theme.colors.text.joining
-                : isReady
-                  ? theme.colors.primary.main
-                  : theme.colors.text.waiting
-            }
+            variant="xs"
+            weight={isReady ? 'semiBold' : 'regular'}
+            color={isReady ? theme.colors.primary.main : theme.colors.text.waiting}
           >
             {status}
           </Text>
