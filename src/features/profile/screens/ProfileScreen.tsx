@@ -1,25 +1,27 @@
 import styled from '@emotion/native';
-import { router } from 'expo-router';
-import { Pressable, Text, View } from 'react-native';
+import { useTheme } from '@emotion/react';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '@/shared/utils/typography';
+import { ProfileCard } from '../components/ProfileCard';
+import { ProfileMenuList } from '../components/ProfileMenuList';
+
+import { Text } from '@/shared/ui/Text';
 
 export function ProfileScreen() {
+  const theme = useTheme();
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <Title>프로필</Title>
-        <Subtitle>내 정보 및 설정</Subtitle>
-        <Pressable
-          onPress={() => router.push('/match/history')}
-          style={({ pressed }) => [
-            { marginTop: 20, padding: 10, backgroundColor: '#eee', borderRadius: 8 },
-            pressed && { opacity: 0.7 },
-          ]}
-        >
-          <Text>지난 매칭 내역 보기 (임시)</Text>
-        </Pressable>
+        <Header>
+          <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
+            MY
+          </Text>
+        </Header>
+        <ContentWrapper>
+          <ProfileCard />
+          <ProfileMenuList />
+        </ContentWrapper>
       </Container>
     </SafeArea>
   );
@@ -27,25 +29,18 @@ export function ProfileScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.background.default};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const Container = styled(View)`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.background.default};
+  gap: 18px;
 `;
 
-const Title = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
+const ContentWrapper = styled(View)`
+  gap: 60px;
 `;
 
-const Subtitle = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.text.secondary};
+const Header = styled(View)`
+  padding: 16px 20px;
 `;
