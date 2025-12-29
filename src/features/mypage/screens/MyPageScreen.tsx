@@ -2,19 +2,20 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ProfileCard } from '../components/ProfileCard';
-import { ProfileMenuList } from '../components/ProfileMenuList';
+import { MyPageMenuList } from '../components/MyPageMenuList';
+import { UserProfileCard } from '../components/UserProfileCard';
 
 import { ScreenHeader } from '@/shared/ui/ScreenHeader';
 
-export function ProfileScreen() {
+export function MyPageScreen() {
+  const theme = useTheme();
   return (
     <SafeArea edges={['top']}>
       <Container>
         <ScreenHeader title="MY" />
         <ContentWrapper>
-          <ProfileCard />
-          <ProfileMenuList />
+          <UserProfileCard />
+          <MyPageMenuList />
         </ContentWrapper>
       </Container>
     </SafeArea>
