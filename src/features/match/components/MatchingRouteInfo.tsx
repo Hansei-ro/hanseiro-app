@@ -7,7 +7,12 @@ import Svg, { Line } from 'react-native-svg';
 
 import { Text } from '@/shared/ui/Text';
 
-export function MatchingRouteInfo() {
+interface MatchingRouteInfoProps {
+  from: string;
+  to: string;
+}
+
+export function MatchingRouteInfo({ from, to }: MatchingRouteInfoProps) {
   const theme = useTheme();
 
   return (
@@ -16,7 +21,7 @@ export function MatchingRouteInfo() {
 
       <RouteContent>
         <Text variant="s" weight="medium">
-          금정
+          {from}
         </Text>
 
         <View style={{ flex: 1 }}>
@@ -35,7 +40,7 @@ export function MatchingRouteInfo() {
         </View>
 
         <Text variant="s" weight="medium">
-          한세대
+          {to}
         </Text>
       </RouteContent>
     </Container>

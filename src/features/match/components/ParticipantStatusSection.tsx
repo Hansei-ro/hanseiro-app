@@ -3,22 +3,15 @@ import { useTheme } from '@emotion/react';
 import React from 'react';
 import { View } from 'react-native';
 
+import { MatchWaitingParticipantUI } from '../types/matchWaiting.ui';
+
 import { ParticipantCard } from './ParticipantCard';
 
 import MatchIcon from '@/shared/icons/match.svg';
 import { Text } from '@/shared/ui/Text';
 
-interface Participant {
-  name?: string;
-  department: string;
-  status?: string;
-  isMe?: boolean;
-  isReady?: boolean;
-  isEmpty?: boolean;
-}
-
 interface ParticipantStatusSectionProps {
-  participants: Participant[];
+  participants: MatchWaitingParticipantUI[];
   currentCount: number;
   readyCount: number;
   maxCount: number;
@@ -60,7 +53,7 @@ export function ParticipantStatusSection({
 
       <ParticipantList>
         {participants.map((participant, index) => (
-          <ParticipantCard key={index} {...participant} />
+          <ParticipantCard key={participant.id ?? `participant-${index}`} {...participant} />
         ))}
       </ParticipantList>
     </Container>
