@@ -6,7 +6,7 @@ import { Pressable, View } from 'react-native';
 
 import { Text } from '@/shared/ui/Text';
 
-export function ProfileMenuList() {
+export function MyPageMenuList() {
   const theme = useTheme();
 
   const menuList = [
