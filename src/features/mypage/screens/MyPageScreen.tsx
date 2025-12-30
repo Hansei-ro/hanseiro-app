@@ -8,7 +8,6 @@ import { UserProfileCard } from '../components/UserProfileCard';
 import { ScreenHeader } from '@/shared/ui/ScreenHeader';
 
 export function MyPageScreen() {
-  const theme = useTheme();
   return (
     <SafeArea edges={['top']}>
       <Container>
