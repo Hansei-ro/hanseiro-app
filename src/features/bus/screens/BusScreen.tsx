@@ -1,15 +1,36 @@
 import styled from '@emotion/native';
-import { Text, View } from 'react-native';
+import { useTheme } from '@emotion/react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { getFontFamily } from '@/shared/utils/typography';
+import { SelectedStationBusList } from '../components/SelectedStationBusList';
+
+import { BusListTabBar } from '@/features/bus/components/BusListTabBar';
+import { Theme } from '@/shared/theme';
+import { Text } from '@/shared/ui/Text';
 
 export function BusScreen() {
+  const theme = useTheme() as Theme;
+  const router = useRouter();
+
+  const params = useLocalSearchParams<{ station?: '금정역' | '산본역' }>();
+  const selectedStation = params.station || '산본역';
+
+  const handleSelect = (station: '금정역' | '산본역') => {
+    router.setParams({ station });
+  };
+
   return (
     <SafeArea edges={['top']}>
+      <Header>
+        <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
+          버스
+        </Text>
+      </Header>
       <Container>
-        <Title>버스</Title>
-        <Subtitle>버스 시간표 및 노선 정보</Subtitle>
+        <BusListTabBar current={selectedStation} onSelect={handleSelect} />
+        <SelectedStationBusList stationName={selectedStation} />
       </Container>
     </SafeArea>
   );
@@ -22,20 +43,10 @@ const SafeArea = styled(SafeAreaView)`
 
 const Container = styled(View)`
   flex: 1;
-  justify-content: center;
-  align-items: center;
+  padding-horizontal: 20px;
   background-color: ${({ theme }) => theme.colors.background.default};
 `;
 
-const Title = styled(Text)`
-  font-family: ${getFontFamily('bold')};
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const Subtitle = styled(Text)`
-  font-family: ${getFontFamily('regular')};
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.text.secondary};
+const Header = styled(View)`
+  padding: 16px 20px;
 `;
