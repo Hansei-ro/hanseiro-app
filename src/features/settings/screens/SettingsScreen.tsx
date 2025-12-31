@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { SettingsList } from '../components/SsettingList';
+import { SettingsList } from '../components/SettingList';
 
 import { StackHeader } from '@/shared/ui/StackHeader';
 
