@@ -1,36 +1,60 @@
 import styled from '@emotion/native';
-import { useTheme } from '@emotion/react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { SelectedStationBusList } from '../components/SelectedStationBusList';
-
+import { BusData, BusList } from '@/features/bus/components/BusList';
 import { BusListTabBar } from '@/features/bus/components/BusListTabBar';
-import { Theme } from '@/shared/theme';
-import { Text } from '@/shared/ui/Text';
+import { ScreenHeader } from '@/shared/ui/ScreenHeader';
 
 export function BusScreen() {
-  const theme = useTheme() as Theme;
   const router = useRouter();
-
   const params = useLocalSearchParams<{ station?: '금정역' | '산본역' }>();
+
   const selectedStation = params.station || '산본역';
 
   const handleSelect = (station: '금정역' | '산본역') => {
     router.setParams({ station });
   };
 
+  const MOCK_DATA: Record<'금정역' | '산본역', BusData[]> = {
+    금정역: [
+      {
+        id: '1',
+        busNumber: '81번',
+        howLong: '15분 소요',
+        arrivalTime: '곧 도착',
+        isSoon: true,
+        isDelay: false,
+      },
+      {
+        id: '2',
+        busNumber: '10번',
+        howLong: '8분 소요',
+        arrivalTime: '5분 뒤 도착',
+        isSoon: false,
+        isDelay: true,
+      },
+    ],
+    산본역: [
+      {
+        id: '3',
+        busNumber: '3300번',
+        howLong: '25분 소요',
+        arrivalTime: '10분 뒤 도착',
+        isSoon: false,
+        isDelay: false,
+      },
+    ],
+  };
+
   return (
     <SafeArea edges={['top']}>
-      <Header>
-        <Text variant="titleM" weight="semiBold" color={theme.colors.primary.black}>
-          버스
-        </Text>
-      </Header>
+      <ScreenHeader title="버스" />
       <Container>
         <BusListTabBar current={selectedStation} onSelect={handleSelect} />
-        <SelectedStationBusList stationName={selectedStation} />
+
+        <BusList busListData={MOCK_DATA[selectedStation]} />
       </Container>
     </SafeArea>
   );
@@ -45,8 +69,4 @@ const Container = styled(View)`
   flex: 1;
   padding-horizontal: 20px;
   background-color: ${({ theme }) => theme.colors.background.default};
-`;
-
-const Header = styled(View)`
-  padding: 16px 20px;
 `;
