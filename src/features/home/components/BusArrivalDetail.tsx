@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import { Link } from 'expo-router';
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 
@@ -37,13 +38,14 @@ export function BusArrivalDetailBox() {
   return (
     <BusDetailBoxFrame>
       <MoreInformBox>
-        <MoreInformButton onPress={() => console.log('실시간 정보 클릭')}>
-          <MoreInformText>실시간 버스 정보</MoreInformText>
-          <ArrowRight source={arrowRight} />
-        </MoreInformButton>
+        <Link href="/bus" asChild>
+          <MoreInformButton>
+            <MoreInformText>실시간 버스 정보</MoreInformText>
+            <ArrowRight source={arrowRight} />
+          </MoreInformButton>
+        </Link>
       </MoreInformBox>
 
-      {/* 공통 컴포넌트에 데이터 전달 */}
       <BusList busListData={BUS_ARRIVAL_MOCK_DATA} />
     </BusDetailBoxFrame>
   );
