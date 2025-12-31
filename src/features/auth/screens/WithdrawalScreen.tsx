@@ -2,17 +2,17 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { DeleteInfo } from '../components/DeleteInfo';
+import { WithdrawalInfo } from '../components/WithdrawalInfo';
 
 import { Button } from '@/shared/ui/Button';
 import { StackHeader } from '@/shared/ui/StackHeader';
 
-export function DeleteAccountScreen() {
+export function WithdrawalScreen() {
   return (
     <Container edges={['top']}>
       <StackHeader title="회원탈퇴" titleAlign="left" />
       <ContentWrapper>
-        <DeleteInfo />
+        <WithdrawalInfo />
         <Button title="회원탈퇴" onPress={() => {}} variant="primary" />
       </ContentWrapper>
     </Container>

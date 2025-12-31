@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 import { Text } from '@/shared/ui/Text';
 
-export function DeleteInfo() {
+export function WithdrawalInfo() {
   const theme = useTheme();
 
   return (
