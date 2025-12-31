@@ -3,29 +3,20 @@ import { useTheme } from '@emotion/react';
 import React from 'react';
 import { Pressable, View } from 'react-native';
 
+import { ChatRoomListItemUI } from '../types/chatRoom.ui';
+
 import { AvatarGroup } from '@/shared/ui/AvatarGroup';
 import { Text } from '@/shared/ui/Text';
 
-export interface ChatRoomItemProps {
-  id: string;
-  title: string;
-  lastMessage: string;
-  lastMessageTime: string; // "방금 전", "5분 전"
-  participantCount: number;
-  hasUnread: boolean;
+interface ChatRoomItemProps {
+  item: ChatRoomListItemUI;
   onPress?: () => void;
 }
 
 // 채팅방 목록 아이템 컴포넌트
-export function ChatRoomItem({
-  title,
-  lastMessage,
-  lastMessageTime,
-  participantCount,
-  hasUnread,
-  onPress,
-}: ChatRoomItemProps) {
+export function ChatRoomItem({ item, onPress }: ChatRoomItemProps) {
   const theme = useTheme();
+  const { title, lastMessage, lastMessageTime, participantCount, hasUnread } = item;
 
   return (
     <Container onPress={onPress}>
