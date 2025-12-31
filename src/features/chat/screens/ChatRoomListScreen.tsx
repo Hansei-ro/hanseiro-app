@@ -23,6 +23,7 @@ export function ChatRoomListScreen() {
     <SafeArea edges={['top']}>
       <Container>
         <ScreenHeader title="채팅" />
+        <ScreenHeader title="채팅" />
         <ChatRoomList
           items={rooms}
           onRoomPress={handleEnterChat}
