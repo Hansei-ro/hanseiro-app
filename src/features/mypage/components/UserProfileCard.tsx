@@ -1,11 +1,11 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import { View, Image } from 'react-native';
+import { Image, View } from 'react-native';
 
 import DEFAULT_PROFILE_IMAGE from '@/shared/images/img-profile-default.png';
 import { Text } from '@/shared/ui/Text';
 
-export function ProfileCard() {
+export function UserProfileCard() {
   const theme = useTheme();
 
   return (
