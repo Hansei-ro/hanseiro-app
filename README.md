@@ -21,8 +21,8 @@
 
 | 플랫폼      | 설치 링크                                                                                                     | 최종 업데이트 |
 | ----------- | ------------------------------------------------------------------------------------------------------------- | ------------- |
-| **Android** | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/c8ee9ab0-8169-429d-9f32-4bf1235f8d6e) | 2024-12-31    |
-| **iOS**     | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/b204e77e-6ce5-4316-9fa0-d60217adb637) | 2024-12-31    |
+| **Android** | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/c8ee9ab0-8169-429d-9f32-4bf1235f8d6e) | 2026-01-01    |
+| **iOS**     | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/b204e77e-6ce5-4316-9fa0-d60217adb637) | 2026-01-01    |
 
 ### 설치 방법
 
