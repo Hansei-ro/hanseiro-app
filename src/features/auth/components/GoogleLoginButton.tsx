@@ -2,6 +2,8 @@ import styled from '@emotion/native';
 import React from 'react';
 import { Pressable, Image } from 'react-native';
 
+import GoogleLogoImg from '../../../../assets/google-logo.png';
+
 import { Text } from '@/shared/ui/Text';
 
 interface GoogleLoginButtonProps {
@@ -16,7 +18,7 @@ export function GoogleLoginButton({ onPress }: GoogleLoginButtonProps) {
       accessibilityRole="button"
       accessibilityLabel="Google 계정으로 로그인"
     >
-      <GoogleLogo source={require('../../../../assets/google-logo.png')} resizeMode="contain" />
+      <GoogleLogo source={GoogleLogoImg} resizeMode="contain" />
       <Text variant="m" weight="medium" color="#1F1F1F">
         Google 계정으로 로그인
       </Text>

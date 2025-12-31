@@ -2,6 +2,8 @@ import styled from '@emotion/native';
 import React from 'react';
 import { Pressable, Image } from 'react-native';
 
+import AppleLogoImg from '../../../../assets/apple-logo.png';
+
 import { Text } from '@/shared/ui/Text';
 
 interface AppleLoginButtonProps {
@@ -16,7 +18,7 @@ export function AppleLoginButton({ onPress }: AppleLoginButtonProps) {
       accessibilityRole="button"
       accessibilityLabel="Apple로 로그인"
     >
-      <AppleLogo source={require('../../../../assets/apple-logo.png')} resizeMode="contain" />
+      <AppleLogo source={AppleLogoImg} resizeMode="contain" />
       <Text variant="m" weight="medium" color="#FFFFFF">
         Apple로 로그인
       </Text>
