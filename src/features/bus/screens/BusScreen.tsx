@@ -62,11 +62,11 @@ export function BusScreen() {
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.background.default};
+  background-color: ${({ theme }) => theme.colors.primary.white};
 `;
 
 const Container = styled(View)`
   flex: 1;
   padding-horizontal: 20px;
-  background-color: ${({ theme }) => theme.colors.background.default};
+  gap: 6px;
 `;

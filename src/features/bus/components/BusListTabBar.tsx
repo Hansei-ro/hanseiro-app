@@ -35,8 +35,7 @@ export const BusListTabBar = ({ current, onSelect }: BusListTabBarProps) => {
 };
 
 const TabWrapper = styled(View)`
-  margin-bottom: 44px;
-  margin-top: 6px;
+  padding-bottom: 38px;
 `;
 
 const TabContainer = styled(View)`
