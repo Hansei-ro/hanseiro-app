@@ -13,9 +13,7 @@ export function DeleteAccountScreen() {
       <StackHeader title="회원탈퇴" titleAlign="left" />
       <ContentWrapper>
         <DeleteInfo />
-        <ButtonContainer>
-          <Button title="회원탈퇴" onPress={() => {}} variant="primary" />
-        </ButtonContainer>
+        <Button title="회원탈퇴" onPress={() => {}} variant="primary" />
       </ContentWrapper>
     </Container>
   );
@@ -31,5 +29,3 @@ const ContentWrapper = styled(View)`
   gap: 60px;
   padding: 0 20px;
 `;
-
-const ButtonContainer = styled(View)``;

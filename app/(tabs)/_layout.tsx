@@ -4,7 +4,7 @@ import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { Tabs, useRouter } from 'expo-router';
 import { BusFront, Home, Library, MessageCircle, X } from 'lucide-react-native';
 import React, { useMemo, useState } from 'react';
-import { TouchableOpacity, Image, Modal, View, Pressable, ViewStyle } from 'react-native';
+import { Image, Modal, Pressable, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Gemjung from '@/shared/icons/GeumgungIcon.png';
@@ -91,7 +91,7 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="profile/index"
+          name="mypage/index"
           options={{
             title: 'MY',
             tabBarIcon: ({ color }) => <Library color={color} size={25} />,
