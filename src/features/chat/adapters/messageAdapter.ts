@@ -1,5 +1,5 @@
-import { Message } from '../components/ChatMessage';
 import { ApiChatRoomDetail, ApiMessage } from '../types/message.api';
+import { Message } from '../types/message.ui';
 
 import { formatShortDate } from '@/shared/utils/date';
 

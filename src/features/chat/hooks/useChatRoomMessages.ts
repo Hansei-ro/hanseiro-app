@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { adaptApiMessagesToUI } from '../adapters/messageAdapter';
 import { mockFetchMessages } from '../api/mockChatRoomMessages';
-import { Message } from '../components/ChatMessage';
+import { Message } from '../types/message.ui';
 
 /**
  * 채팅방 메시지 목록 조회 훅
