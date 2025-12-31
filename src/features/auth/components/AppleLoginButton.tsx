@@ -17,9 +17,9 @@ export function AppleLoginButton({ onPress }: AppleLoginButtonProps) {
       accessibilityLabel="Apple로 로그인"
     >
       <AppleLogo source={require('../../../../assets/apple-logo.png')} resizeMode="contain" />
-      <ButtonText variant="m" weight="medium" color="#FFFFFF">
+      <Text variant="m" weight="medium" color="#FFFFFF">
         Apple로 로그인
-      </ButtonText>
+      </Text>
     </StyledButton>
   );
 }
@@ -41,5 +41,3 @@ const AppleLogo = styled(Image)`
   height: 48px;
   left: 24px;
 `;
-
-const ButtonText = styled(Text)``;
