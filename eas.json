@@ -22,6 +22,9 @@
       },
       "ios": {
         "simulator": true
+      },
+      "env": {
+        "EAS_BUILD_NODE_VERSION": "22.12.0"
       }
     },
     "production": {

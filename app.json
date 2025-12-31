@@ -15,7 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.hansei-ro"
+      "bundleIdentifier": "com.anonymous.hansei-ro",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -36,6 +39,12 @@
       "eas": {
         "projectId": "1345ccf1-9ecc-47e3-b6f2-1cd13408a487"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1345ccf1-9ecc-47e3-b6f2-1cd13408a487"
     }
   }
 }
