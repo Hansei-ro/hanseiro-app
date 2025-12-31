@@ -44,7 +44,10 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/1345ccf1-9ecc-47e3-b6f2-1cd13408a487?channel-name=development"
+      "url": "https://u.expo.dev/1345ccf1-9ecc-47e3-b6f2-1cd13408a487",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     }
   }
 }
