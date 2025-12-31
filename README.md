@@ -21,8 +21,8 @@
 
 | 플랫폼      | 설치 링크                                                                                                     | 최종 업데이트 |
 | ----------- | ------------------------------------------------------------------------------------------------------------- | ------------- |
-| **Android** | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/49520e87-d1e6-464b-9149-351a85700c88) | 2024-12-31    |
-| **iOS**     | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/822cb7d5-fdd8-4704-8cc5-a391bd6f6e2e) | 2024-12-31    |
+| **Android** | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/c8ee9ab0-8169-429d-9f32-4bf1235f8d6e) | 2024-12-31    |
+| **iOS**     | [빌드 페이지](https://expo.dev/accounts/tnemn/projects/hansei-ro/builds/b204e77e-6ce5-4316-9fa0-d60217adb637) | 2024-12-31    |
 
 ### 설치 방법
 
@@ -43,6 +43,16 @@
 5. 시뮬레이터 홈 화면에서 앱 실행
 
 > 💡 **팁**: 시뮬레이터에서 `Cmd + Shift + H`로 홈 화면 이동
+
+### 앱 첫 실행 시 설정
+
+앱을 처음 실행하면 업데이트 서버 URL을 입력하는 화면이 나타납니다. 아래 URL을 입력해주세요:
+
+```
+https://u.expo.dev/1345ccf1-9ecc-47e3-b6f2-1cd13408a487?channel-name=development
+```
+
+> 💡 **팁**: 한 번 입력하면 이후에는 자동으로 최신 버전을 받아옵니다.
 
 > ⚠️ **참고**: 새 빌드 생성 시 링크가 변경됩니다. 업데이트된 빌드는 이 표를 확인해주세요.
 
