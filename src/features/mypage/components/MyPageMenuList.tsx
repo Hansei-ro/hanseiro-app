@@ -11,7 +11,7 @@ export function MyPageMenuList() {
 
   const menuList = [
     { title: '지난 매칭 내역', onPress: () => router.push('/match/history') },
-    { title: '설정', onPress: () => router.push('/list/settings') },
+    { title: '설정', onPress: () => router.push('/settings') },
     { title: '회원탈퇴', onPress: () => {} },
     { title: '로그아웃', onPress: () => {}, hasArrow: false },
   ];
