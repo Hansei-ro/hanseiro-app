@@ -37,4 +37,5 @@ const ToggleContainer = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 28px;
 `;
