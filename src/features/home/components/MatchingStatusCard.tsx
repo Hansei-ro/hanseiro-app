@@ -5,7 +5,7 @@ import { View, Text, Image } from 'react-native';
 import fireImage from '@/shared/icons/FireImage.png';
 import MatchingPersonImage from '@/shared/images/MatchingPersonImage_home.png';
 
-export function MatchingStatus() {
+export function MatchingStatusCard() {
   return (
     <MatchingStatusFrame>
       <MatchingStatusTopBox>

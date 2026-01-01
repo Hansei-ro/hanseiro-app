@@ -6,7 +6,7 @@ import arrowRight from '@/shared/icons/arrowRight.png';
 import warnning from '@/shared/icons/warnning.png';
 import BusIcon from '@/shared/images/BusImage.png';
 
-export function BusArrivalDetailBox(
+export function BusArrivalSummary(
   {
     // id,
     // busNumber,
