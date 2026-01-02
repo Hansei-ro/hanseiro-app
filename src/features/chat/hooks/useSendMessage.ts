@@ -53,7 +53,7 @@ export const useSendMessage = (chatRoomId: string) => {
       });
 
       // 채팅 목록의 last_message 업데이트를 위해 쿼리 무효화
-      queryClient.invalidateQueries({ queryKey: ['chatRooms'] });
+      queryClient.invalidateQueries({ queryKey: ['chatRoomList'] });
     },
   });
 };
