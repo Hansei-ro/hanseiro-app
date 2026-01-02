@@ -14,18 +14,12 @@ export const BusListTabBar = ({ current, onSelect }: BusListTabBarProps) => {
     <TabWrapper>
       <TabContainer>
         <TabButton active={current === '금정역'} onPress={() => onSelect('금정역')}>
-          <TabText
-            active={current === '금정역'}
-            weight={current === '금정역' ? 'semiBold' : 'semiBold'}
-          >
+          <TabText active={current === '금정역'} weight="semiBold">
             금정역
           </TabText>
         </TabButton>
         <TabButton active={current === '산본역'} onPress={() => onSelect('산본역')}>
-          <TabText
-            active={current === '산본역'}
-            weight={current === '산본역' ? 'semiBold' : 'semiBold'}
-          >
+          <TabText active={current === '산본역'} weight="semiBold">
             산본역
           </TabText>
         </TabButton>
@@ -51,7 +45,7 @@ const TabButton = styled(TouchableOpacity)<{ active: boolean }>`
   align-items: center;
   height: 40px;
   border-radius: 12px;
-  background-color: ${({ active }) => (active ? '#FFFFFF' : 'transparent')};
+  background-color: ${({ active, theme }) => (active ? theme.colors.primary.white : 'transparent')};
 `;
 
 const TabText = styled(Text)<{ active: boolean }>`
