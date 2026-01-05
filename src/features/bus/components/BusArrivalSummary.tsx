@@ -1,132 +1,75 @@
 import styled from '@emotion/native';
+import { Link } from 'expo-router';
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 
+import { BusList, BusData } from '@/features/bus/components/BusList';
 import arrowRight from '@/shared/icons/arrowRight.png';
-import warnning from '@/shared/icons/warnning.png';
-import BusIcon from '@/shared/images/BusImage.png';
+import { Text } from '@/shared/ui/Text';
 
-export function BusArrivalSummary(
+const BUS_ARRIVAL_MOCK_DATA: BusData[] = [
   {
-    // id,
-    // busNumber,
-    // howLong,
-    // arrivalTime,
-    // isDelay,
+    id: '1',
+    busNumber: '81번',
+    howLong: '15분 소요',
+    arrivalTime: '곧 도착',
+    isSoon: true,
+    isDelay: false,
   },
-) {
+  {
+    id: '2',
+    busNumber: '10번',
+    howLong: '8분 소요',
+    arrivalTime: '5분 뒤 도착',
+    isSoon: false,
+    isDelay: true,
+  },
+  {
+    id: '3',
+    busNumber: '3300번',
+    howLong: '25분 소요',
+    arrivalTime: '10분 뒤 도착',
+    isSoon: false,
+    isDelay: false,
+  },
+];
+
+export function BusArrivalDetailBox() {
   return (
     <BusDetailBoxFrame>
       <MoreInformBox>
-        <MoreInformButton onPress={() => console.log('버튼 클릭')}>
-          <MoreInformText>실시간 버스 정보 </MoreInformText>
-          <ArrowRight source={arrowRight} />
-        </MoreInformButton>
+        <Link href="/bus" asChild>
+          <MoreInformButton>
+            <MoreInformText>실시간 버스 정보</MoreInformText>
+            <ArrowRight source={arrowRight} />
+          </MoreInformButton>
+        </Link>
       </MoreInformBox>
-      <BusDetailOuter>
-        <BusItemWrapper>
-          <BusImage source={BusIcon} />
-          <BusInform>
-            <InformLeft>
-              <BusNumber>81번</BusNumber>
-              <HowLong>15분 소요</HowLong>
-            </InformLeft>
-            <ArrivalTimeSoon>곧 도착</ArrivalTimeSoon>
-          </BusInform>
-        </BusItemWrapper>
-      </BusDetailOuter>
 
-      <BusDetailOuter>
-        <BusItemWrapper>
-          <BusImage source={BusIcon} />
-          <BusInform>
-            <InformLeft>
-              <BusNumber>10번</BusNumber>
-              <HowLong>8분 소요</HowLong>
-            </InformLeft>
-            <ArrivalTime>5분 뒤 도착</ArrivalTime>
-          </BusInform>
-        </BusItemWrapper>
-        <DelayWarningBox>
-          <WarningImage source={warnning} />
-          <DelayWarningText>현재 교통 혼잡으로 인해 평소보다 오래 걸려요</DelayWarningText>
-        </DelayWarningBox>
-      </BusDetailOuter>
-
-      <BusDetailOuter>
-        <BusItemWrapper>
-          <BusImage source={BusIcon} />
-          <BusInform>
-            <InformLeft>
-              <BusNumber>3300번</BusNumber>
-              <HowLong>25분 소요</HowLong>
-            </InformLeft>
-            <ArrivalTime>10분 뒤 도착</ArrivalTime>
-          </BusInform>
-        </BusItemWrapper>
-      </BusDetailOuter>
+      <BusList busListData={BUS_ARRIVAL_MOCK_DATA} />
     </BusDetailBoxFrame>
   );
 }
 
 const BusDetailBoxFrame = styled(View)`
   width: 100%;
-  height: auto;
   border: solid 1px #f2f4f5;
   border-radius: 12px;
   background-color: ${({ theme }) => theme.colors.primary.white};
   padding-horizontal: 18px;
   padding-top: 12px;
-  padding-bottom: 44px;
-  gap: 24px;
-`;
-
-const BusDetailOuter = styled(View)`
-  height: 70px;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const BusItemWrapper = styled(View)`
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const BusImage = styled(Image)`
-  width: 54px;
-  height: 54px;
-`;
-
-const WarningImage = styled(Image)`
-  width: 15px;
-  height: 15px;
-`;
-
-const ArrowRight = styled(Image)`
-  width: 18px;
-  height: 18px;
-`;
-
-const BusInform = styled(View)`
-  flex: 1;
-  background-color: none;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 11px;
+  padding-bottom: 30px;
 `;
 
 const MoreInformBox = styled(View)`
   flex-direction: row;
   align-items: center;
-  gap: 4px;
+  margin-bottom: 20px;
 `;
 
 const MoreInformButton = styled(TouchableOpacity)`
-  background-color: none;
-  border-radius: 20px;
   flex-direction: row;
+  align-items: center;
 `;
 
 const MoreInformText = styled(Text)`
@@ -135,44 +78,7 @@ const MoreInformText = styled(Text)`
   font-size: ${({ theme }) => theme.typography.fontSize.s};
 `;
 
-const InformLeft = styled(View)`
-  gap: 4px;
-`;
-
-const BusNumber = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.titleM};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.primary.black};
-`;
-
-const ArrivalTime = styled(Text)`
-  color: ${({ theme }) => theme.colors.primary.black};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-`;
-
-const ArrivalTimeSoon = styled(Text)`
-  color: ${({ theme }) => theme.colors.text.error};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-`;
-
-const HowLong = styled(Text)`
-  font-size: ${({ theme }) => theme.typography.fontSize.m};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
-  color: ${({ theme }) => theme.colors.primary.gray500};
-`;
-
-const DelayWarningBox = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  margin-top: 11px;
-  margin-left: 65px;
-  width: 230px;
-  gap: 4px;
-`;
-
-const DelayWarningText = styled(Text)`
-  text-align: center;
-  color: ${({ theme }) => theme.colors.text.warning};
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+const ArrowRight = styled(Image)`
+  width: 18px;
+  height: 18px;
 `;
