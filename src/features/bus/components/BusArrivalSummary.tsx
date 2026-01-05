@@ -34,7 +34,7 @@ const BUS_ARRIVAL_MOCK_DATA: BusData[] = [
   },
 ];
 
-export function BusArrivalSummaryBox() {
+export function BusArrivalSummary() {
   return (
     <BusDetailBoxFrame>
       <MoreInformBox>
