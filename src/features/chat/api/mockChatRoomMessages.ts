@@ -33,7 +33,7 @@ const MESSAGE_TEMPLATES = [
  * chat_room_id를 기준으로 각 채팅방마다 10~15개의 메시지를 생성
  */
 const generateMessagesForRoom = (chatRoomId: number, participantCount: number): ApiMessage[] => {
-  const messageCount = 10 + (chatRoomId % 6); // 10~15개
+  const messageCount = 80; // 테스트용: 방당 80개
   const messages: ApiMessage[] = [];
   const now = Date.now();
 
