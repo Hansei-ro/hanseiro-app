@@ -131,9 +131,16 @@ export const mockFetchChatRoomDetail = async (
  * 메시지 목록 조회 Mock API
  *
  * @param chatRoomId - 채팅방 ID
+ * @param params - beforeId/size 기반 페이지네이션 옵션
  * @returns 메시지 목록 응답 (최신순 정렬)
  */
-export const mockFetchMessages = async (chatRoomId: number): Promise<ApiMessagesResponse> => {
+export const mockFetchMessages = async (
+  chatRoomId: number,
+  params?: {
+    beforeId?: number;
+    size?: number;
+  },
+): Promise<ApiMessagesResponse> => {
   await new Promise((resolve) => setTimeout(resolve, MOCK_DELAY));
 
   const messages = MOCK_MESSAGES_BY_ROOM[chatRoomId];
@@ -142,15 +149,20 @@ export const mockFetchMessages = async (chatRoomId: number): Promise<ApiMessages
     throw new Error('Chat room not found');
   }
 
-  // 최신순으로 정렬 (inverted FlatList에서 바로 사용 가능)
-  const sortedMessages = [...messages].sort(
-    (a, b) => new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime(),
-  );
+  const pageSize = params?.size ?? 20;
+  const beforeId = params?.beforeId;
+
+  // 최신순으로 정렬 (message_id 기준 내림차순)
+  const sortedMessages = [...messages].sort((a, b) => b.message_id - a.message_id);
+  const filteredMessages = beforeId
+    ? sortedMessages.filter((message) => message.message_id < beforeId)
+    : sortedMessages;
+  const pagedMessages = filteredMessages.slice(0, pageSize);
 
   return {
     status: 'success',
     message: '메시지 목록을 조회했습니다',
-    data: { messages: sortedMessages },
+    data: { messages: pagedMessages },
   };
 };
 
