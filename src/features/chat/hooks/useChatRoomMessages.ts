@@ -1,8 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { adaptApiMessagesToUI } from '../adapters/messageAdapter';
-import { mockFetchMessages } from '../api/mockChatRoomMessages';
+import { getChatRoomMessages } from '../api/chatMessages';
 import { Message } from '../types/message.ui';
+
+const MESSAGES_PAGE_SIZE = 20;
+
+const dedupeMessages = (messages: Message[]): Message[] => {
+  const seenIds = new Set<string>();
+
+  return messages.filter((message) => {
+    if (seenIds.has(message.id)) {
+      return false;
+    }
+
+    seenIds.add(message.id);
+    return true;
+  });
+};
 
 /**
  * 채팅방 메시지 목록 조회 훅
@@ -11,7 +26,7 @@ import { Message } from '../types/message.ui';
  * @returns 메시지 목록 쿼리 결과 (최신순 정렬)
  *
  * @example
- * const { data: messages, isLoading, error } = useChatRoomMessages('100');
+ * const { messages, isLoading, error } = useChatRoomMessages('100');
  *
  * @features
  * - 10초마다 자동 폴링으로 실시간 메시지 업데이트
@@ -22,18 +37,43 @@ import { Message } from '../types/message.ui';
  * - WebSocket 연동 시 폴링 제거 예정
  */
 export const useChatRoomMessages = (chatRoomId: string) => {
-  return useQuery({
+  const query = useInfiniteQuery({
     queryKey: ['chatRoomMessages', chatRoomId],
-    queryFn: async () => {
-      const response = await mockFetchMessages(Number(chatRoomId));
-      return response;
+    initialPageParam: null as number | null,
+    queryFn: ({ pageParam }) => {
+      return getChatRoomMessages(Number(chatRoomId), {
+        beforeId: pageParam ?? undefined,
+        size: MESSAGES_PAGE_SIZE,
+      });
     },
-    select: (response): Message[] => {
-      // API 응답을 UI 타입으로 변환
-      return adaptApiMessagesToUI(response.data.messages);
+    getNextPageParam: (lastPage) => {
+      const messages = lastPage.data.messages;
+
+      if (messages.length < MESSAGES_PAGE_SIZE) {
+        return undefined;
+      }
+
+      const lastMessage = messages[messages.length - 1];
+      return lastMessage?.message_id;
     },
     staleTime: 1000 * 30, // 30초 동안 fresh 상태 유지
     refetchInterval: 1000 * 10, // 10초마다 폴링 (실시간 업데이트)
     enabled: !!chatRoomId, // chatRoomId가 있을 때만 쿼리 실행
   });
+
+  const apiMessages = query.data?.pages.flatMap((page) => page.data.messages) ?? [];
+  const messages = dedupeMessages(adaptApiMessagesToUI(apiMessages));
+
+  return {
+    messages,
+    data: query.data,
+    error: query.error,
+    fetchNextPage: query.fetchNextPage,
+    hasNextPage: query.hasNextPage,
+    isFetching: query.isFetching,
+    isFetchingNextPage: query.isFetchingNextPage,
+    isLoading: query.isLoading,
+    refetch: query.refetch,
+    status: query.status,
+  };
 };
