@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -33,6 +33,8 @@ const DEFAULT_CONTENT_CONTAINER_STYLE = {
   paddingBottom: 20,
 } as const;
 
+const renderSeparator = () => <Separator />;
+
 export function ChatRoomList({
   items,
   onRoomPress,
@@ -44,6 +46,15 @@ export function ChatRoomList({
   onRefresh,
 }: ChatRoomListProps) {
   const theme = useTheme();
+
+  const renderItem = useCallback(
+    ({ item }: { item: ChatRoomListItemUI }) => (
+      <ChatRoomItem item={item} onPress={() => onRoomPress(item.id)} />
+    ),
+    [onRoomPress],
+  );
+
+  const keyExtractor = useCallback((item: ChatRoomListItemUI) => item.id, []);
 
   if (isPending) {
     return (
@@ -86,9 +97,9 @@ export function ChatRoomList({
   return (
     <StyledFlatList
       data={items}
-      renderItem={({ item }) => <ChatRoomItem item={item} onPress={() => onRoomPress(item.id)} />}
-      keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => <Separator />}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={contentContainerStyle ?? DEFAULT_CONTENT_CONTAINER_STYLE}
       showsVerticalScrollIndicator={false}
       refreshControl={
