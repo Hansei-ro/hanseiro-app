@@ -1,10 +1,15 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 
 import { adaptApiMessagesToUI } from '../adapters/messageAdapter';
 import { getChatRoomMessages } from '../api/chatMessages';
+import { ApiMessagesResponse } from '../types/message.api';
 import { Message } from '../types/message.ui';
 
 const MESSAGES_PAGE_SIZE = 20;
+
+type ChatRoomMessagesData = InfiniteData<ApiMessagesResponse> & {
+  messages: Message[];
+};
 
 const dedupeMessages = (messages: Message[]): Message[] => {
   const seenIds = new Set<string>();
@@ -56,16 +61,22 @@ export const useChatRoomMessages = (chatRoomId: string) => {
       const lastMessage = messages[messages.length - 1];
       return lastMessage?.message_id;
     },
+    select: (data): ChatRoomMessagesData => {
+      const apiMessages = data.pages.flatMap((page) => page.data.messages);
+      const messages = dedupeMessages(adaptApiMessagesToUI(apiMessages));
+
+      return {
+        ...data,
+        messages,
+      };
+    },
     staleTime: 1000 * 30, // 30초 동안 fresh 상태 유지
     refetchInterval: 1000 * 10, // 10초마다 폴링 (실시간 업데이트)
     enabled: !!chatRoomId, // chatRoomId가 있을 때만 쿼리 실행
   });
 
-  const apiMessages = query.data?.pages.flatMap((page) => page.data.messages) ?? [];
-  const messages = dedupeMessages(adaptApiMessagesToUI(apiMessages));
-
   return {
-    messages,
+    messages: query.data?.messages ?? [],
     data: query.data,
     error: query.error,
     fetchNextPage: query.fetchNextPage,
