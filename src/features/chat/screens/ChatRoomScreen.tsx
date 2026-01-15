@@ -22,9 +22,9 @@ const IOS_KEYBOARD_OFFSET = 35;
 export function ChatRoomScreen() {
   const router = useRouter();
   const theme = useTheme();
-  // URL 파라미터는 'id'로 전달됨 (/chat-room?id=100)
-  const { id } = useLocalSearchParams<{ id: string }>();
-  const chatRoomId = id || '';
+  // URL 파라미터는 'roomId'로 전달됨 (/chat/100)
+  const { roomId } = useLocalSearchParams<{ roomId: string }>();
+  const chatRoomId = roomId || '';
 
   // 키보드 높이 추적
   const [keyboardHeight, setKeyboardHeight] = useState(0);
