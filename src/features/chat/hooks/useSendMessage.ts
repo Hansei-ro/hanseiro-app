@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { InfiniteData, useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { mockSendMessage } from '../api/mockChatRoomMessages';
 import { ApiMessagesResponse } from '../types/message.api';
@@ -34,23 +34,42 @@ export const useSendMessage = (chatRoomId: string) => {
       // const newMessage = adaptApiMessageToUI(response.data.message);
 
       // 메시지 목록 캐시 업데이트 (Optimistic Update)
-      queryClient.setQueryData<ApiMessagesResponse>(['chatRoomMessages', chatRoomId], (oldData) => {
-        if (!oldData) {
-          return {
-            status: 'success',
-            message: '메시지를 전송했습니다',
-            data: { messages: [response.data.message] },
-          };
-        }
+      queryClient.setQueryData<InfiniteData<ApiMessagesResponse>>(
+        ['chatRoomMessages', chatRoomId],
+        (oldData) => {
+          if (!oldData) {
+            return {
+              pages: [
+                {
+                  status: 'success',
+                  message: response.message,
+                  data: { messages: [response.data.message] },
+                },
+              ],
+              pageParams: [null],
+            };
+          }
 
-        // 새 메시지를 맨 앞에 추가 (최신순 정렬)
-        return {
-          ...oldData,
-          data: {
-            messages: [response.data.message, ...oldData.data.messages],
-          },
-        };
-      });
+          const firstPage = oldData.pages[0];
+          if (!firstPage) {
+            return oldData;
+          }
+
+          const restPages = oldData.pages.slice(1);
+          const updatedFirstPage: ApiMessagesResponse = {
+            ...firstPage,
+            data: {
+              ...firstPage.data,
+              messages: [response.data.message, ...firstPage.data.messages],
+            },
+          };
+
+          return {
+            ...oldData,
+            pages: [updatedFirstPage, ...restPages],
+          };
+        },
+      );
 
       // 채팅 목록의 last_message 업데이트를 위해 쿼리 무효화
       queryClient.invalidateQueries({ queryKey: ['chatRoomList'] });
