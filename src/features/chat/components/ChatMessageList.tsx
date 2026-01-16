@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
 
 import { Message } from '../types/message.ui';
@@ -20,6 +20,8 @@ const DEFAULT_CONTENT_CONTAINER_STYLE = {
 } as const;
 
 const LOAD_MORE_DEBOUNCE_MS = 500;
+
+const renderItem = ({ item }: { item: Message }) => <ChatMessage message={item} />;
 
 const renderSeparator = () => <Separator />;
 
@@ -48,15 +50,9 @@ export function ChatMessageList({
     onLoadMore();
   }, [hasMore, isLoadingMore, onLoadMore]);
 
-  const renderItem = useCallback(({ item }: { item: Message }) => {
-    return <ChatMessage message={item} />;
-  }, []);
-
-  const containerStyle = useMemo(() => {
-    return contentContainerStyle
-      ? [DEFAULT_CONTENT_CONTAINER_STYLE, contentContainerStyle]
-      : DEFAULT_CONTENT_CONTAINER_STYLE;
-  }, [contentContainerStyle]);
+  const containerStyle = contentContainerStyle
+    ? [DEFAULT_CONTENT_CONTAINER_STYLE, contentContainerStyle]
+    : DEFAULT_CONTENT_CONTAINER_STYLE;
 
   return (
     <StyledFlatList
