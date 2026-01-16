@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ActivityIndicator, FlatList, Pressable, View } from 'react-native';
 
 import { MatchHistoryItemUI } from '../types/matchHistory.ui';
@@ -22,6 +22,8 @@ const DEFAULT_CONTENT_CONTAINER_STYLE = {
   paddingTop: 20,
 } as const;
 
+const renderSeparator = () => <Separator />;
+
 export function MatchHistoryList({
   items,
   isPending = false,
@@ -30,6 +32,11 @@ export function MatchHistoryList({
   contentContainerStyle,
 }: MatchHistoryListProps) {
   const theme = useTheme();
+
+  const renderItem = useCallback(
+    ({ item }: { item: MatchHistoryItemUI }) => <MatchHistoryListItem item={item} />,
+    [],
+  );
 
   if (isPending) {
     return (
@@ -72,9 +79,9 @@ export function MatchHistoryList({
   return (
     <StyledFlatList
       data={items}
-      renderItem={({ item }) => <MatchHistoryListItem item={item} />}
+      renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => <Separator />}
+      ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={contentContainerStyle ?? DEFAULT_CONTENT_CONTAINER_STYLE}
       showsVerticalScrollIndicator={false}
     />
