@@ -43,6 +43,10 @@ const generateMessagesForRoom = (chatRoomId: number, participantCount: number): 
     (_, i) => 1000 + chatRoomId * 10 + i,
   );
 
+  const dayInMs = 24 * 60 * 60 * 1000;
+  const startAt = now - dayInMs;
+  const interval = dayInMs / Math.max(messageCount - 1, 1);
+
   for (let i = 0; i < messageCount; i++) {
     // 메시지 발신자: 70% 확률로 다른 사람, 30% 확률로 나
     const isMyMessage = Math.random() < 0.3;
@@ -50,8 +54,8 @@ const generateMessagesForRoom = (chatRoomId: number, participantCount: number): 
     const senderId = isMyMessage ? CURRENT_USER_ID : participantId;
     const senderName = isMyMessage ? CURRENT_USER_NAME : `참가자${senderId}`;
 
-    // 시간: 과거부터 현재까지 순차적으로 (가장 오래된 메시지가 먼저)
-    const sentAt = new Date(now - (messageCount - i) * 60000 * 5).toISOString(); // 5분 간격
+    // 시간: 이틀 범위에서 과거부터 현재까지 순차적으로
+    const sentAt = new Date(startAt + interval * i).toISOString();
 
     messages.push({
       message_id: chatRoomId * 1000 + i + 1,

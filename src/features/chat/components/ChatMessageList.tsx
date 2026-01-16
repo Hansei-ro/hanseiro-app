@@ -19,6 +19,8 @@ const DEFAULT_CONTENT_CONTAINER_STYLE = {
   paddingHorizontal: 16,
 } as const;
 
+const LOAD_MORE_DEBOUNCE_MS = 500;
+
 const renderSeparator = () => <Separator />;
 
 // 채팅 메시지 리스트 컴포넌트
@@ -38,7 +40,7 @@ export function ChatMessageList({
     }
 
     const now = Date.now();
-    if (now - lastEndReachedAt.current < 500) {
+    if (now - lastEndReachedAt.current < LOAD_MORE_DEBOUNCE_MS) {
       return;
     }
 
