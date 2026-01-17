@@ -2,18 +2,18 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BusArrivalDetailBox } from '@/features/home/components/BusArrivalDetail';
-import { MatchingStatus } from '@/features/home/components/MatchingStatus';
-import { WeatherInform } from '@/features/home/components/WeatherInform';
+import { BusArrivalSummary } from '@/features/bus/components/BusArrivalSummary';
+import { MatchingStatusCard } from '@/features/match/components/MatchingStatusCard';
+import { WeatherWidget } from '@/features/weather/components/WeatherWidget';
 import { theme } from '@/shared/theme';
 
 export function HomeScreen() {
   return (
     <SafeArea edges={['top']}>
       <Container>
-        <WeatherInform />
-        <MatchingStatus />
-        <BusArrivalDetailBox />
+        <WeatherWidget />
+        <MatchingStatusCard />
+        <BusArrivalSummary />
       </Container>
     </SafeArea>
   );

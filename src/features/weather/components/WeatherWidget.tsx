@@ -4,7 +4,7 @@ import { View, Text, Image } from 'react-native';
 
 import SunIcon from '@/shared/icons/SunIcon.png';
 
-export function WeatherInform() {
+export function WeatherWidget() {
   return (
     <WeatherInformFrame>
       <WeatherInformLeft>
