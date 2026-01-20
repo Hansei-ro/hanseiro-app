@@ -14,7 +14,7 @@ interface ChatRoomItemProps {
 }
 
 // 채팅방 목록 아이템 컴포넌트
-export function ChatRoomItem({ item, onPress }: ChatRoomItemProps) {
+export const ChatRoomItem = React.memo(function ChatRoomItem({ item, onPress }: ChatRoomItemProps) {
   const theme = useTheme();
   const { title, lastMessage, lastMessageTime, participantCount, hasUnread } = item;
 
@@ -61,7 +61,7 @@ export function ChatRoomItem({ item, onPress }: ChatRoomItemProps) {
       </Content>
     </Container>
   );
-}
+});
 
 const Container = styled(Pressable)`
   flex-direction: row;
