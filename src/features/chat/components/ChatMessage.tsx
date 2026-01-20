@@ -1,6 +1,7 @@
 import styled from '@emotion/native';
 import { useTheme } from '@emotion/react';
 import { format } from 'date-fns';
+import React from 'react';
 import { Image, View } from 'react-native';
 
 import { Message } from '../types/message.ui';
@@ -12,7 +13,7 @@ interface ChatMessageProps {
   message: Message;
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export const ChatMessage = React.memo(function ChatMessage({ message }: ChatMessageProps) {
   const theme = useTheme();
 
   if (message.isDateSeparator) {
@@ -69,7 +70,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       </ContentContainer>
     </MessageContainer>
   );
-}
+});
 
 const DateSeparatorContainer = styled(View)`
   align-items: center;

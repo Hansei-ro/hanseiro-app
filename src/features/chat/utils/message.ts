@@ -7,35 +7,42 @@ const formatMessageDate = (timestamp: string) =>
     day: 'numeric',
   });
 
+const createDateSeparator = (dateText: string, timestamp: string): Message => ({
+  id: `date-${dateText}`,
+  text: dateText,
+  sender: 'other',
+  timestamp,
+  isDateSeparator: true,
+});
+
 export const buildMessagesWithDateSeparators = (messages: Message[]): Message[] => {
   if (messages.length === 0) {
     return [];
   }
 
-  const sortedMessages = [...messages].sort(
-    (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime(),
-  );
-
   const result: Message[] = [];
-  let lastDate = '';
+  let currentDate = '';
+  let currentDateTimestamp = '';
 
-  sortedMessages.forEach((message) => {
+  messages.forEach((message) => {
     const messageDate = formatMessageDate(message.timestamp);
 
-    if (messageDate !== lastDate) {
-      result.push({
-        id: `date-${messageDate}`,
-        text: messageDate,
-        sender: 'other',
-        timestamp: message.timestamp,
-        isDateSeparator: true,
-      });
-      lastDate = messageDate;
+    if (!currentDate) {
+      currentDate = messageDate;
+    }
+
+    if (messageDate !== currentDate) {
+      result.push(createDateSeparator(currentDate, currentDateTimestamp));
+      currentDate = messageDate;
     }
 
     result.push(message);
+    currentDateTimestamp = message.timestamp;
   });
 
-  // inverted FlatList 기준에 맞게 최신 메시지가 먼저 오도록 다시 뒤집기
-  return result.reverse();
+  if (currentDate) {
+    result.push(createDateSeparator(currentDate, currentDateTimestamp));
+  }
+
+  return result;
 };

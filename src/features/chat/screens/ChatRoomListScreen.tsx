@@ -15,7 +15,7 @@ export function ChatRoomListScreen() {
   const rooms = data ?? [];
 
   const handleEnterChat = (roomId: string) => {
-    router.push(`/chat-room?id=${roomId}`);
+    router.push(`/chat/${roomId}`);
   };
 
   // 정상 상태
