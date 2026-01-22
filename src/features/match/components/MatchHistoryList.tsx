@@ -22,6 +22,10 @@ const DEFAULT_CONTENT_CONTAINER_STYLE = {
   paddingTop: 20,
 } as const;
 
+const renderItem = ({ item }: { item: MatchHistoryItemUI }) => <MatchHistoryListItem item={item} />;
+
+const renderSeparator = () => <Separator />;
+
 export function MatchHistoryList({
   items,
   isPending = false,
@@ -72,9 +76,9 @@ export function MatchHistoryList({
   return (
     <StyledFlatList
       data={items}
-      renderItem={({ item }) => <MatchHistoryListItem item={item} />}
+      renderItem={renderItem}
       keyExtractor={(item) => item.id}
-      ItemSeparatorComponent={() => <Separator />}
+      ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={contentContainerStyle ?? DEFAULT_CONTENT_CONTAINER_STYLE}
       showsVerticalScrollIndicator={false}
     />

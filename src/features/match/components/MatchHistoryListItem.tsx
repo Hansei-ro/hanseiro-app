@@ -12,7 +12,9 @@ interface MatchHistoryListItemProps {
   item: MatchHistoryItemUI;
 }
 
-export function MatchHistoryListItem({ item }: MatchHistoryListItemProps) {
+export const MatchHistoryListItem = React.memo(function MatchHistoryListItem({
+  item,
+}: MatchHistoryListItemProps) {
   const theme = useTheme();
 
   return (
@@ -28,7 +30,7 @@ export function MatchHistoryListItem({ item }: MatchHistoryListItemProps) {
       <AvatarGroup count={item.participantCount} />
     </HistoryItemContainer>
   );
-}
+});
 
 const HistoryItemContainer = styled(View)`
   flex-direction: row;
